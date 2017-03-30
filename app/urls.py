@@ -24,6 +24,7 @@ urlpatterns = [
     url(r'disp/$',views.disp,name='disp'),
     url(r'debit/$',views.debit,name='debit'),
     url(r'buy/$',views.redirectBuy,name='buy'),
-    url(r'sell/$',views.redirectSell,name='sell')
+    url(r'sell/$',views.redirectSell,name='sell'),
+    url(r'execBuy/$',views.execBuy,name='execBuy')
     
 ]
