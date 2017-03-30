@@ -58,6 +58,15 @@ def execBuy(request):
 
 	obj1=Sp.objects.get(name=request.POST.get('choice'))
 	stocks.objects.filter(soName=obj1).update(shareCount=F('shareCount')-qty)
+	stockObj=stocks.objects.get(soName=obj1)
+	if(stockObj.shareCount<0):
+		stocks.objects.filter(soName=obj1).update(shareCount=F('shareCount')+qty)
+		raise Http404("Stock Limit Breached!")
+	earning=stockObj.sharePrice*qty
+	account=obj1.accno
+	account.balance+=earning
+	account.save()
+
 	objs=Inv.objects.all()
 	obj2=Sp.objects.all()
 	context = {'list': objs, 'list2':obj2}
