@@ -109,6 +109,11 @@ def register(request):
             profile = profile_form.save(commit=False)
             profile.user = user
 
+            # Did the user provide a profile picture?
+            # If so, we need to get it from the input form and put it in the UserProfile model.
+            profile.aadhar = request.aadhar
+            profile.accno =request.accno
+
             # Now we save the UserProfile model instance.
             profile.save()
 

@@ -1,12 +1,6 @@
 from django.db import models
 from django.core.validators import MaxValueValidator, MinValueValidator
 
-
-
-
-
-
-#jogu
 class accounts(models.Model):
 	accno=models.CharField(max_length=20)
 	balance=models.DecimalField(max_digits=20,decimal_places=2)
@@ -53,32 +47,6 @@ class stocks(models.Model):
 
 	def __str__(self):
 		return self.soName.name
-
-
-
-
-
-
-
-
-
-
-
-
-#raman
-from django.contrib.auth.models import User
-
-class UserProfile(models.Model):
-    # This line is required. Links UserProfile to a User model instance.
-    user = models.OneToOneField(User)
-
-    #new attributes
-    aadhar=models.ForeignKey('uid',on_delete=models.CASCADE)
-    accno=models.ForeignKey('accounts',on_delete=models.CASCADE)
-
-    # Override the __unicode__() method to return out something meaningful!
-    def __unicode__(self):
-        return self.user.username
 
 
 
