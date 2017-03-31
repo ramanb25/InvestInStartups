@@ -200,13 +200,9 @@ def restricted(request):
 
 
 @login_required
-def profile(request, context_dict=None):
+def profile(request):
     context = RequestContext(request)
     u = User.objects.get(username=request.user)
-
-    try:
-        up = UserProfile.objects.get(user=u)
-    except:
-        up = None
-        context_dict['userprofile'] = up
+    up = UserProfile.objects.get(user=u)
+    context_dict ={ 'userprofile':up}
     return render_to_response('app/profile.html', context_dict, context)
