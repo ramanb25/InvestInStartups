@@ -1,0 +1,16 @@
+{% extends "app/base.html" %}
+
+{% block title %}Profile{% endblock %}
+
+{% block body_block %}
+<div class="hero-unit">
+    <h1> Profile </h1> <br/>
+    <h2>{{ userprofile.user.username }}</h2>
+    <p>Email: {{ userprofile.user.email }}</p>
+
+    {% if userprofile %}
+        <p>Aadhar acc: <a href="{{ userprofile.aadhar }}">{{ userprofile.accno }}</a></p>
+        <br/>
+    {% endif %}
+</div>
+{% endblock %}

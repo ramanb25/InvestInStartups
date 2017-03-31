@@ -1,7 +1,7 @@
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 from django.http import Http404
-from .models import Inv,accounts,uid,Sp,stocks,holdings
+from .models import Inv, accounts, uid, Sp, stocks, holdings, UserProfile
 from django.shortcuts import render
 from django.urls import reverse
 from django.db.models import F
@@ -10,73 +10,80 @@ from django.shortcuts import render_to_response
 from django.contrib.auth import authenticate, login
 from django.http import HttpResponseRedirect, HttpResponse
 from django.contrib.auth import logout
+from django.contrib.auth.models import User
 
 def index(request):
-	try:
-		objs=Inv.objects.all()
-		obj2=Sp.objects.all()
-		context = {'list': objs, 'list2':obj2}
-	except Sp.DoesNotExist:
-		raise Http404("Object does not exist")
-	return render(request,'app/index.html',context)
+    if request.user.is_authenticated():
+        u = User.objects.get(username=request.user)
+        up = UserProfile.objects.get(user=u)
+    try:
+        objs=Inv.objects.all()
+        obj2=Sp.objects.all()
+        if request.user.is_authenticated():
+            context = {'list': objs, 'list2':obj2, 'userprofile':up, 'user':u}
+        else:
+            context = {'list': objs, 'list2': obj2}
+    except Sp.DoesNotExist:
+        raise Http404("Object does not exist")
+    return render(request,'app/index.html',context)
 
 def forms(request):
-	return render(request,'app/form.html')
+    return render(request,'app/form.html')
 
 def disp(request):
-	try:
-		obj=Inv.objects.filter(name=request.POST['name'])
-		context={'list':obj}
-	except Inv.DoesNotExist:
-		raise Http404("Object does not exist")
-	return render(request,'app/index.html',context)
+    try:
+        obj=Inv.objects.filter(name=request.POST['name'])
+        context={'list':obj}
+    except Inv.DoesNotExist:
+        raise Http404("Object does not exist")
+    return render(request,'app/index.html',context)
 
 def debit(request):
-	try:
-		obj=Inv.objects.get(name=request.POST['name'])
-		obj2=Inv.objects.filter(name=request.POST['name'])
+    try:
+        obj=Inv.objects.get(name=request.POST['name'])
+        obj2=Inv.objects.filter(name=request.POST['name'])
 
-		context = {'list': obj2}
-		objac=accounts.objects.get(accno=obj.accno.accno)
-		objac.balance-=10
-		
-		objac.save()
-		return render(request,'app/index.html',context)
-	except Inv.DoesNotExist:
-		raise Http404("Object does not exist")
+        context = {'list': obj2}
+        objac=accounts.objects.get(accno=obj.accno.accno)
+        objac.balance-=10
+
+        objac.save()
+        return render(request,'app/index.html',context)
+    except Inv.DoesNotExist:
+        raise Http404("Object does not exist")
 
 def redirectBuy(request):
-	obj=stocks.objects.all()
-	context={'list':obj}
-	return render(request,'app/buy.html',context)
+    obj=stocks.objects.all()
+    context={'list':obj}
+    return render(request,'app/buy.html',context)
 
 def redirectSell(request):
-	obj=stocks.objects.all()
-	context={'list':obj}
-	return render(request,'app/buy.html',context)
+    obj=stocks.objects.all()
+    context={'list':obj}
+    return render(request,'app/buy.html',context)
 
 
 def execBuy(request):
-	#obj=stocks.objects.get(name=request.POST['choice'])
-	qty=int(request.POST['qty'+request.POST.get('choice')])
-	if qty<0:
-		raise Http404("Invalid Purchase Quantity")
+    #obj=stocks.objects.get(name=request.POST['choice'])
+    qty=int(request.POST['qty'+request.POST.get('choice')])
+    if qty<0:
+        raise Http404("Invalid Purchase Quantity")
 
-	obj1=Sp.objects.get(name=request.POST.get('choice'))
-	stocks.objects.filter(soName=obj1).update(shareCount=F('shareCount')-qty)
-	stockObj=stocks.objects.get(soName=obj1)
-	if(stockObj.shareCount<0):
-		stocks.objects.filter(soName=obj1).update(shareCount=F('shareCount')+qty)
-		raise Http404("Stock Limit Breached!")
-	earning=stockObj.sharePrice*qty
-	account=obj1.accno
-	account.balance+=earning
-	account.save()
+    obj1=Sp.objects.get(name=request.POST.get('choice'))
+    stocks.objects.filter(soName=obj1).update(shareCount=F('shareCount')-qty)
+    stockObj=stocks.objects.get(soName=obj1)
+    if(stockObj.shareCount<0):
+        stocks.objects.filter(soName=obj1).update(shareCount=F('shareCount')+qty)
+        raise Http404("Stock Limit Breached!")
+    earning=stockObj.sharePrice*qty
+    account=obj1.accno
+    account.balance+=earning
+    account.save()
 
-	objs=Inv.objects.all()
-	obj2=Sp.objects.all()
-	context = {'list': objs, 'list2':obj2}
-	return render(request,'app/index.html',context)
+    objs=Inv.objects.all()
+    obj2=Sp.objects.all()
+    context = {'list': objs, 'list2':obj2}
+    return render(request,'app/index.html',context)
 
 
 #raman
@@ -190,3 +197,16 @@ def user_logout(request):
 @login_required
 def restricted(request):
     return HttpResponse("Since you're logged in, you can see this text!")
+
+
+@login_required
+def profile(request, context_dict=None):
+    context = RequestContext(request)
+    u = User.objects.get(username=request.user)
+
+    try:
+        up = UserProfile.objects.get(user=u)
+    except:
+        up = None
+        context_dict['userprofile'] = up
+    return render_to_response('app/profile.html', context_dict, context)

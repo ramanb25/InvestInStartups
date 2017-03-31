@@ -14,9 +14,15 @@
 </head>
 <body>
     {% if user.is_authenticated %}
-<h1> hello {{ user.username }}!</h1>
+<h1> hello {{ userprofile.user.username }} aadhar {{ userprofile.aadhar }}!</h1>
 {% else %}
 <h1> hello world!</h1>
+
+
+        {% if user.is_authenticated %}
+    <li><a href="/rango/profile">Profile</a></li>
+{% endif %}
+
 {% endif %}
 	<!-- ******Navbar***** -->
 	<nav class="navbar navbar-default">
