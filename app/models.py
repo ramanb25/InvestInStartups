@@ -22,50 +22,50 @@ class uid(models.Model):
 		return self.aadhar
 
 
-class InvestorProfile(models.Model):
-	# This line is required. Links UserProfile to a User model instance.
-	user = models.OneToOneField(User)
+# class InvestorProfile(models.Model):
+# 	# This line is required. Links UserProfile to a User model instance.
+# 	user = models.OneToOneField(User)
 
-	# new attributes
-	aadhar = models.ForeignKey('uid', on_delete=models.CASCADE)
-	accno = models.ForeignKey('accounts', on_delete=models.CASCADE)
+# 	# new attributes
+# 	aadhar = models.ForeignKey('uid', on_delete=models.CASCADE)
+# 	accno = models.ForeignKey('accounts', on_delete=models.CASCADE)
 
-	# Override the __unicode__() method to return out something meaningful!
-	def __unicode__(self):
-		return self.user.username
-	def __str__(self):
-		return self.user.username
+# 	# Override the __unicode__() method to return out something meaningful!
+# 	def __unicode__(self):
+# 		return self.user.username
+# 	def __str__(self):
+# 		return self.user.username
 
-class StartupProfile(models.Model):
-	# This line is required. Links UserProfile to a User model instance.
-	user = models.OneToOneField(User)
+# class StartupProfile(models.Model):
+# 	# This line is required. Links UserProfile to a User model instance.
+# 	user = models.OneToOneField(User)
 
-	# new attributes
-	aadhar = models.ForeignKey('uid', on_delete=models.CASCADE)
-	accno = models.ForeignKey('accounts', on_delete=models.CASCADE)
+# 	# new attributes
+# 	aadhar = models.ForeignKey('uid', on_delete=models.CASCADE)
+# 	accno = models.ForeignKey('accounts', on_delete=models.CASCADE)
 
-	# Override the __unicode__() method to return out something meaningful!
-	def __unicode__(self):
-		return self.user.username
+# 	# Override the __unicode__() method to return out something meaningful!
+# 	def __unicode__(self):
+# 		return self.user.username
 
-	def __str__(self):
-		return self.user.username
+# 	def __str__(self):
+# 		return self.user.username
 
-class holdings(models.Model):
-	shareHolder=models.ForeignKey('InvestorProfile',on_delete=models.CASCADE)
-	startupName=models.ForeignKey('StartupProfile',on_delete=models.CASCADE)
-	shareCount=models.IntegerField(validators=[MinValueValidator(1)])
+# class holdings(models.Model):
+# 	shareHolder=models.ForeignKey('InvestorProfile',on_delete=models.CASCADE)
+# 	startupName=models.ForeignKey('StartupProfile',on_delete=models.CASCADE)
+# 	shareCount=models.IntegerField(validators=[MinValueValidator(1)])
 
-	def __str__(self):
-		return self.shareHolder.user.username
+# 	def __str__(self):
+# 		return self.shareHolder.user.username
 
-class stocks(models.Model):
-	startup=models.ForeignKey('StartupProfile',on_delete=models.CASCADE)
-	shareCount=models.IntegerField(validators=[MinValueValidator(1)])
-	sharePrice=models.DecimalField(max_digits=20,decimal_places=2)
+# class stocks(models.Model):
+# 	startup=models.ForeignKey('StartupProfile',on_delete=models.CASCADE)
+# 	shareCount=models.IntegerField(validators=[MinValueValidator(1)])
+# 	sharePrice=models.DecimalField(max_digits=20,decimal_places=2)
 
-	def __str__(self):
-		return self.startup.user.username
+# 	def __str__(self):
+# 		return self.startup.user.username
 
 
 

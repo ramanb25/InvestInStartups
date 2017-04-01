@@ -1,0 +1,24 @@
+{% include "app/base.html" %}
+<html>
+<head>
+	{% load static %}
+	<link href="{% static "app/css/bootstrap.min.css" %}" rel="stylesheet">
+</head>
+<body>
+	
+<form action="../disp/" method='post'>
+	{% csrf_token %}
+	<input class="form-control" width="30%" type="text" name="name">
+	<input class="btn btn-primary btn-sm" type='submit' name='submit' value='Go!'>
+</form>
+
+<form action="../debit/" method='post'>
+	{% csrf_token %}
+	<input class="form-control" type="text" name="name">
+	<input class="btn btn-primary btn-sm" type='submit' name='submit' value='Debit'>
+</form>
+    <script src="{% static "app/js/jquery.js" %}"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="{% static "app/js/bootstrap.min.js" %}"></script>
+</body>
+</html>
