@@ -20,7 +20,7 @@ class onSaleInvestor(models.Model):
     sharePrice=models.IntegerField()
 
     def __str__(self):
-        return self.investorName.user.username
+        return self.owner.user.username
 
 class onSaleStartup(models.Model):
     owner=models.ForeignKey('startup.StartupProfile',on_delete=models.CASCADE)
@@ -28,7 +28,7 @@ class onSaleStartup(models.Model):
     sharePrice=models.IntegerField()
 
     def __str__(self):
-        return self.StartupProfile.startupName
+        return self.owner.startupName
 
 #raman
 

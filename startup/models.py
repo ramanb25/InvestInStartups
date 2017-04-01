@@ -53,7 +53,7 @@ class StartupProfile(models.Model):
 		return self.user.username
 
 	def __str__(self):
-		return self.user.username
+		return self.startupName
 
 # class holdings(models.Model):
 # 	shareHolder=models.ForeignKey('InvestorProfile',on_delete=models.CASCADE)
