@@ -1,4 +1,4 @@
-{% include "app/base.html" %}
+{% include "market/base.html" %}
 <html>
 <head>
 	{% load static %}
@@ -9,20 +9,20 @@
 
 	<div class="panel panel-primary">
 	<!-- Default panel contents -->
-		<div class="panel-heading">Registered Investors</div>
+		<div class="panel-heading">Available Stocks (Startups)</div>
 
 		<!-- Table -->
 		<table class="table">
 			<tr>
-				<td>Name</td>
-				<td>Balance</td>
-				<td>UID</td>
+				<td>Stock Name</td>
+				<td>Share Count</td>
+				<td>Share Price</td>
 			</tr>
-			{% for o in list %}
+			{% for o in list1 %}
 				<tr>
-					<td>{{o.name}}</td>
-					<td>{{o.accno.balance}}</td>
-					<td>{{o.aadhar.aadhar}}</td>
+					<td>{{o.owner.stockName}}</td>
+					<td>{{o.shareCount}}</td>
+					<td>{{o.sharePrice}}</td>
 				</tr>
 			{% endfor %}
 		</table>
@@ -30,20 +30,22 @@
 	<br>
 	<br>
 	<div class="panel panel-primary">
-	<div class="panel-heading">Registered Startups</div>
+	<div class="panel-heading">Available Stocks (Investors)</div>
 
 		<!-- Table -->
 		<table class="table">
 			<tr>
-				<td>Name</td>
-				<td>Balance</td>
-				<td>UID</td>
+				<td>Investor Name</td>
+				<td>Stock Name</td>
+				<td>Share Count</td>
+				<td>Share Price</td>
 			</tr>
 			{% for o in list2 %}
 				<tr>
-					<td>{{o.name}}</td>
-					<td>{{o.accno.balance}}</td>
-					<td>{{o.aadhar.aadhar}}</td>
+					<td>{{o.stockName.investorName.user.username}}</td>
+					<td>{{o.stockName.stockName.stockName}}</td>
+					<td>{{o.shareCount}}</td>
+					<td>{{o.sharePrice}}</td>
 				</tr>
 			{% endfor %}
 		</table>

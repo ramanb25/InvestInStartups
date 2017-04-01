@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     'app',
     'startup',
     'investor',
-    #'market'
+    'market'
 ]
 
 MIDDLEWARE = [

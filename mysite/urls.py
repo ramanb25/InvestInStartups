@@ -22,6 +22,7 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^app/',include('app.urls')),
     url(r'^investor/',include('investor.urls')),
-    url(r'^startup/',include('startup.urls'))
+    url(r'^startup/',include('startup.urls')),
+    url(r'^market/',include('market.urls'))
     
 ]

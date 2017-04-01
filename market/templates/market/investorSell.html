@@ -1,0 +1,48 @@
+{% include "market/base.html" %}
+<html>
+<head>
+	{% load static %}
+	<link href="{% static "app/css/bootstrap.min.css" %}" rel="stylesheet">
+</head>
+<body>
+
+
+	<div class="panel panel-primary">
+	<!-- Default panel contents -->
+		<div class="panel-heading">Choose Stock to Sell</div>
+		<form action="../execInvestorSell/" method='post'>
+		<!-- Table -->
+			<table class="table">
+				<tr>
+					<td>Choice</td>
+					<td>Stock</td>
+					<td>Available Shares</td>
+					<td>Qty to Sell</td>
+					<td>Quote Price</td>
+				</tr>
+				{% for o in list %}
+					<tr>
+						<td>
+							<div class="radio">
+									<label><input type="radio" name='choice' value="{{o.stockName.stockName}}"></label>
+							</div>
+						</td>
+						<td>{{o.stockName.stockName}}</td>
+						<td>{{o.shareCount}}</td>
+						<td><input type="text" class="form-control" name="qty{{o.stockName.stockName}}"></td>
+						<td><input type="text" class="form-control" name="price{{o.stockName.stockName}}"></td>
+					</tr>
+				{% endfor %}
+			</table>
+			<input class="btn btn-primary btn-sm" type='submit' name='submit' value='Sell!'>
+		</form>
+	</div>
+	<br>
+	<br>
+	
+	    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="{% static "app/js/jquery.js" %}"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="{% static "app/js/bootstrap.min.js" %}"></script>
+</body>
+</html>
