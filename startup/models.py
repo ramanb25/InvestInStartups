@@ -49,8 +49,8 @@ class StartupProfile(models.Model):
 	sharePrice=models.DecimalField(max_digits=20,decimal_places=2)
 
 	# Override the __unicode__() method to return out something meaningful!
-	def __unicode__(self):
-		return self.user.username
+	# def __unicode__(self):
+	# 	return self.user.username
 
 	def __str__(self):
 		return self.startupName
