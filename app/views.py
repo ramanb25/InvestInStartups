@@ -1,7 +1,7 @@
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 from django.http import Http404
-from .models import Inv, accounts, uid, Sp, stocks, holdings, UserProfile
+from .models import InvestorProfile, accounts, uid, StartupProfile, stocks, holdings, UserProfile
 from django.shortcuts import render
 from django.urls import reverse
 from django.db.models import F
@@ -17,13 +17,13 @@ def index(request):
         u = User.objects.get(username=request.user)
         up = UserProfile.objects.get(user=u)
     try:
-        objs=Inv.objects.all()
-        obj2=Sp.objects.all()
+        objs=InvestorProfile.objects.all()
+        obj2=StartupProfile.objects.all()
         if request.user.is_authenticated():
             context = {'list': objs, 'list2':obj2, 'userprofile':up, 'user':u}
         else:
             context = {'list': objs, 'list2': obj2}
-    except Sp.DoesNotExist:
+    except StartupProfile.DoesNotExist:
         raise Http404("Object does not exist")
     return render(request,'app/index.html',context)
 
@@ -32,16 +32,16 @@ def forms(request):
 
 def disp(request):
     try:
-        obj=Inv.objects.filter(name=request.POST['name'])
+        obj=InvestorProfile.objects.filter(name=request.POST['name'])
         context={'list':obj}
-    except Inv.DoesNotExist:
+    except InvestorProfile.DoesNotExist:
         raise Http404("Object does not exist")
     return render(request,'app/index.html',context)
 
 def debit(request):
     try:
-        obj=Inv.objects.get(name=request.POST['name'])
-        obj2=Inv.objects.filter(name=request.POST['name'])
+        obj=InvestorProfile.objects.get(name=request.POST['name'])
+        obj2=InvestorProfile.objects.filter(name=request.POST['name'])
 
         context = {'list': obj2}
         objac=accounts.objects.get(accno=obj.accno.accno)
@@ -49,7 +49,7 @@ def debit(request):
 
         objac.save()
         return render(request,'app/index.html',context)
-    except Inv.DoesNotExist:
+    except InvestorProfile.DoesNotExist:
         raise Http404("Object does not exist")
 
 def redirectBuy(request):
@@ -69,7 +69,7 @@ def execBuy(request):
     if qty<0:
         raise Http404("Invalid Purchase Quantity")
 
-    obj1=Sp.objects.get(name=request.POST.get('choice'))
+    obj1=StartupProfile.objects.get(name=request.POST.get('choice'))
     stocks.objects.filter(soName=obj1).update(shareCount=F('shareCount')-qty)
     stockObj=stocks.objects.get(soName=obj1)
     if(stockObj.shareCount<0):
@@ -80,8 +80,8 @@ def execBuy(request):
     account.balance+=earning
     account.save()
 
-    objs=Inv.objects.all()
-    obj2=Sp.objects.all()
+    objs=InvestorProfile.objects.all()
+    obj2=StartupProfile.objects.all()
     context = {'list': objs, 'list2':obj2}
     return render(request,'app/index.html',context)
 
