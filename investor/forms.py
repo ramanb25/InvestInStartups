@@ -1,9 +1,9 @@
 #raman
-from .models import UserProfile
+from .models import InvestorProfile
 from django.contrib.auth.models import User
 from django import forms
 
-class UserForm(forms.ModelForm):
+class InvestorUserForm(forms.ModelForm):
     #username is already defined passsword is viewable
     password = forms.CharField(widget=forms.PasswordInput())
 
@@ -11,7 +11,7 @@ class UserForm(forms.ModelForm):
         model = User
         fields = ('username', 'email', 'password')
 
-class UserProfileForm(forms.ModelForm):
+class InvestorProfileForm(forms.ModelForm):
     class Meta:
-        model = UserProfile
+        model = InvestorProfile
         fields = ('aadhar', 'accno')

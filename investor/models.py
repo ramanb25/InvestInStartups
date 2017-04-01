@@ -2,7 +2,7 @@ from django.db import models
 from django.core.validators import MaxValueValidator, MinValueValidator
 from django.contrib.auth.models import User
 from app.models import accounts,uid
-from startup.models import StartupProfile
+#from startup.models import StartupProfile
 
 
 
