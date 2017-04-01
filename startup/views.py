@@ -18,9 +18,13 @@ def index(request):
     context=None
     if request.user.is_authenticated():
         u = User.objects.get(username=request.user)
-        up = StartupProfile.objects.get(user=u)
-        if up is not None:
-            context = {'userprofile': up, 'user': u}
+        print u
+        try:
+            up = StartupProfile.objects.get(user=u)
+            if up is not None:
+                context = {'userprofile': up, 'user': u}
+        except:
+            return HttpResponseRedirect('/investor/')
     # try:
     #     objs=InvestorProfile.objects.all()
     #     obj2=StartupProfile.objects.all()
@@ -193,7 +197,7 @@ def user_logout(request):
     logout(request)
 
     # Take the user back to the homepage.
-    return HttpResponseRedirect('/')
+    return HttpResponseRedirect('/app/')
 
 
 @login_required
