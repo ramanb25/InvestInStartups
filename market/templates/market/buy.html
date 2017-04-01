@@ -22,13 +22,17 @@
 					<tr>
 						<td>
 							<div class="radio">
-								<label><input type="radio" name='choice' value="{{o.stockName}}"></label>
+								<label><input type="radio" name='choice' value="{{o.holdings}}"></label>
+
+                                <input type="hidden" name='type' value="{{0}}">
+                                 <input type="hidden" name='username' value="{{o.holdings.startupName}}">
+
 							</div>
 						</td>
-						<td>{{o.stockName}}</td>
+						<td>{{o.holdings}}</td>
 						<td>{{o.shareCount}}</td>
 						<td>{{o.sharePrice}}</td>
-						<td><input type="text" class="form-control" name="qty{{o.stockName}}"></td>
+						<td><input type="text" class="form-control" name="qty{{o.holdings}}"></td>
 					</tr>
 				{% endfor %}
 
@@ -36,13 +40,18 @@
 					<tr>
 						<td>
 							<div class="radio">
-								<label><input type="radio" name='choice' value="{{o.stockName}}"></label>
+								<label><input type="radio" name='choice' value="{{o.holdings}}">
+
+                                    <input type="hidden" name='type' value="{{1}}">
+                                    <input type="hidden" name='username' value="{{o.holdings.investor.user}}">
+
+                                </label>
 							</div>
 						</td>
-						<td>{{o.stockName}}</td>
+						<td>{{o.holdings}}</td>
 						<td>{{o.shareCount}}</td>
 						<td>{{o.sharePrice}}</td>
-						<td><input type="text" class="form-control" name="qty{{o.stockName}}"></td>
+						<td><input type="text" class="form-control" name="qty{{o.holdings}}"></td>
 					</tr>
 				{% endfor %}
 			</table>

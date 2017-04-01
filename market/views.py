@@ -84,27 +84,36 @@ def buy(request):
 #     return render(request,'app/buy.html',context)
 
 
-# def execBuy(request):
-#     #obj=stocks.objects.get(name=request.POST['choice'])
-#     qty=int(request.POST['qty'+request.POST.get('choice')])
-#     if qty<0:
-#         raise Http404("Invalid Purchase Quantity")
-
-#     obj1=StartupProfile.objects.get(user__username=request.POST.get('choice'))
-#     stocks.objects.filter(startup=obj1).update(shareCount=F('shareCount')-qty)
-#     stockObj=stocks.objects.get(startup=obj1)
-#     if(stockObj.shareCount<0):
-#         stocks.objects.filter(startup=obj1).update(shareCount=F('shareCount')+qty)
-#         raise Http404("Stock Limit Breached!")
-#     earning=stockObj.sharePrice*qty
-#     account=obj1.accno
-#     account.balance+=earning
-#     account.save()
-
-#     objs=InvestorProfile.objects.all()
-#     obj2=StartupProfile.objects.all()
-#     context = {'list': objs, 'list2':obj2}
-#     return render(request,'app/index.html',context)
+def execBuy(request, context=None):
+    #obj=stocks.objects.get(name=request.POST['choice'])
+    qty=int(request.POST['qty'+request.POST.get('choice')])
+    type=int(request.POST['type'])
+    if qty<0:
+        raise Http404("Invalid Purchase Quantity")
+    if type==1:
+        #Investor
+        obj1=onSaleInvestor.objects.get(holdings__investor__user_username=request.POST.get('username'))
+        #TODO add money to investor subtract from user
+    else:
+        #startup
+        obj1 = onSaleStartup.objects.get(holdings__startupName=request.POST.get('username'))
+        #TODO add money to startup subtract from user
+    #obj1=StartupProfile.objects.get(user__username=request.POST.get('choice'))
+    # stocks.objects.filter(startup=obj1).update(shareCount=F('shareCount')-qty)
+    # stockObj=stocks.objects.get(startup=obj1)
+    if(obj1.shareCount<0):
+        #TODO WHYstocks.objects.filter(startup=obj1).update(shareCount=F('shareCount')+qty)
+        raise Http404("Stock Limit Breached!")
+    #earning=obj1.sharePrice*qty
+    #account=obj1.accno
+    # account.balance+=earning
+    # account.save()
+    # print obj1
+    # 
+    # objs=InvestorProfile.objects.all()
+    # obj2=StartupProfile.objects.all()
+    # context = {'list': objs, 'list2':obj2}
+    return render(request,'app/index.html',context)
 
 
 #raman
