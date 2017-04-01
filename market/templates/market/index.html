@@ -35,14 +35,16 @@
 		<!-- Table -->
 		<table class="table">
 			<tr>
+				<td>Investor Name</td>
 				<td>Stock Name</td>
 				<td>Share Count</td>
 				<td>Share Price</td>
 			</tr>
 			{% for o in list2 %}
 				<tr>
-					<td>{{o.owner.user.username}}</td>
-					<td>{{o.shareCount.shareCount}}</td>
+					<td>{{o.stockName.investorName.user.username}}</td>
+					<td>{{o.stockName.stockName.stockName}}</td>
+					<td>{{o.shareCount}}</td>
 					<td>{{o.sharePrice}}</td>
 				</tr>
 			{% endfor %}

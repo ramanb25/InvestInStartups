@@ -12,15 +12,16 @@ class holdings(models.Model):
     shareCount=models.IntegerField()
 
     def __str__(self):
-        return self.investorName.user.username
+        return self.investorName.user.username+" "+self.stockName.stockName
 
 class onSaleInvestor(models.Model):
-    owner=models.ForeignKey('investor.InvestorProfile',on_delete=models.CASCADE)
-    shareCount=models.ForeignKey('holdings',on_delete=models.CASCADE)
+    #owner=models.ForeignKey('holdings',on_delete=models.CASCADE)
+    stockName=models.ForeignKey('holdings',on_delete=models.CASCADE)
+    shareCount=models.IntegerField()
     sharePrice=models.IntegerField()
 
     def __str__(self):
-        return self.owner.user.username
+        return self.stockName.investorName.user.username +" "+self.stockName.stockName.stockName
 
 class onSaleStartup(models.Model):
     owner=models.ForeignKey('startup.StartupProfile',on_delete=models.CASCADE)
