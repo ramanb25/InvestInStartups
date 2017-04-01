@@ -20,6 +20,8 @@ from . import views
 
 urlpatterns = [
     url(r'^$', views.index,name='index'),
+    url(r'^sell/$', views.redirectSell,name='redirectSell'),
+    #url(r'^investorSell/$', views.investorSell,name='investorSell')
     # url(r'form/$',views.forms,name='forms'),
     # url(r'disp/$',views.disp,name='disp'),
     # url(r'debit/$',views.debit,name='debit'),

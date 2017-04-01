@@ -1,7 +1,9 @@
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 from django.http import Http404
-from .models import onSaleStartup,onSaleInvestor
+from .models import onSaleStartup,onSaleInvestor,holdings
+from startup.models import StartupProfile
+from investor.models import InvestorProfile
 from django.shortcuts import render
 from django.urls import reverse
 from django.db.models import F
@@ -17,6 +19,26 @@ def index(request):
     obj2=onSaleInvestor.objects.all()
     context={'list1':obj1,'list2':obj2}
     return render(request,'market/index.html',context)
+
+@login_required
+def redirectSell(request):
+	u = User.objects.get(username=request.user)
+	up = StartupProfile.objects.filter(user=u)
+	if(up.count()>0):
+		return render(request,'market/startupSell')
+	up = InvestorProfile.objects.filter(user=u)
+	if(up.count()>0):
+		return investorSell(request)
+
+def investorSell(request):
+	u = User.objects.get(username=request.user)
+	investorObj = InvestorProfile.objects.get(user=u)
+	stockList=holdings.objects.filter(investorName=investorObj)
+	context={'list':stockList}
+	return render(request,'market/investorSell.html',context)
+
+
+
 
 # def forms(request):
 #     return render(request,'app/form.html')
