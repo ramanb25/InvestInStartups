@@ -3,50 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="9944d20e-c95b-4df7-8338-a1d3d221c18d" name="Default" comment="">
       <change type="DELETED" beforePath="$PROJECT_DIR$/investor/migrations/__init__.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/investor/templates/app/base.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/investor/templates/app/buy.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/investor/templates/app/form.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/investor/templates/app/index.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/investor/templates/app/login.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/investor/templates/app/profile.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/investor/templates/app/register.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/investor/templates/app/sell.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/investor/templates/register/register.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/market/__init__.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/market/admin.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/market/apps.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/market/forms.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/market/migrations/0001_initial.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/market/migrations/__init__.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/market/models.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/market/static/app/css/bootstrap-theme.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/market/static/app/css/bootstrap-theme.css.map" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/market/static/app/css/bootstrap-theme.min.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/market/static/app/css/bootstrap-theme.min.css.map" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/market/static/app/css/bootstrap.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/market/static/app/css/bootstrap.css.map" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/market/static/app/css/bootstrap.min.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/market/static/app/css/bootstrap.min.css.map" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/market/static/app/fonts/glyphicons-halflings-regular.eot" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/market/static/app/fonts/glyphicons-halflings-regular.svg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/market/static/app/fonts/glyphicons-halflings-regular.ttf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/market/static/app/fonts/glyphicons-halflings-regular.woff" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/market/static/app/fonts/glyphicons-halflings-regular.woff2" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/market/static/app/js/bootstrap.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/market/static/app/js/bootstrap.min.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/market/static/app/js/jquery.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/market/static/app/js/npm.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/market/templates/app/base.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/market/templates/app/buy.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/market/templates/app/form.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/market/templates/app/index.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/market/templates/app/login.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/market/templates/app/profile.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/market/templates/app/register.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/market/templates/app/sell.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/market/templates/register/register.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/market/urls.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/market/views.py" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/startup/templates/app/base.html" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/startup/templates/app/buy.html" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/startup/templates/app/form.html" afterPath="" />
@@ -56,19 +12,6 @@
       <change type="DELETED" beforePath="$PROJECT_DIR$/startup/templates/app/register.html" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/startup/templates/app/sell.html" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/startup/templates/register/register.html" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db.sqlite3" afterPath="$PROJECT_DIR$/db.sqlite3" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/templates/app/register.html" afterPath="$PROJECT_DIR$/app/templates/app/register.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/urls.py" afterPath="$PROJECT_DIR$/app/urls.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/investor/forms.py" afterPath="$PROJECT_DIR$/investor/forms.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/investor/models.py" afterPath="$PROJECT_DIR$/investor/models.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/investor/urls.py" afterPath="$PROJECT_DIR$/investor/urls.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/investor/views.py" afterPath="$PROJECT_DIR$/investor/views.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mysite/settings.py" afterPath="$PROJECT_DIR$/mysite/settings.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mysite/urls.py" afterPath="$PROJECT_DIR$/mysite/urls.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/startup/forms.py" afterPath="$PROJECT_DIR$/startup/forms.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/startup/urls.py" afterPath="$PROJECT_DIR$/startup/urls.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/startup/views.py" afterPath="$PROJECT_DIR$/startup/views.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -110,12 +53,24 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="login.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="login.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/startup/templates/login.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="180">
               <caret line="10" column="60" lean-forward="false" selection-start-line="10" selection-start-column="60" selection-end-line="10" selection-end-column="60" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="models.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/market/models.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="187">
+              <caret line="44" column="16" lean-forward="false" selection-start-line="44" selection-start-column="16" selection-end-line="44" selection-end-column="16" />
+              <folding>
+                <element signature="e#0#28#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -146,7 +101,7 @@
         <entry file="file://$PROJECT_DIR$/startup/models.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="198">
-              <caret line="47" column="40" lean-forward="true" selection-start-line="47" selection-start-column="40" selection-end-line="47" selection-end-column="40" />
+              <caret line="47" column="40" lean-forward="false" selection-start-line="47" selection-start-column="40" selection-end-line="47" selection-end-column="40" />
               <folding>
                 <element signature="e#0#28#0" expanded="true" />
               </folding>
@@ -180,7 +135,7 @@
         <entry file="file://$PROJECT_DIR$/mysite/settings.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="180">
-              <caret line="40" column="4" lean-forward="true" selection-start-line="40" selection-start-column="4" selection-end-line="40" selection-end-column="4" />
+              <caret line="40" column="4" lean-forward="false" selection-start-line="40" selection-start-column="4" selection-end-line="40" selection-end-column="4" />
               <folding />
             </state>
           </provider>
@@ -302,39 +257,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="startup" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="InvestinStartups" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="InvestinStartups" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="startup" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="templates" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="InvestinStartups" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="InvestinStartups" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mysite" />
+              <option name="myItemId" value="market" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -880,7 +803,7 @@
     <entry file="file://$PROJECT_DIR$/mysite/settings.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
-          <caret line="40" column="4" lean-forward="true" selection-start-line="40" selection-start-column="4" selection-end-line="40" selection-end-column="4" />
+          <caret line="40" column="4" lean-forward="false" selection-start-line="40" selection-start-column="4" selection-end-line="40" selection-end-column="4" />
           <folding />
         </state>
       </provider>
@@ -906,7 +829,7 @@
     <entry file="file://$PROJECT_DIR$/startup/models.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="198">
-          <caret line="47" column="40" lean-forward="true" selection-start-line="47" selection-start-column="40" selection-end-line="47" selection-end-column="40" />
+          <caret line="47" column="40" lean-forward="false" selection-start-line="47" selection-start-column="40" selection-end-line="47" selection-end-column="40" />
           <folding>
             <element signature="e#0#28#0" expanded="true" />
           </folding>
@@ -944,6 +867,16 @@
         <state relative-caret-position="180">
           <caret line="10" column="60" lean-forward="false" selection-start-line="10" selection-start-column="60" selection-end-line="10" selection-end-column="60" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/market/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="44" column="16" lean-forward="false" selection-start-line="44" selection-start-column="16" selection-end-line="44" selection-end-column="16" />
+          <folding>
+            <element signature="e#0#28#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
