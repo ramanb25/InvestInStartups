@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import InvestorProfile,holdings
+from .models import InvestorProfile
 #raman
 #from .models import UserProfile
 
@@ -11,5 +11,5 @@ from .models import InvestorProfile,holdings
 # admin.site.register(accounts)
 admin.site.register(InvestorProfile)
 # admin.site.register(StartupProfile)
-admin.site.register(holdings)
+# admin.site.register(holdings)
 # admin.site.register(stocks)

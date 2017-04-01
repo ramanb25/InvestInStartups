@@ -2,7 +2,7 @@ from django.db import models
 from django.core.validators import MaxValueValidator, MinValueValidator
 from django.contrib.auth.models import User
 from app.models import accounts,uid
-from startup.models import StartupProfile,stocks
+from startup.models import StartupProfile
 
 
 
@@ -52,10 +52,10 @@ class InvestorProfile(models.Model):
 # 	def __str__(self):
 # 		return self.user.username
 
-class holdings(models.Model):
-	shareHolder=models.ForeignKey('InvestorProfile',on_delete=models.CASCADE)
-	startupName=models.ForeignKey('startup.StartupProfile',on_delete=models.CASCADE)
-	shareCount=models.IntegerField(validators=[MinValueValidator(1)])
+# class holdings(models.Model):
+# 	shareHolder=models.ForeignKey('InvestorProfile',on_delete=models.CASCADE)
+# 	startupName=models.ForeignKey('startup.StartupProfile',on_delete=models.CASCADE)
+# 	shareCount=models.IntegerField(validators=[MinValueValidator(1)])
 
 # 	def __str__(self):
 # 		return self.shareHolder.user.username

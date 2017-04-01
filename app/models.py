@@ -4,8 +4,6 @@ from django.contrib.auth.models import User
 
 
 
-
-
 #jogu
 class accounts(models.Model):
 	accno=models.CharField(max_length=20)
@@ -20,6 +18,14 @@ class uid(models.Model):
 
 	def __str__(self):
 		return self.aadhar
+
+# class holdings(models.Model):
+#   shareHolder=models.ForeignKey('investor.InvestorProfile',on_delete=models.CASCADE)
+#   startupName=models.ForeignKey('startup.StartupProfile',on_delete=models.CASCADE)
+#   shareCount=models.IntegerField(validators=[MinValueValidator(1)])
+
+#   def __str__(self):
+#       return self.shareHolder.user.username
 
 
 # class InvestorProfile(models.Model):
@@ -51,13 +57,7 @@ class uid(models.Model):
 # 	def __str__(self):
 # 		return self.user.username
 
-# class holdings(models.Model):
-# 	shareHolder=models.ForeignKey('InvestorProfile',on_delete=models.CASCADE)
-# 	startupName=models.ForeignKey('StartupProfile',on_delete=models.CASCADE)
-# 	shareCount=models.IntegerField(validators=[MinValueValidator(1)])
 
-# 	def __str__(self):
-# 		return self.shareHolder.user.username
 
 # class stocks(models.Model):
 # 	startup=models.ForeignKey('StartupProfile',on_delete=models.CASCADE)

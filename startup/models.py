@@ -43,6 +43,10 @@ class StartupProfile(models.Model):
 	# new attributes
 	aadhar = models.ForeignKey('app.uid', on_delete=models.CASCADE)
 	accno = models.ForeignKey('app.accounts', on_delete=models.CASCADE)
+	startupName=models.CharField(max_length=100)
+	stockName=models.CharField(max_length=100)
+	shareCount=models.IntegerField(validators=[MinValueValidator(1)])
+	sharePrice=models.DecimalField(max_digits=20,decimal_places=2)
 
 	# Override the __unicode__() method to return out something meaningful!
 	def __unicode__(self):
@@ -59,13 +63,11 @@ class StartupProfile(models.Model):
 # 	def __str__(self):
 # 		return self.shareHolder.user.username
 
-class stocks(models.Model):
-	startup=models.ForeignKey('StartupProfile',on_delete=models.CASCADE)
-	shareCount=models.IntegerField(validators=[MinValueValidator(1)])
-	sharePrice=models.DecimalField(max_digits=20,decimal_places=2)
+# class stocks(models.Model):
+# 	startup=models.ForeignKey('StartupProfile',on_delete=models.CASCADE)
 
-	def __str__(self):
-		return self.startup.user.username
+# 	def __str__(self):
+# 		return self.startup.user.username
 
 
 

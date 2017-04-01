@@ -1,0 +1,56 @@
+{% include "app/base.html" %}
+<html>
+<head>
+	{% load static %}
+	<link href="{% static "app/css/bootstrap.min.css" %}" rel="stylesheet">
+</head>
+<body>
+
+
+	<div class="panel panel-primary">
+	<!-- Default panel contents -->
+		<div class="panel-heading">Registered Investors</div>
+
+		<!-- Table -->
+		<table class="table">
+			<tr>
+				<td>Name</td>
+				<td>Balance</td>
+				<td>UID</td>
+			</tr>
+			{% for o in list %}
+				<tr>
+					<td>{{o.name}}</td>
+					<td>{{o.accno.balance}}</td>
+					<td>{{o.aadhar.aadhar}}</td>
+				</tr>
+			{% endfor %}
+		</table>
+	</div>
+	<br>
+	<br>
+	<div class="panel panel-primary">
+	<div class="panel-heading">Registered Startups</div>
+
+		<!-- Table -->
+		<table class="table">
+			<tr>
+				<td>Name</td>
+				<td>Balance</td>
+				<td>UID</td>
+			</tr>
+			{% for o in list2 %}
+				<tr>
+					<td>{{o.name}}</td>
+					<td>{{o.accno.balance}}</td>
+					<td>{{o.aadhar.aadhar}}</td>
+				</tr>
+			{% endfor %}
+		</table>
+	</div>
+	    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="{% static "app/js/jquery.js" %}"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="{% static "app/js/bootstrap.min.js" %}"></script>
+</body>
+</html>
