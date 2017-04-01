@@ -32,7 +32,7 @@ def forms(request):
 
 def disp(request):
     try:
-        obj=InvestorProfile.objects.filter(name=request.POST['name'])
+        obj=InvestorProfile.objects.filter(user__username=request.POST['name'])
         context={'list':obj}
     except InvestorProfile.DoesNotExist:
         raise Http404("Object does not exist")
@@ -40,8 +40,8 @@ def disp(request):
 
 def debit(request):
     try:
-        obj=InvestorProfile.objects.get(name=request.POST['name'])
-        obj2=InvestorProfile.objects.filter(name=request.POST['name'])
+        obj=InvestorProfile.objects.get(user__username=request.POST['name'])
+        obj2=InvestorProfile.objects.filter(user__username=request.POST['name'])
 
         context = {'list': obj2}
         objac=accounts.objects.get(accno=obj.accno.accno)
@@ -69,11 +69,11 @@ def execBuy(request):
     if qty<0:
         raise Http404("Invalid Purchase Quantity")
 
-    obj1=StartupProfile.objects.get(name=request.POST.get('choice'))
-    stocks.objects.filter(soName=obj1).update(shareCount=F('shareCount')-qty)
-    stockObj=stocks.objects.get(soName=obj1)
+    obj1=StartupProfile.objects.get(user__username=request.POST.get('choice'))
+    stocks.objects.filter(startup=obj1).update(shareCount=F('shareCount')-qty)
+    stockObj=stocks.objects.get(startup=obj1)
     if(stockObj.shareCount<0):
-        stocks.objects.filter(soName=obj1).update(shareCount=F('shareCount')+qty)
+        stocks.objects.filter(startup=obj1).update(shareCount=F('shareCount')+qty)
         raise Http404("Stock Limit Breached!")
     earning=stockObj.sharePrice*qty
     account=obj1.accno
