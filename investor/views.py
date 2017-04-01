@@ -33,7 +33,8 @@ def index(request):
     #         context = {'list': objs, 'list2': obj2}
     # except StartupProfile.DoesNotExist:
     #     raise Http404("Object does not exist")
-    return render(request,'index.html',context)
+    return render(request,'investor/index.html',context)
+    return render_to_response('investor/index.html', context, request)
 
 # def forms(request):
 #     return render(request,'app/form.html')
@@ -147,7 +148,7 @@ def register(request):
         profile_form = InvestorProfileForm()
     # Render the template depending on the context.
     return render_to_response(
-            'register.html',
+            'investor/register.html',
             {'user_form': user_form, 'profile_form': profile_form, 'registered': registered},
             context)
 
@@ -189,7 +190,7 @@ def user_login(request):
     else:
         # No context variables to pass to the template system, hence the
         # blank dictionary object...
-        return render_to_response('login.html', {}, context)
+        return render_to_response('investor/login.html', {}, context)
 
 
 @login_required
@@ -212,4 +213,4 @@ def profile(request):
     u = User.objects.get(username=request.user)
     up = InvestorProfile.objects.get(user=u)
     context_dict ={ 'userprofile':up}
-    return render_to_response('profile.html', context_dict, context)
+    return render_to_response('investor/profile.html', context_dict, context)

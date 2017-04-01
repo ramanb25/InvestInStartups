@@ -18,31 +18,17 @@
 					<td>Price</td>
 					<td>Qty to Purchase</td>
 				</tr>
-				{% for o in startup %}
+				{% for o in list %}
 					<tr>
 						<td>
 							<div class="radio">
-								<label><input type="radio" name='choice' value="{{o.stockName}}"></label>
+								<label><input type="radio" name='choice' value="{{o.soName.name}}"></label>
 							</div>
 						</td>
-						<td>{{o.stockName}}</td>
+						<td>{{o.soName.name}}</td>
 						<td>{{o.shareCount}}</td>
 						<td>{{o.sharePrice}}</td>
-						<td><input type="text" class="form-control" name="qty{{o.stockName}}"></td>
-					</tr>
-				{% endfor %}
-
-                {% for o in investor %}
-					<tr>
-						<td>
-							<div class="radio">
-								<label><input type="radio" name='choice' value="{{o.stockName}}"></label>
-							</div>
-						</td>
-						<td>{{o.stockName}}</td>
-						<td>{{o.shareCount}}</td>
-						<td>{{o.sharePrice}}</td>
-						<td><input type="text" class="form-control" name="qty{{o.stockName}}"></td>
+						<td><input type="text" class="form-control" name="qty{{o.soName.name}}"></td>
 					</tr>
 				{% endfor %}
 			</table>

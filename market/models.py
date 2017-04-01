@@ -7,8 +7,8 @@ from startup.models import StartupProfile
 #jogu
 
 class holdings(models.Model):
-    investorName=models.ForeignKey('investor.InvestorProfile',on_delete=models.CASCADE)
-    stockName=models.ForeignKey('startup.StartupProfile',on_delete=models.CASCADE)
+    investor=models.ForeignKey('investor.InvestorProfile',on_delete=models.CASCADE)
+    startup=models.ForeignKey('startup.StartupProfile',on_delete=models.CASCADE)
     shareCount=models.IntegerField()
 
     def __str__(self):
@@ -24,12 +24,12 @@ class onSaleInvestor(models.Model):
         return self.stockName.investorName.user.username +" "+self.stockName.stockName.stockName
 
 class onSaleStartup(models.Model):
-    owner=models.ForeignKey('startup.StartupProfile',on_delete=models.CASCADE)
+    stockName=models.ForeignKey('startup.StartupProfile',on_delete=models.CASCADE)
     shareCount=models.IntegerField()
     sharePrice=models.IntegerField()
 
     def __str__(self):
-        return self.owner.startupName
+        return self.stockName.stockName
 
 #raman
 

@@ -33,14 +33,22 @@ def redirectSell(request):
 def investorSell(request):
 	u = User.objects.get(username=request.user)
 	investorObj = InvestorProfile.objects.get(user=u)
-	stockList=holdings.objects.filter(investorName=investorObj)
+	stockList=holdings.objects.filter(investor=investorObj)
 	context={'list':stockList}
 	return render(request,'market/investorSell.html',context)
 
 
+def buy(request):
+	onsaleinvestor=onSaleInvestor.objects.all()
+	onsalestartup=onSaleStartup.objects.all()
+
+	context={'startup':onsalestartup,'investor':onsaleinvestor}
+
+	return render(request,'market/buy.html',context)
 
 
-# def forms(request):
+
+	# def forms(request):
 #     return render(request,'app/form.html')
 
 # def disp(request):
