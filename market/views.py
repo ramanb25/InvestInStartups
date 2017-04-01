@@ -91,13 +91,27 @@ def execBuy(request, context=None):
     if qty<0:
         raise Http404("Invalid Purchase Quantity")
     if type==1:
-        #Investor
+        #Investor TODO multiple price for same stock?
         obj1=onSaleInvestor.objects.get(holdings__investor__user_username=request.POST.get('username'))
         #TODO add money to investor subtract from user
     else:
         #startup
         obj1 = onSaleStartup.objects.get(holdings__startupName=request.POST.get('username'))
         #TODO add money to startup subtract from user
+        user=request.user
+        user.shareCount=user.shareCount-qty
+        if(user.shareCount<0):
+            raise Exception
+        #Update on salestartup sharecount
+        obj1.shareCount=obj1.shareCount-qty
+        if (obj1.shareCount < 0):
+            raise Exception
+        elif (obj1.shareCount == 0):
+            obj1.delete()
+        else:
+            obj1.save()
+        #TODO add money to users holding of this startup
+
     #obj1=StartupProfile.objects.get(user__username=request.POST.get('choice'))
     # stocks.objects.filter(startup=obj1).update(shareCount=F('shareCount')-qty)
     # stockObj=stocks.objects.get(startup=obj1)
