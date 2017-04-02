@@ -12,24 +12,22 @@ class holdings(models.Model):
     shareCount=models.IntegerField()
 
     def __str__(self):
-        return self.investorName.user.username+" "+self.stockName.stockName
+        return self.investor.user.username+" "+self.startup.stockName
 
 class onSaleInvestor(models.Model):
     #owner=models.ForeignKey('holdings',on_delete=models.CASCADE)
-    holdings=models.ForeignKey('holdings',on_delete=models.CASCADE)
+    holdings1=models.ForeignKey('holdings',on_delete=models.CASCADE)
     shareCount=models.IntegerField()
     sharePrice=models.IntegerField()
 
     def __str__(self):
-        return self.holdings.investor.user.username +" "+self.holdings.startup
+        return self.holdings1.investor.user.username +" "+self.holdings1.startup.stockName
 
 class onSaleStartup(models.Model):
-    holdings=models.ForeignKey('startup.StartupProfile',on_delete=models.CASCADE)
+    holdings2=models.ForeignKey('startup.StartupProfile',on_delete=models.CASCADE)
     shareCount=models.IntegerField()
     sharePrice=models.IntegerField()
 
-    def __str__(self):
-        return self.holdings.startupName + " " + self.holdings.startup
 
 #raman
 
