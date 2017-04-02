@@ -20,9 +20,9 @@
 			</tr>
 			{% for o in list1 %}
 				<tr>
-					<td>{{o.holdings2.stockName}}</td>
-					<td>{{o.shareCount}}</td>
-					<td>{{o.sharePrice}}</td>
+					<td>{{o.startup.stockName}}</td>
+					<td>{{o.stockpercentage}}</td>
+					<td>{{o.stockprice}}</td>
 				</tr>
 			{% endfor %}
 		</table>
@@ -40,14 +40,6 @@
 				<td>Share Count</td>
 				<td>Share Price</td>
 			</tr>
-			{% for o in list2 %}
-				<tr>
-					<td>{{o.holdings1.investor.user.username}}</td>
-					<td>{{o.holdings1.startup.stockName}}</td>
-					<td>{{o.shareCount}}</td>
-					<td>{{o.sharePrice}}</td>
-				</tr>
-			{% endfor %}
 		</table>
 	</div>
 	    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->

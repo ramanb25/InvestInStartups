@@ -3,7 +3,6 @@ from django.core.validators import MaxValueValidator, MinValueValidator
 from django.contrib.auth.models import User
 
 
-
 #jogu
 class accounts(models.Model):
 	accno=models.CharField(max_length=20)
@@ -73,6 +72,8 @@ class uid(models.Model):
 
 
 
+#TODO  class userManager():
+# 	def isstartup(User):
 
 
 

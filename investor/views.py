@@ -14,6 +14,7 @@ from django.http import HttpResponseRedirect, HttpResponse
 from django.contrib.auth import logout
 from django.contrib.auth.models import User
 
+#TODO dont redirect
 def index(request):
     context=None
     if request.user.is_authenticated():
@@ -25,7 +26,7 @@ def index(request):
         except:
             print u
             print 'Wrong user'
-            return HttpResponseRedirect('/startup/')
+            return HttpResponseRedirect('/app/')
     # try:
     #     objs=InvestorProfile.objects.all()
     #     obj2=StartupProfile.objects.all()
@@ -34,7 +35,6 @@ def index(request):
     # except StartupProfile.DoesNotExist:
     #     raise Http404("Object does not exist")
     return render(request,'investor/index.html',context)
-    return render_to_response('investor/index.html', context, request)
 
 # def forms(request):
 #     return render(request,'app/form.html')

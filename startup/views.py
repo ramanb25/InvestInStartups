@@ -24,7 +24,7 @@ def index(request):
             if up is not None:
                 context = {'userprofile': up, 'user': u}
         except:
-            return HttpResponseRedirect('/investor/')
+            return HttpResponseRedirect('/app/')
     # try:
     #     objs=InvestorProfile.objects.all()
     #     obj2=StartupProfile.objects.all()

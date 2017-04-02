@@ -1,7 +1,8 @@
 from django.contrib.auth.decorators import login_required
+from django.db import transaction
 from django.http import HttpResponse
 from django.http import Http404
-from .models import onSaleStartup,onSaleInvestor,holdings
+from .models import onSaleStartup,onSaleInvestor,holdings,onsale,ownership
 from startup.models import StartupProfile
 from investor.models import InvestorProfile
 from django.shortcuts import render
@@ -15,9 +16,8 @@ from django.contrib.auth import logout
 from django.contrib.auth.models import User
 
 def index(request):
-    obj1=onSaleStartup.objects.all()
-    obj2=onSaleInvestor.objects.all()
-    context={'list1':obj1,'list2':obj2}
+    obj1=onsale.objects.all()
+    context={'list1':obj1}
     return render(request,'market/index.html',context)
 
 @login_required
@@ -32,46 +32,61 @@ def redirectSell(request):
 
 def investorSell(request):
 	u = User.objects.get(username=request.user)
-	investorObj = InvestorProfile.objects.get(user=u)
-	stockList=holdings.objects.filter(investor=investorObj)
+	stockList=ownership.objects.filter(owner=u)
 	context={'list':stockList}
 	return render(request,'market/investorSell.html',context)
 
 def startupSell(request):
     u = User.objects.get(username=request.user)
-    startupObj = StartupProfile.objects.filter(user=u)
+    stocklist = ownership.objects.filter(owner=u)
     
-    context={'list':startupObj}
+    context={'list':stocklist}
     return render(request,'market/startupSell.html',context)
 
 
 def buy(request):
-    u = User.objects.get(username=request.user)
-    investorObj = InvestorProfile.objects.get(user=u)
-    holdingsObj=holdings.objects.get(investor=investorObj)
-    onsaleinvestor=onSaleInvestor.objects.all().exclude(holdings1=holdingsObj)
-    onsalestartup=onSaleStartup.objects.all()
-    context={'startup':onsalestartup,'investor':onsaleinvestor}
+    onsaleobj=onsale.objects.all()
+    context={'onsale':onsaleobj}
     return render(request,'market/buy.html',context)
 
+@transaction.atomic
 def execStartupSell(request):
     u = User.objects.get(username=request.user)
     startupObj = StartupProfile.objects.get(user=u)
     shareQty=int(request.POST['qty'+str(startupObj.stockName)])
     sharePrice=int(request.POST['price'+str(startupObj.stockName)])
-    onSaleObj=onSaleStartup(holdings2=startupObj,shareCount=shareQty,sharePrice=sharePrice)
+
+    try:
+        Seller_ownership=ownership.objects.get(owner=u,startup=startupObj)
+        if Seller_ownership is None:
+            raise Exception
+        if Seller_ownership.sharepercentage<shareQty:
+            raise Exception
+    except:
+        raise Exception
+
+    onSaleObj=onsale(owner=u,startup=startupObj,stockpercentage=shareQty,stockPrice=sharePrice)
     onSaleObj.save()
     return index(request)
 
+@transaction.atomic()
 def execInvestorSell(request):
     u = User.objects.get(username=request.user)
-    investorObj = InvestorProfile.objects.get(user=u)
     stockToSell=str(request.POST.get('choice'))
     startupObj=StartupProfile.objects.get(stockName=stockToSell)
     shareQty=int(request.POST['qty'+stockToSell])
     sharePrice=int(request.POST['price'+stockToSell])
-    holdingsObj=holdings.objects.get(investor=investorObj,startup=startupObj)
-    onSaleObj=onSaleInvestor(holdings1=holdingsObj,shareCount=shareQty,sharePrice=sharePrice)
+
+    try:
+        Seller_ownership=ownership.objects.get(owner=u,startup=startupObj)
+        if Seller_ownership is None:
+            raise Exception
+        if Seller_ownership.sharepercentage<shareQty:
+            raise Exception
+    except:
+        raise Exception
+
+    onSaleObj=onsale(owner=u,starup=startupObj,stockpercentage=shareQty,stockPrice=sharePrice)
     onSaleObj.save()
     return index(request)
 
@@ -111,50 +126,84 @@ def execInvestorSell(request):
 #     context={'list':obj}
 #     return render(request,'app/buy.html',context)
 
+def isInvestor(user):
+    try:
+        profile=InvestorProfile.objects.get(user=user)
+        if profile is not None:
+            return 1
+    except:
+        return 0
 
+def isInvestor2(username):
+    try:
+        profile=InvestorProfile.objects.get(user__username=username)
+        if profile is not None:
+            return 1
+    except:
+        return 0
+
+def getProfile(user):
+    if(isInvestor(user)):
+        return InvestorProfile.objects.get(user=user)
+    return StartupProfile.objects.get(user=user)
+
+def getProfile2(username):
+    if(isInvestor2(username)):
+        return InvestorProfile.objects.get(user__username=username)
+    return StartupProfile.objects.get(user__username=username)
+
+@transaction.atomic
 def execBuy(request, context=None):
     #obj=stocks.objects.get(name=request.POST['choice'])
-    qty=int(request.POST['qty'+request.POST.get('choice')])
-    type=int(request.POST['type'])
-    if qty<0:
-        raise Http404("Invalid Purchase Quantity")
-    if type==1:
-        #Investor TODO multiple price for same stock?
-        obj1=onSaleInvestor.objects.get(holdings1__investor__user_username=request.POST.get('username'))
-        #TODO add money to investor subtract from user
-    else:
-        #startup
-        obj1 = onSaleStartup.objects.get(holdings2__startupName=request.POST.get('username'))
-        #TODO add money to startup subtract from user
-        user=request.user
-        user.shareCount=user.shareCount-qty
-        if(user.shareCount<0):
-            raise Exception
-        #Update on salestartup sharecount
-        obj1.shareCount=obj1.shareCount-qty
-        if (obj1.shareCount < 0):
-            raise Exception
-        elif (obj1.shareCount == 0):
-            obj1.delete()
-        else:
-            obj1.save()
-        #TODO add money to users holding of this startup
+    owner_username=request.POST['username']
 
-    #obj1=StartupProfile.objects.get(user__username=request.POST.get('choice'))
-    # stocks.objects.filter(startup=obj1).update(shareCount=F('shareCount')-qty)
-    # stockObj=stocks.objects.get(startup=obj1)
-    if(obj1.shareCount<0):
-        #TODO WHYstocks.objects.filter(startup=obj1).update(shareCount=F('shareCount')+qty)
-        raise Http404("Stock Limit Breached!")
-    #earning=obj1.sharePrice*qty
-    #account=obj1.accno
-    # account.balance+=earning
-    # account.save()
-    # print obj1
-    # 
-    # objs=InvestorProfile.objects.all()
-    # obj2=StartupProfile.objects.all()
-    # context = {'list': objs, 'list2':obj2}
+    owner_user=getProfile2(owner_username).user
+    buyer_user = User.objects.get(username=request.user)
+
+    stockname=request.POST['choice']
+    startup_Profile=StartupProfile.objects.get(stockName=stockname)
+
+    qtypurchase=int(request.POST['qty'+request.POST.get('choice')])
+
+    if not isInvestor(buyer_user):
+        raise Exception('You must be Investor')
+    try:
+        owner_onsale=onsale.objects.get(owner__username=owner_username,startup__stockName=stockname)
+        qtyonsale=owner_onsale.stockpercentage
+        if qtyonsale is None:
+            raise Exception('yo')
+        typeOwner=isInvestor(owner_username)
+    except:
+        raise Exception("Not on sale")
+    if qtyonsale<qtypurchase:
+        raise Exception
+    if qtypurchase<0:
+        raise Exception
+    ownerProfile=getProfile(owner_user)
+    buyerProfile=getProfile(buyer_user)
+    if ownerProfile is None:
+        raise Exception
+    if buyerProfile is None:
+        raise Exception
+    try:
+        buyer_ownership=ownership.objects.get(owner=buyer_user,stockname=stockname)
+    except:
+        buyer_ownership=ownership()
+        buyer_ownership.owner=owner_user
+        buyer_ownership.startup=startup_Profile
+        buyer_ownership.sharepercentage=0
+    owner_ownership=ownership.objects.get(owner=owner_user,stockname=stockname)
+    buyer_ownership.sharepercentage=buyer_ownership.sharepercentage+qtypurchase
+    owner_onsale.stockpercentage=owner_onsale.stockpercentage-qtypurchase
+    owner_ownership.sharepercentage = owner_ownership.stockpercentage - qtypurchase
+
+    buyer_ownership.save()
+    owner_ownership.save()
+    owner_onsale.save()
+    if(owner_onsale.stockpercentage==0):
+        owner_onsale.delete()
+    if (owner_ownership.sharepercentage == 0):
+        owner_ownership.delete()
     return render(request,'app/index.html',context)
 
 

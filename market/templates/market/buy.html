@@ -7,7 +7,7 @@
 <body>
 
 	<form action="../execBuy/" method='post'>
-		{% csrf_token %}
+
 		<div class="panel panel-primary">
 			<div class="panel-heading">Stocks Available</div>
 			<table class="table">
@@ -18,42 +18,23 @@
 					<td>Price</td>
 					<td>Qty to Purchase</td>
 				</tr>
-				{% for o in startup %}
+				{% for o in onsale %}
 					<tr>
 						<td>
 							<div class="radio">
-								<label><input type="radio" name='choice' value="{{o.holdings2.stockName}}"></label>
-
-                                <input type="hidden" name='type' value="{{0}}">
-                                 <input type="hidden" name='username' value="{{o.holdings2.stockName}}">
+								<label><input type="radio" name='choice' value="{{o.startup.stockName}}"></label>
+                                 <input type="hidden" name='username' value="{{o.owner.username}}">
 
 							</div>
 						</td>
-						<td>{{o.holdings2.stockName}}</td>
-						<td>{{o.shareCount}}</td>
-						<td>{{o.sharePrice}}</td>
-						<td><input type="text" class="form-control" name="qty{{o.holdings2.stockName}}"></td>
+						<td>{{o.startup.stockName}}</td>
+						<td>{{o.stockpercentage}}</td>
+						<td>{{o.stockprice}}</td>
+						<td><input type="text" class="form-control" name="qty{{o.startup.stockName}}"></td>
 					</tr>
 				{% endfor %}
 
-                {% for o in investor %}
-					<tr>
-						<td>
-							<div class="radio">
-								<label><input type="radio" name='choice' value="{{o.holdings}}">
 
-                                    <input type="hidden" name='type' value="{{1}}">
-                                    <input type="hidden" name='username' value="{{o.holdings.investor.user}}">
-
-                                </label>
-							</div>
-						</td>
-						<td>{{o.holdings1.startup.stockName}}</td>
-						<td>{{o.shareCount}}</td>
-						<td>{{o.sharePrice}}</td>
-						<td><input type="text" class="form-control" name="qty{{o.holdings1.startup.stockName}}"></td>
-					</tr>
-				{% endfor %}
 			</table>
 		</div>
 		<input class="btn btn-primary btn-sm" type='submit' name='submit' value='Go!'>

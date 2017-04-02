@@ -43,6 +43,7 @@ class StartupProfile(models.Model):
 	# new attributes
 	aadhar = models.ForeignKey('app.uid', on_delete=models.CASCADE)
 	accno = models.ForeignKey('app.accounts', on_delete=models.CASCADE)
+	#TODO make it primary key
 	startupName=models.CharField(max_length=100)
 	stockName=models.CharField(max_length=100)
 	shareCount=models.IntegerField(validators=[MinValueValidator(1)])

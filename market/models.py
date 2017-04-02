@@ -28,6 +28,17 @@ class onSaleStartup(models.Model):
     shareCount=models.IntegerField()
     sharePrice=models.IntegerField()
 
+class onsale(models.Model):
+    owner = models.ForeignKey(User, on_delete=models.CASCADE)
+    startup=models.ForeignKey('startup.StartupProfile')
+    stockpercentage=models.FloatField()
+    stockprice=models.FloatField()
+    #TODO Dont allow multiple sale or put id here
+
+class ownership(models.Model):
+    owner=models.ForeignKey(User,on_delete=models.CASCADE)
+    startup=models.ForeignKey('startup.StartupProfile')
+    sharepercentage=models.FloatField()
 
 #raman
 

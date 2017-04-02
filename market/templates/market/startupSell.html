@@ -23,10 +23,10 @@
 				{% for o in list %}
 					<tr>
 						
-						<td>{{o.stockName}}</td>
-						<td>{{o.shareCount}}</td>
-						<td><input type="text" class="form-control" name="qty{{o.stockName}}"></td>
-						<td><input type="text" class="form-control" name="price{{o.stockName}}"></td>
+						<td>{{o.startup.stockName}}</td>
+						<td>{{o.sharepercentage}}</td>
+						<td><input type="text" class="form-control" name="qty{{o.startup.stockName}}"></td>
+						<td><input type="text" class="form-control" name="price{{o.startup.stockName}}"></td>
 					</tr>
 				{% endfor %}
 			</table>

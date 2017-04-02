@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import holdings,onSaleInvestor,onSaleStartup #
+from .models import holdings,onSaleInvestor,onSaleStartup, ownership,onsale
 #raman
 # from .models import UserProfile
 
@@ -9,6 +9,8 @@ from .models import holdings,onSaleInvestor,onSaleStartup #
 #jogu
 admin.site.register(onSaleInvestor)
 admin.site.register(onSaleStartup)
+admin.site.register(ownership)
+admin.site.register(onsale)
 # admin.site.register(InvestorProfile)
 # admin.site.register(StartupProfile)
 admin.site.register(holdings)
