@@ -46,12 +46,13 @@ def startupSell(request):
 
 
 def buy(request):
-	onsaleinvestor=onSaleInvestor.objects.all()
-	onsalestartup=onSaleStartup.objects.all()
-
-	context={'startup':onsalestartup,'investor':onsaleinvestor}
-
-	return render(request,'market/buy.html',context)
+    u = User.objects.get(username=request.user)
+    investorObj = InvestorProfile.objects.get(user=u)
+    holdingsObj=holdings.objects.get(investor=investorObj)
+    onsaleinvestor=onSaleInvestor.objects.all().exclude(holdings1=holdingsObj)
+    onsalestartup=onSaleStartup.objects.all()
+    context={'startup':onsalestartup,'investor':onsaleinvestor}
+    return render(request,'market/buy.html',context)
 
 def execStartupSell(request):
     u = User.objects.get(username=request.user)
