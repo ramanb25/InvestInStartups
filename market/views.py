@@ -25,7 +25,7 @@ def redirectSell(request):
 	u = User.objects.get(username=request.user)
 	up = StartupProfile.objects.filter(user=u)
 	if(up.count()>0):
-		return render(request,'market/startupSell')
+		return startupSell(request)
 	up = InvestorProfile.objects.filter(user=u)
 	if(up.count()>0):
 		return investorSell(request)
@@ -37,6 +37,13 @@ def investorSell(request):
 	context={'list':stockList}
 	return render(request,'market/investorSell.html',context)
 
+def startupSell(request):
+    u = User.objects.get(username=request.user)
+    startupObj = StartupProfile.objects.filter(user=u)
+    
+    context={'list':startupObj}
+    return render(request,'market/startupSell.html',context)
+
 
 def buy(request):
 	onsaleinvestor=onSaleInvestor.objects.all()
@@ -46,6 +53,26 @@ def buy(request):
 
 	return render(request,'market/buy.html',context)
 
+def execStartupSell(request):
+    u = User.objects.get(username=request.user)
+    startupObj = StartupProfile.objects.get(user=u)
+    shareQty=int(request.POST['qty'+str(startupObj.stockName)])
+    sharePrice=int(request.POST['price'+str(startupObj.stockName)])
+    onSaleObj=onSaleStartup(holdings2=startupObj,shareCount=shareQty,sharePrice=sharePrice)
+    onSaleObj.save()
+    return index(request)
+
+def execInvestorSell(request):
+    u = User.objects.get(username=request.user)
+    investorObj = InvestorProfile.objects.get(user=u)
+    stockToSell=str(request.POST.get('choice'))
+    startupObj=StartupProfile.objects.get(stockName=stockToSell)
+    shareQty=int(request.POST['qty'+stockToSell])
+    sharePrice=int(request.POST['price'+stockToSell])
+    holdingsObj=holdings.objects.get(investor=investorObj,startup=startupObj)
+    onSaleObj=onSaleInvestor(holdings1=holdingsObj,shareCount=shareQty,sharePrice=sharePrice)
+    onSaleObj.save()
+    return index(request)
 
 
 	# def forms(request):

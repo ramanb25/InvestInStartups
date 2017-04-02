@@ -20,7 +20,7 @@
 			</tr>
 			{% for o in list1 %}
 				<tr>
-					<td>{{o.owner.stockName}}</td>
+					<td>{{o.holdings2.stockName}}</td>
 					<td>{{o.shareCount}}</td>
 					<td>{{o.sharePrice}}</td>
 				</tr>
@@ -42,8 +42,8 @@
 			</tr>
 			{% for o in list2 %}
 				<tr>
-					<td>{{o.stockName.investorName.user.username}}</td>
-					<td>{{o.stockName.stockName.stockName}}</td>
+					<td>{{o.holdings1.investor.user.username}}</td>
+					<td>{{o.holdings1.startup.stockName}}</td>
 					<td>{{o.shareCount}}</td>
 					<td>{{o.sharePrice}}</td>
 				</tr>

@@ -10,11 +10,11 @@
 	<div class="panel panel-primary">
 	<!-- Default panel contents -->
 		<div class="panel-heading">Choose Stock to Sell</div>
-		<form action="../execInvestorSell/" method='post'>
+		<form action="../execStartupSell/" method='post'>
 		<!-- Table -->
 			<table class="table">
 				<tr>
-					<td>Choice</td>
+					
 					<td>Stock</td>
 					<td>Available Shares</td>
 					<td>Qty to Sell</td>
@@ -22,15 +22,11 @@
 				</tr>
 				{% for o in list %}
 					<tr>
-						<td>
-							<div class="radio">
-									<label><input type="radio" name='choice' value="{{o.startup.stockName}}"></label>
-							</div>
-						</td>
-						<td>{{o.startup.stockName}}</td>
+						
+						<td>{{o.stockName}}</td>
 						<td>{{o.shareCount}}</td>
-						<td><input type="text" class="form-control" name="qty{{o.startup.stockName}}"></td>
-						<td><input type="text" class="form-control" name="price{{o.startup.stockName}}"></td>
+						<td><input type="text" class="form-control" name="qty{{o.stockName}}"></td>
+						<td><input type="text" class="form-control" name="price{{o.stockName}}"></td>
 					</tr>
 				{% endfor %}
 			</table>
