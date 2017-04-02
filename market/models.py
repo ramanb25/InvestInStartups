@@ -6,28 +6,30 @@ from startup.models import StartupProfile
 
 #jogu
 
-class holdings(models.Model):
-    investor=models.ForeignKey('investor.InvestorProfile',on_delete=models.CASCADE)
-    startup=models.ForeignKey('startup.StartupProfile',on_delete=models.CASCADE)
-    shareCount=models.IntegerField()
+# class holdings(models.Model):
+#     investor=models.ForeignKey('investor.InvestorProfile',on_delete=models.CASCADE)
+#     startup=models.ForeignKey('startup.StartupProfile',on_delete=models.CASCADE)
+#     shareCount=models.IntegerField()
+#
+#     def __str__(self):
+#         return self.investor.user.username+" "+self.startup.stockName
+#
+# class onSaleInvestor(models.Model):
+#     #owner=models.ForeignKey('holdings',on_delete=models.CASCADE)
+#     holdings1=models.ForeignKey('holdings',on_delete=models.CASCADE)
+#     shareCount=models.IntegerField()
+#     sharePrice=models.IntegerField()
+#
+#     def __str__(self):
+#         return self.holdings1.investor.user.username +" "+self.holdings1.startup.stockName
+#
+# class onSaleStartup(models.Model):
+#     holdings2=models.ForeignKey('startup.StartupProfile',on_delete=models.CASCADE)
+#     shareCount=models.IntegerField()
+#     sharePrice=models.IntegerField()
 
-    def __str__(self):
-        return self.investor.user.username+" "+self.startup.stockName
 
-class onSaleInvestor(models.Model):
-    #owner=models.ForeignKey('holdings',on_delete=models.CASCADE)
-    holdings1=models.ForeignKey('holdings',on_delete=models.CASCADE)
-    shareCount=models.IntegerField()
-    sharePrice=models.IntegerField()
-
-    def __str__(self):
-        return self.holdings1.investor.user.username +" "+self.holdings1.startup.stockName
-
-class onSaleStartup(models.Model):
-    holdings2=models.ForeignKey('startup.StartupProfile',on_delete=models.CASCADE)
-    shareCount=models.IntegerField()
-    sharePrice=models.IntegerField()
-
+#raman
 class onsale(models.Model):
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
     startup=models.ForeignKey('startup.StartupProfile')
@@ -39,8 +41,6 @@ class ownership(models.Model):
     owner=models.ForeignKey(User,on_delete=models.CASCADE)
     startup=models.ForeignKey('startup.StartupProfile')
     sharepercentage=models.FloatField()
-
-#raman
 
 
 # class UserProfile(models.Model):

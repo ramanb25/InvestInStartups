@@ -2,7 +2,7 @@ from django.contrib.auth.decorators import login_required
 from django.db import transaction
 from django.http import HttpResponse
 from django.http import Http404
-from .models import onSaleStartup,onSaleInvestor,holdings,onsale,ownership
+from .models import onsale,ownership
 from startup.models import StartupProfile
 from investor.models import InvestorProfile
 from django.shortcuts import render
@@ -20,6 +20,7 @@ def index(request):
     context={'list1':obj1}
     return render(request,'market/index.html',context)
 
+#raman TODO Put loginreq everywhere
 @login_required
 def redirectSell(request):
 	u = User.objects.get(username=request.user)
