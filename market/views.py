@@ -16,11 +16,20 @@ from django.contrib.auth import logout
 from django.contrib.auth.models import User
 from django.shortcuts import redirect
 
+def isInvestor(user):
+    try:
+        profile=InvestorProfile.objects.get(user=user)
+        if profile is not None:
+            return 1
+    except:
+        return 0
+
 @login_required
 def index(request):
     obj1=onsale.objects.all()
-    context={'list1':obj1,'user':request.user}
+    context={'list1':obj1,'user':request.user,'isinvestor':isInvestor(request.user)}
     return render(request,'market/index.html',context)
+
 
 #raman TODO Put loginreq everywhere
 @login_required
@@ -108,48 +117,6 @@ def execInvestorSell(request):
     return index(request)
 
 
-	# def forms(request):
-#     return render(request,'app/form.html')
-
-# def disp(request):
-#     try:
-#         obj=InvestorProfile.objects.filter(user__username=request.POST['name'])
-#         context={'list':obj}
-#     except InvestorProfile.DoesNotExist:
-#         raise Http404("Object does not exist")
-#     return render(request,'app/index.html',context)
-
-# def debit(request):
-#     try:
-#         obj=InvestorProfile.objects.get(user__username=request.POST['name'])
-#         obj2=InvestorProfile.objects.filter(user__username=request.POST['name'])
-
-#         context = {'list': obj2}
-#         objac=accounts.objects.get(accno=obj.accno.accno)
-#         objac.balance-=10
-
-#         objac.save()
-#         return render(request,'app/index.html',context)
-#     except InvestorProfile.DoesNotExist:
-#         raise Http404("Object does not exist")
-
-# def redirectBuy(request):
-#     obj=stocks.objects.all()
-#     context={'list':obj}
-#     return render(request,'app/buy.html',context)
-
-# def redirectSell(request):
-#     obj=stocks.objects.all()
-#     context={'list':obj}
-#     return render(request,'app/buy.html',context)
-
-def isInvestor(user):
-    try:
-        profile=InvestorProfile.objects.get(user=user)
-        if profile is not None:
-            return 1
-    except:
-        return 0
 
 def isInvestor2(username):
     try:

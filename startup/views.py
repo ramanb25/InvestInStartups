@@ -1,7 +1,9 @@
 from django.contrib.auth.decorators import login_required
+from django.db import transaction
 from django.http import HttpResponse
 from django.http import Http404
 from .models import StartupProfile
+from market.models import ownership
 #from app.models import accounts,uid
 #from startup.models import StartupProfile
 from django.shortcuts import render
@@ -34,68 +36,10 @@ def index(request):
     #     raise Http404("Object does not exist")
     return render(request,'index.html',context)
 
-# def forms(request):
-#     return render(request,'app/form.html')
-
-# def disp(request):
-#     try:
-#         obj=InvestorProfile.objects.filter(user__username=request.POST['name'])
-#         context={'list':obj}
-#     except InvestorProfile.DoesNotExist:
-#         raise Http404("Object does not exist")
-#     return render(request,'app/index.html',context)
-
-# def debit(request):
-#     try:
-#         obj=InvestorProfile.objects.get(user__username=request.POST['name'])
-#         obj2=InvestorProfile.objects.filter(user__username=request.POST['name'])
-
-#         context = {'list': obj2}
-#         objac=accounts.objects.get(accno=obj.accno.accno)
-#         objac.balance-=10
-
-#         objac.save()
-#         return render(request,'app/index.html',context)
-#     except InvestorProfile.DoesNotExist:
-#         raise Http404("Object does not exist")
-
-# def redirectBuy(request):
-#     obj=stocks.objects.all()
-#     context={'list':obj}
-#     return render(request,'app/buy.html',context)
-
-# def redirectSell(request):
-#     obj=stocks.objects.all()
-#     context={'list':obj}
-#     return render(request,'app/buy.html',context)
-
-
-# def execBuy(request):
-#     #obj=stocks.objects.get(name=request.POST['choice'])
-#     qty=int(request.POST['qty'+request.POST.get('choice')])
-#     if qty<0:
-#         raise Http404("Invalid Purchase Quantity")
-
-#     obj1=StartupProfile.objects.get(user__username=request.POST.get('choice'))
-#     stocks.objects.filter(startup=obj1).update(shareCount=F('shareCount')-qty)
-#     stockObj=stocks.objects.get(startup=obj1)
-#     if(stockObj.shareCount<0):
-#         stocks.objects.filter(startup=obj1).update(shareCount=F('shareCount')+qty)
-#         raise Http404("Stock Limit Breached!")
-#     earning=stockObj.sharePrice*qty
-#     account=obj1.accno
-#     account.balance+=earning
-#     account.save()
-
-#     objs=InvestorProfile.objects.all()
-#     obj2=StartupProfile.objects.all()
-#     context = {'list': objs, 'list2':obj2}
-#     return render(request,'app/index.html',context)
-
 
 #raman
 from .forms import StartupProfileForm,StartupUserForm
-
+@transaction.atomic
 def register(request):
     # Like before, get the request's context.
     context = RequestContext(request)
@@ -129,6 +73,8 @@ def register(request):
 
             # Now we save the UserProfile model instance.
             profile.save()
+            startup_ownership=ownership(owner=user,startup=profile,sharepercentage=100)
+            startup_ownership.save()
 
             # Update our variable to tell the template registration was successful.
             registered = True
