@@ -13,15 +13,15 @@
 	<link href="{% static "app/css/bootstrap.min.css" %}" rel="stylesheet">
 </head>
 <body>
-<!--     {% if user.is_authenticated %}
-<h1> hello {{ userprofile.user.username }} aadhar {{ userprofile.aadhar }}!</h1>
+  {% if user.is_authenticated %}
+<h1> hello {{ user.username }} !</h1>
 {% else %}
-<h1> hello world!</h1> -->
+<h1> hello world!</h1>
 
-
-        {% if user.is_authenticated %}
-    <li><a href="/rango/profile">Profile</a></li>
-{% endif %}
+{##}
+{#        {% if user.is_authenticated %}#}
+{#    <li><a href="/rango/profile">Profile</a></li>#}
+{#{% endif %}#}
 
 {% endif %}
 	<!-- ******Navbar***** -->
@@ -46,7 +46,9 @@
 	        
 	      </ul>
 	      <ul class="nav navbar-nav navbar-right">
+               {% if user.is_authenticated %}
         <li><a href="/market/logout">Logout</a></li>
+              {%  endif %}
         
       </ul>
 	      

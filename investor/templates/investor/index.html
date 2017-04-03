@@ -7,27 +7,60 @@
 <body>
 
 
-	<div class="panel panel-primary">
+
+<div class="panel panel-primary">
 	<!-- Default panel contents -->
-		<div class="panel-heading">Registered Investors</div>
+		<div class="panel-heading">My Owning</div>
 
 		<!-- Table -->
 		<table class="table">
 			<tr>
-				<td>Name</td>
-				<td>Balance</td>
-				<td>UID</td>
+				<td>Stock Name</td>
+				<td>Percentage</td>
+				<td>Current Price</td>
 			</tr>
-			{% for o in list %}
+			{% for o in my_ownership %}
 				<tr>
-					<td>{{o.name}}</td>
-					<td>{{o.accno.balance}}</td>
-					<td>{{o.aadhar.aadhar}}</td>
+{#					<td>{{o.stockName}}</td>#}
+					<td>{{o.startup.stockName}}</td>
+					<td>{{o.sharepercentage}}</td>
+                    <td>{{o.startup.sharePrice}}</td>
 				</tr>
 			{% endfor %}
 		</table>
 	</div>
 	<br>
+
+
+
+
+
+
+
+
+
+{##}
+{#	<div class="panel panel-primary">#}
+{#	<!-- Default panel contents -->#}
+{#		<div class="panel-heading">Registered Investors</div>#}
+{##}
+{#		<!-- Table -->#}
+{#		<table class="table">#}
+{#			<tr>#}
+{#				<td>Name</td>#}
+{#				<td>Balance</td>#}
+{#				<td>UID</td>#}
+{#			</tr>#}
+{#			{% for o in list %}#}
+{#				<tr>#}
+{#					<td>{{o.name}}</td>#}
+{#					<td>{{o.accno.balance}}</td>#}
+{#					<td>{{o.aadhar.aadhar}}</td>#}
+{#				</tr>#}
+{#			{% endfor %}#}
+{#		</table>#}
+{#	</div>#}
+
 	<br>
 	<div class="panel panel-primary">
 	<div class="panel-heading">Registered Startups</div>
@@ -35,15 +68,15 @@
 		<!-- Table -->
 		<table class="table">
 			<tr>
-				<td>Name</td>
-				<td>Balance</td>
-				<td>UID</td>
+				<td>Startup Name</td>
+				<td>Stock Name</td>
+				<td>Price</td>
 			</tr>
-			{% for o in list2 %}
+			{% for o in startups %}
 				<tr>
-					<td>{{o.name}}</td>
-					<td>{{o.accno.balance}}</td>
-					<td>{{o.aadhar.aadhar}}</td>
+					<td>{{o.startupName}}</td>
+					<td>{{o.stockName}}</td>
+					<td>{{o.sharePrice}}</td>
 				</tr>
 			{% endfor %}
 		</table>

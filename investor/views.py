@@ -1,6 +1,9 @@
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 from django.http import Http404
+
+from market.models import ownership
+from startup.models import StartupProfile
 from .models import InvestorProfile
 #from app.models import accounts,uid
 #from startup.models import StartupProfile
@@ -15,25 +18,27 @@ from django.contrib.auth import logout
 from django.contrib.auth.models import User
 
 #TODO dont redirect
+@login_required()
 def index(request):
     context=None
     if request.user.is_authenticated():
         u = User.objects.get(username=request.user)
         try:
             up = InvestorProfile.objects.get(user=u)
+            my_ownership=None
+            my_ownership=ownership.objects.filter(owner=u)
+            startups=StartupProfile.objects.all()
             if up is not None:
-                context = {'userprofile': up, 'user': u}
+                context = {'userprofile': up, 'user': u,'my_ownership':my_ownership,'startups':startups}
         except:
-            print u
-            print 'Wrong user'
-            return HttpResponseRedirect('/app/')
+            raise Http404("You are on wrong portal Log in as different user to acccess this page")
     # try:
     #     objs=InvestorProfile.objects.all()
     #     obj2=StartupProfile.objects.all()
     #     else:
     #         context = {'list': objs, 'list2': obj2}
     # except StartupProfile.DoesNotExist:
-    #     raise Http404("Object does not exist")
+    #
     return render(request,'investor/index.html',context)
 
 # def forms(request):

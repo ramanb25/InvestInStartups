@@ -16,9 +16,10 @@ from django.contrib.auth import logout
 from django.contrib.auth.models import User
 from django.shortcuts import redirect
 
+@login_required
 def index(request):
     obj1=onsale.objects.all()
-    context={'list1':obj1}
+    context={'list1':obj1,'user':request.user}
     return render(request,'market/index.html',context)
 
 #raman TODO Put loginreq everywhere
