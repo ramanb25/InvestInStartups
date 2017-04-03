@@ -1,29 +1,29 @@
 <html>
 <head>
 
-{#    {% if user.is_authenticated %}#}
-{#<a href="/investor/restricted/">Restricted Page</a><br />#}
-{#<a href="/investor/logout/">Logout</a><br />#}
-{#{% else %}#}
-{#<a href="/investor/register/">Register Here</a><br />#}
-{#<a href="/investor/login/">Login</a><br />#}
-{#{% endif %}#}
+<!--     {% if user.is_authenticated %}
+<a href="/app/restricted/">Restricted Page</a><br />
+<a href="/app/logout/">Logout</a><br />
+{% else %}
+<a href="/app/register/">Register Here</a><br />
+<a href="/app/login/">Login</a><br />
+{% endif %} -->
 
 	{% load static %}
 	<link href="{% static "app/css/bootstrap.min.css" %}" rel="stylesheet">
 </head>
 <body>
-    {% if user.is_authenticated %}
-        <h1> hello Investor <i>{{ userprofile.user.username }}</i> uid <i>{{ userprofile.aadhar }}</i>!</h1>
+<!--   {% if user.is_authenticated %}
+<h1> hello {{ user.username }} !</h1>
 {% else %}
 <h1> hello world!</h1>
 
+{##}
+{#        {% if user.is_authenticated %}#}
+{#    <li><a href="/rango/profile">Profile</a></li>#}
+{#{% endif %}#}
 
-        {% if user.is_authenticated %}
-    <li><a href="/rango/profile">Profile</a></li>
-{% endif %}
-
-{% endif %}
+{% endif %} -->
 	<!-- ******Navbar***** -->
 	<nav class="navbar navbar-default">
 	  <div class="container-fluid">
@@ -35,7 +35,7 @@
 	        <span class="icon-bar"></span>
 	        <span class="icon-bar"></span>
 	      </button>
-	      <a class="navbar-brand" href="/app">Home</a>
+	      <a class="navbar-brand" href="/market">Market</a>
 	    </div>
 
 	    <!-- Collect the nav links, forms, and other content for toggling -->
@@ -43,13 +43,16 @@
 	      <ul class="nav navbar-nav">
 	        <li><a href="/market/buy">Buy</a></li>
 	        <li><a href="/market/sell">Sell</a></li>
-	         {% if user.is_authenticated %}
-        <li><a href="/market/logout">Logout</a></li>
-              {%  endif %}
+	        
 	      </ul>
-	      
+	      <ul class="nav navbar-nav navbar-right">
+	      	<li><a href="/investor/profile"><strong>Profile</strong></a></li>
+			<li><a href="/market/logout"><strong>Logout<strong></a></li>
+            
+      	</ul>
 	      
 	    </div><!-- /.navbar-collapse -->
+	    
 	  </div><!-- /.container-fluid -->
 	</nav>
 </body>
