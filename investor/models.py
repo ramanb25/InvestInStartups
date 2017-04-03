@@ -9,8 +9,8 @@ class InvestorProfile(models.Model):
 	user = models.OneToOneField(User)
 
 	# new attributes
-	aadhar = models.ForeignKey('app.uid', on_delete=models.CASCADE)
-	accno = models.ForeignKey('app.accounts', on_delete=models.CASCADE)
+	aadhar = models.OneToOneField('app.uid', on_delete=models.CASCADE)
+	accno = models.OneToOneField('app.accounts', on_delete=models.CASCADE)
 
 	# Override the __unicode__() method to return out something meaningful!
 	def __unicode__(self):

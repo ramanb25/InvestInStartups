@@ -3,7 +3,7 @@ from django.db import transaction
 from django.http import HttpResponse
 from django.http import Http404
 from .models import StartupProfile
-from market.models import ownership
+from market.models import ownership,onsale
 #from app.models import accounts,uid
 #from startup.models import StartupProfile
 from django.shortcuts import render
@@ -22,11 +22,14 @@ def index(request):
         u = User.objects.get(username=request.user)
         print u
         try:
-            up = StartupProfile.objects.get(user=u)
+            up = StartupProfile.objects.filter(user=u)
+            startup_ownership=ownership.objects.filter(startup=up,owner=u)
+            ownershipObj=ownership.objects.filter(startup=up).exclude(owner=u)
+            onsaleObj=onsale.objects.filter(owner=u)
             if up is not None:
-                context = {'userprofile': up, 'user': u}
+                context = {'userprofile': startup_ownership, 'onSale':onsaleObj, 'owners':ownershipObj}
         except:
-            return HttpResponseRedirect('/app/')
+            return HttpResponse("Error")#HttpResponseRedirect('/app/')
     # try:
     #     objs=InvestorProfile.objects.all()
     #     obj2=StartupProfile.objects.all()

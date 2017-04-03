@@ -9,8 +9,8 @@ class StartupProfile(models.Model):
 	user = models.OneToOneField(User)
 
 	# new attributes
-	aadhar = models.ForeignKey('app.uid', on_delete=models.CASCADE)
-	accno = models.ForeignKey('app.accounts', on_delete=models.CASCADE)
+	aadhar = models.OneToOneField('app.uid', on_delete=models.CASCADE)
+	accno = models.OneToOneField('app.accounts', on_delete=models.CASCADE)
 	#TODO make it primary key
 	startupName=models.CharField(max_length=100)
 	stockName=models.CharField(max_length=100)

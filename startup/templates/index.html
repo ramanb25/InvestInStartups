@@ -9,45 +9,55 @@
 
 	<div class="panel panel-primary">
 	<!-- Default panel contents -->
-		<div class="panel-heading">Registered Investors</div>
+		<div class="panel-heading">Stock Details</div>
 
 		<!-- Table -->
 		<table class="table">
+			
+			{% for o in userprofile %}
 			<tr>
-				<td>Naame</td>
-				<td>Balance</td>
-				<td>UID</td>
+				<td>Startup Name</td>
+				<td>{{o.startup.startupName}}</td>
 			</tr>
-			{% for o in list %}
-				<tr>
-					<td>{{o.name}}</td>
-					<td>{{o.accno.balance}}</td>
-					<td>{{o.aadhar.aadhar}}</td>
-				</tr>
+			<tr>
+				<td>Stock Name</td>
+				<td>{{o.startup.stockName}}</td>
+			</tr>
+			<tr>
+				<td>Share Percentage</td>
+				<td>{{o.sharepercentage}}</td>
+			</tr>
+			{% endfor %}
+			{% for o in onSale %}
+			<tr>
+				<td>Share Price</td>
+				<td>{{o.stockprice}}</td>
+			</tr>
 			{% endfor %}
 		</table>
 	</div>
-	<br>
-	<br>
+
 	<div class="panel panel-primary">
-	<div class="panel-heading">Registered Startups</div>
+	<!-- Default panel contents -->
+		<div class="panel-heading">Stock Owners</div>
 
 		<!-- Table -->
 		<table class="table">
 			<tr>
-				<td>Name</td>
-				<td>Balance</td>
-				<td>UID</td>
+				<td>Owner</td>
+				<td>Holdings %</td>
 			</tr>
-			{% for o in list2 %}
-				<tr>
-					<td>{{o.name}}</td>
-					<td>{{o.accno.balance}}</td>
-					<td>{{o.aadhar.aadhar}}</td>
-				</tr>
+			{% for o in owners %}
+			<tr>
+				<td>{{o.owner.username}}</td>
+				<td>{{o.sharepercentage}}</td>
+			</tr>
+				
 			{% endfor %}
 		</table>
 	</div>
+	
+	
 	    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="{% static "app/js/jquery.js" %}"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
