@@ -59,14 +59,20 @@ def execStartupSell(request):
 
     try:
         Seller_ownership=ownership.objects.get(owner=u,startup=startupObj)
+        currentOnSaleStocks=onsale.objects.filter(owner=u,startup=startupObj)
+        totalOnSaleTillNow=0
+        for obj in currentOnSaleStocks:
+            totalOnSaleTillNow=totalOnSaleTillNow+obj.stockpercentage
         if Seller_ownership is None:
             raise Exception
         if Seller_ownership.sharepercentage<shareQty:
             raise Exception
+        if Seller_ownership.sharepercentage<shareQty+totalOnSaleTillNow:
+            raise Exception
     except:
         raise Exception
 
-    onSaleObj=onsale(owner=u,startup=startupObj,stockpercentage=shareQty,stockPrice=sharePrice)
+    onSaleObj=onsale(owner=u,startup=startupObj,stockpercentage=shareQty,stockprice=sharePrice)
     onSaleObj.save()
     return index(request)
 
@@ -80,14 +86,21 @@ def execInvestorSell(request):
 
     try:
         Seller_ownership=ownership.objects.get(owner=u,startup=startupObj)
+        currentOnSaleStocks=onsale.objects.filter(owner=u,startup=startupObj)
+        totalOnSaleTillNow=0
+        for obj in currentOnSaleStocks:
+            totalOnSaleTillNow=totalOnSaleTillNow+obj.stockpercentage
         if Seller_ownership is None:
             raise Exception
         if Seller_ownership.sharepercentage<shareQty:
             raise Exception
+        if Seller_ownership.sharepercentage<shareQty+totalOnSaleTillNow:
+            raise Exception
     except:
         raise Exception
 
-    onSaleObj=onsale(owner=u,starup=startupObj,stockpercentage=shareQty,stockPrice=sharePrice)
+    
+    onSaleObj=onsale(owner=u,starup=startupObj,stockpercentage=shareQty,stockprice=sharePrice)
     onSaleObj.save()
     return index(request)
 
@@ -187,13 +200,13 @@ def execBuy(request, context=None):
     if buyerProfile is None:
         raise Exception
     try:
-        buyer_ownership=ownership.objects.get(owner=buyer_user,stockname=stockname)
+        buyer_ownership=ownership.objects.get(owner=buyer_user,startup=startup_Profile)
     except:
         buyer_ownership=ownership()
         buyer_ownership.owner=owner_user
         buyer_ownership.startup=startup_Profile
         buyer_ownership.sharepercentage=0
-    owner_ownership=ownership.objects.get(owner=owner_user,stockname=stockname)
+    owner_ownership=ownership.objects.get(owner=owner_user,startup=startup_Profile)
     buyer_ownership.sharepercentage=buyer_ownership.sharepercentage+qtypurchase
     owner_onsale.stockpercentage=owner_onsale.stockpercentage-qtypurchase
     owner_ownership.sharepercentage = owner_ownership.stockpercentage - qtypurchase
