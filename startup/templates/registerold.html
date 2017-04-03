@@ -1,21 +1,18 @@
+<!DOCTYPE html>
 <html>
     <head>
-        <title>Rango</title>
-        {% load static %}
-        <link href="{% static "app/css/bootstrap.min.css" %}" rel="stylesheet">
+        <title>Startup Register</title>
     </head>
 
     <body>
-        <div class="panel panel-primary">
-    <!-- Default panel contents -->
-        <div class="panel-heading">Register Here!</div>
+        <h1>Register as Startup</h1>
 
         {% if registered %}
         Rango says: <strong>thank you for registering!</strong>
         <a href="/startup/">Return to the homepage.</a><br />
         {% else %}
         Rango says: <strong>registerwtf here!</strong><br />
-        <div class="form-group">
+
         <form id="user_form" method="post" action="/startup/register/"
                 >
 
@@ -30,11 +27,6 @@
             <!-- Provide a button to click to submit the form. -->
             <input type="submit" name="submit" value="Register" />
         </form>
-    </div>
-    </div
         {% endif %}
-            <script src="{% static "app/js/jquery.js" %}"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="{% static "app/js/bootstrap.min.js" %}"></script> 
     </body>
 </html>
