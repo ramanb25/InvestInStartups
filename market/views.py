@@ -139,21 +139,22 @@ def getProfile2(username):
 @transaction.atomic
 def execBuy(request, context=None):
     #obj=stocks.objects.get(name=request.POST['choice'])
-    owner_username=request.POST['username']
 
-    owner_user=getProfile2(owner_username).user
     buyer_user = User.objects.get(username=request.user)
+    stockname,owner_username=request.POST['choice'].split()
 
-    stockname=request.POST['choice']
+    owner_user = getProfile2(owner_username).user
     startup_Profile=StartupProfile.objects.get(stockName=stockname)
 
     qtypurchase=float(request.POST['qty'+request.POST.get('choice')])
 
     if not isInvestor(buyer_user):
         raise Exception('You must be Investor')
+    owner_onsale = onsale.objects.get(owner__username=owner_username, startup__stockName=stockname)
     try:
         owner_onsale=onsale.objects.get(owner__username=owner_username,startup__stockName=stockname)
         qtyonsale=owner_onsale.stockpercentage
+        print 'raman'
         if qtyonsale is None:
             raise Exception('yo')
         typeOwner=isInvestor(owner_username)
@@ -192,7 +193,7 @@ def execBuy(request, context=None):
         owner_onsale.delete()
     if (owner_ownership.sharepercentage == 0):
         owner_ownership.delete()
-    return render(request,'app/index.html',context)
+    return render(request,'market/index.html',context)
 
 
 #raman
