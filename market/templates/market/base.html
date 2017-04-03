@@ -13,7 +13,7 @@
 	<link href="{% static "app/css/bootstrap.min.css" %}" rel="stylesheet">
 </head>
 <body>
-  {% if user.is_authenticated %}
+<!--   {% if user.is_authenticated %}
 <h1> hello {{ user.username }} !</h1>
 {% else %}
 <h1> hello world!</h1>
@@ -23,7 +23,7 @@
 {#    <li><a href="/rango/profile">Profile</a></li>#}
 {#{% endif %}#}
 
-{% endif %}
+{% endif %} -->
 	<!-- ******Navbar***** -->
 	<nav class="navbar navbar-default">
 	  <div class="container-fluid">
@@ -43,16 +43,17 @@
 	      <ul class="nav navbar-nav">
 	        <li><a href="/market/buy">Buy</a></li>
 	        <li><a href="/market/sell">Sell</a></li>
-              {% if isinvestor %}
-               <li><a href="/investor/">My Profile</a></li>
-              {% else %}
-              <li><a href="/startup/">My Profile</a></li>
-              {% endif %}
 	        
 	      </ul>
 	      <ul class="nav navbar-nav navbar-right">
                {% if user.is_authenticated %}
-        <li><a href="/market/logout">Logout</a></li>
+        
+        {% if isinvestor %}
+               <li><a href="/investor/"><strong>{{ user.username }}</strong></a></li>
+              {% else %}
+              <li><a href="/startup/"><strong>{{ user.username }}</strong></a></li>
+              {% endif %}
+        <li><a href="/market/logout"><strong>Logout<strong></a></li>
               {%  endif %}
         
       </ul>

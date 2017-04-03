@@ -22,11 +22,11 @@
 				{% for o in onsale %}
 					<tr>
 						<td>
-							<label class="radio">
+							
 								<input type="radio" name='choice' value="{{o.startup.stockName}}  {{o.owner.username}}">
                                 <input type="hidden" name='username' value="{{o.owner.username}}">
-                            </label>
-							</div>
+                            
+							
 						</td>
 						<td>{{o.owner.username}}
 						<td>{{o.startup.stockName}}</td>
