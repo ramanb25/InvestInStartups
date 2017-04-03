@@ -47,7 +47,8 @@ def startupSell(request):
 
 
 def buy(request):
-    onsaleobj=onsale.objects.all()
+    u = User.objects.get(username=request.user)
+    onsaleobj=onsale.objects.all().exclude(owner=u)
     context={'onsale':onsaleobj}
     return render(request,'market/buy.html',context)
 
