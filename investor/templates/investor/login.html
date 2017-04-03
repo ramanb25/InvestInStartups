@@ -1,22 +1,45 @@
 <!DOCTYPE html>
 <html>
     <head>
+        {% load static %}
+        <link href="{% static "app/css/bootstrap.min.css" %}" rel="stylesheet">
         <!-- Is anyone getting tired of repeatedly entering the header over and over?? -->
         <title>Investor Login</title>
     </head>
 
     <body>
-        <h1>Login as Investor</h1>
+        <div class="jumbotron" >
+            <h4 style="margin-left:20px" align="Center">Login as Investor</h4>  
+        </div>
+        
+        <div class="row" style="margin-left:5px;margin-right:5px;margin-top:5px">
+        <div class="col-md-2">
+        </div>
+        <div class="col-md-8">
+            <div class="panel panel-primary">
+        <!-- Default panel contents -->
+                <div class="panel-heading">Login</div>
 
-        <form id="login_form" method="post" action="/investor/login/">
-            {% csrf_token %}
-            Username: <input type="text" name="username" value="" size="50" />
-            <br />
-            Password: <input type="password" name="password" value="" size="50" />
-            <br />
+                
+                <!-- Rango says: <strong>registerwtf here!</strong><br /> -->
+                <div class="form-group">
+                    <form id="login_form" method="post" action="/investor/login/">
+                        {% csrf_token %}
+                        <b>Username:</b> <input type="text" class="form-control" name="username" value="" size="50" />
+                        <br />
+                        <b>Password:</b>  <input type="password" class="form-control" name="password" value="" size="50" />
+                        <br />
 
-            <input type="submit" value="submit" />
-        </form>
-
+                        <Button type="submit" style="width:50%;margin-left:25%" class="btn btn-primary" name="submit">Log In!</Button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2">
+        </div>
+        
+        <script src="{% static "app/js/jquery.js" %}"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="{% static "app/js/bootstrap.min.js" %}"></script> 
     </body>
 </html>
