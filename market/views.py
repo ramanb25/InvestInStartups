@@ -101,7 +101,7 @@ def execInvestorSell(request):
         raise Exception
 
     
-    onSaleObj=onsale(owner=u,starup=startupObj,stockpercentage=shareQty,stockprice=sharePrice)
+    onSaleObj=onsale(owner=u,startup=startupObj,stockpercentage=shareQty,stockprice=sharePrice)
     onSaleObj.save()
     return index(request)
 
@@ -178,7 +178,7 @@ def execBuy(request, context=None):
     stockname=request.POST['choice']
     startup_Profile=StartupProfile.objects.get(stockName=stockname)
 
-    qtypurchase=int(request.POST['qty'+request.POST.get('choice')])
+    qtypurchase=float(request.POST['qty'+request.POST.get('choice')])
 
     if not isInvestor(buyer_user):
         raise Exception('You must be Investor')
@@ -190,9 +190,12 @@ def execBuy(request, context=None):
         typeOwner=isInvestor(owner_username)
     except:
         raise Exception("Not on sale")
+    print(qtyonsale)
+    print(qtypurchase)
     if qtyonsale<qtypurchase:
         raise Exception
     if qtypurchase<0:
+
         raise Exception
     ownerProfile=getProfile(owner_user)
     buyerProfile=getProfile(buyer_user)
@@ -204,15 +207,16 @@ def execBuy(request, context=None):
         buyer_ownership=ownership.objects.get(owner=buyer_user,startup=startup_Profile)
     except:
         buyer_ownership=ownership()
-        buyer_ownership.owner=owner_user
+        buyer_ownership.owner=buyer_user
         buyer_ownership.startup=startup_Profile
         buyer_ownership.sharepercentage=0
     owner_ownership=ownership.objects.get(owner=owner_user,startup=startup_Profile)
     buyer_ownership.sharepercentage=buyer_ownership.sharepercentage+qtypurchase
     owner_onsale.stockpercentage=owner_onsale.stockpercentage-qtypurchase
-    owner_ownership.sharepercentage = owner_ownership.stockpercentage - qtypurchase
+    owner_ownership.sharepercentage = owner_ownership.sharepercentage - qtypurchase
 
     buyer_ownership.save()
+    print(buyer_ownership.sharepercentage)
     owner_ownership.save()
     owner_onsale.save()
     if(owner_onsale.stockpercentage==0):
