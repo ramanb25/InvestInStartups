@@ -1,0 +1,45 @@
+<html>
+<head>
+	{% load static %}
+	<link href="{% static "app/css/bootstrap.min.css" %}" rel="stylesheet">
+</head>
+<body>
+
+	<div class="jumbotron" >
+		<h1 style="margin-left:20px">Welcome to Invest In Startup !!</h1>
+		<p style="margin-left:20px">To continue to use portal, Please Login/Register using below Links</p>
+		
+	</div>
+	<div class="row" style="margin-left:5px;margin-right:5px">
+		<div class="col-md-6">
+			<div class="panel panel-primary">
+			<!-- Default panel contents -->
+				<div class="panel-heading">As Investor</div>
+				<br>
+				<a href='../../investor/login'><button type="button" class="btn btn-primary btn-lg btn-block">Login</button></a>
+				<br>
+				<a href='../../investor/register'><button type="button" class="btn btn-primary btn-lg btn-block">Register</button></a>
+				<br>
+			</div>
+		</div>
+		<div class="col-md-6">
+			<div class="panel panel-primary">
+			<!-- Default panel contents -->
+				<div class="panel-heading">As Startup</div>
+				<br>
+				<a href='../../startup/login'><button type="button" class="btn btn-primary btn-lg btn-block">Login</button></a>
+				<br>
+				<a href='../../startup/register'><button type="button" class="btn btn-primary btn-lg btn-block">Register</button></a>
+				<br>
+			</div>
+	
+		</div>
+		
+	</div>
+	
+	    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="{% static "app/js/jquery.js" %}"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="{% static "app/js/bootstrap.min.js" %}"></script>
+</body>
+</html>

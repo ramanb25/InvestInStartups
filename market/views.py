@@ -14,6 +14,7 @@ from django.contrib.auth import authenticate, login
 from django.http import HttpResponseRedirect, HttpResponse
 from django.contrib.auth import logout
 from django.contrib.auth.models import User
+from django.shortcuts import redirect
 
 def index(request):
     obj1=onsale.objects.all()
@@ -320,13 +321,13 @@ def execBuy(request, context=None):
 #         return render_to_response('app/login.html', {}, context)
 
 
-# @login_required
-# def user_logout(request):
-#     # Since we know the user is logged in, we can now just log them out.
-#     logout(request)
+@login_required
+def user_logout(request):
+    # Since we know the user is logged in, we can now just log them out.
+    logout(request)
 
-#     # Take the user back to the homepage.
-#     return HttpResponseRedirect('/app/')
+    # Take the user back to the homepage.
+    return redirect('/app/')
 
 
 # @login_required

@@ -11,21 +11,13 @@ from django.contrib.auth import authenticate, login
 from django.http import HttpResponseRedirect, HttpResponse
 from django.contrib.auth import logout
 from django.contrib.auth.models import User
+from django.shortcuts import redirect
 
 def index(request):
-    # if request.user.is_authenticated():
-    #     u = User.objects.get(username=request.user)
-    #     up = UserProfile.objects.get(user=u)
-    # try:
-    #     objs=InvestorProfile.objects.all()
-    #     obj2=StartupProfile.objects.all()
-    #     if request.user.is_authenticated():
-    #         context = {'list': objs, 'list2':obj2, 'userprofile':up, 'user':u}
-    #     else:
-    #         context = {'list': objs, 'list2': obj2}
-    # except StartupProfile.DoesNotExist:
-    #     raise Http404("Object does not exist")
-    return render(request,'app/index.html',context)
+    if request.user.is_authenticated():
+        return redirect('/market/')
+    else:
+        return render(request,'app/requestLogin.html')
 
 def forms(request):
     return render(request,'app/form.html')

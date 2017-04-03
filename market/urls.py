@@ -29,10 +29,10 @@ urlpatterns = [
     # url(r'sell/$',views.redirectSell,name='sell'),
     url(r'execBuy/$',views.execBuy,name='execBuy'),
     url(r'execStartupSell/$',views.execStartupSell,name='execStartupSell'),
-    url(r'execInvestorSell/$',views.execInvestorSell,name='execInvestorSell')
+    url(r'execInvestorSell/$',views.execInvestorSell,name='execInvestorSell'),
     # url(r'^register/$', views.register, name='register'),
     # url(r'^login/$', views.user_login, name='login'),
-    # url(r'^logout/$', views.user_logout, name='logout'),
+    url(r'^logout/$', views.user_logout, name='logout'),
     # url(r'^restricted/', views.restricted, name='restricted'),
     # url(r'^profile/$', views.profile, name='profile'),
 
