@@ -2,31 +2,48 @@
 <html>
     <head>
         <title>Investor Register</title>
+        {% load static %}
+        <link href="{% static "app/css/bootstrap.min.css" %}" rel="stylesheet">
     </head>
 
     <body>
-        <h1>Register as an Invesstor</h1>
+        <div class="jumbotron" >
+            <h4 style="margin-left:20px" align="Center">Register as Investor</h4>  
+        </div>
+        <div class="row" style="margin-left:5px;margin-right:5px;margin-top:5px">
+            <div class="col-md-2">
+            </div>
+            <div class="col-md-8">
+                <div class="panel panel-primary">
+            <!-- Default panel contents -->
+                    <div class="panel-heading">Register Here!</div>
+                    {% if registered %}
+                    : <strong>thank you for registering!</strong>
+                    <a href="/investor/">Return to the homepage.</a><br />
+                    {% else %}
+                     
+                    <div class="form-group">
+                    <form id="user_form" method="post" action="/investor/register/">
 
-        {% if registered %}
-        : <strong>thank you for registering!</strong>
-        <a href="/investor/">Return to the homepage.</a><br />
-        {% else %}
-         <strong>Investor Register here!</strong><br />
+                        {% csrf_token %}
 
-        <form id="user_form" method="post" action="/investor/register/"
-                >
+                        <!-- Display each form. The as_p method wraps each element in a paragraph
+                             (<p>) element. This ensures each element appears on a new line,
+                             making everything look neater. -->
+                        {{ user_form.as_p }}
+                        {{ profile_form.as_p }}
 
-            {% csrf_token %}
-
-            <!-- Display each form. The as_p method wraps each element in a paragraph
-                 (<p>) element. This ensures each element appears on a new line,
-                 making everything look neater. -->
-            {{ user_form.as_p }}
-            {{ profile_form.as_p }}
-
-            <!-- Provide a button to click to submit the form. -->
-            <input type="submit" name="submit" value="Register" />
-        </form>
+                        <!-- Provide a button to click to submit the form. -->
+                        <Button type="submit" style="width:50%;margin-left:25%" class="btn btn-primary" name="submit">Register</Button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2">
+        </div>
         {% endif %}
+        <script src="{% static "app/js/jquery.js" %}"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="{% static "app/js/bootstrap.min.js" %}"></script> 
     </body>
 </html>
