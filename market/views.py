@@ -74,7 +74,7 @@ def execStartupSell(request):
         currentOnSaleStocks=onsale.objects.filter(owner=u,startup=startupObj)
         totalOnSaleTillNow=0
         for obj in currentOnSaleStocks:
-            totalOnSaleTillNow=totalOnSaleTillNow+obj.stockpercentage
+            obj.delete()
         if Seller_ownership is None:
             raise Exception
         if Seller_ownership.sharepercentage<shareQty:
@@ -86,7 +86,7 @@ def execStartupSell(request):
 
     onSaleObj=onsale(owner=u,startup=startupObj,stockpercentage=shareQty,stockprice=sharePrice)
     onSaleObj.save()
-    return index(request)
+    return redirect('/app/')#index(request)
 
 @transaction.atomic()
 def execInvestorSell(request):
@@ -101,7 +101,7 @@ def execInvestorSell(request):
         currentOnSaleStocks=onsale.objects.filter(owner=u,startup=startupObj)
         totalOnSaleTillNow=0
         for obj in currentOnSaleStocks:
-            totalOnSaleTillNow=totalOnSaleTillNow+obj.stockpercentage
+            obj.delete()#totalOnSaleTillNow=totalOnSaleTillNow+obj.stockpercentage
         if Seller_ownership is None:
             raise Exception
         if Seller_ownership.sharepercentage<shareQty:
@@ -114,7 +114,7 @@ def execInvestorSell(request):
     
     onSaleObj=onsale(owner=u,startup=startupObj,stockpercentage=shareQty,stockprice=sharePrice)
     onSaleObj.save()
-    return index(request)
+    return redirect('/app/')#index(request)
 
 
 
@@ -193,7 +193,7 @@ def execBuy(request, context=None):
         owner_onsale.delete()
     if (owner_ownership.sharepercentage == 0):
         owner_ownership.delete()
-    return render(request,'market/index.html',context)
+    return redirect('/investor/')#render(request,'market/index.html',context)
 
 
 #raman

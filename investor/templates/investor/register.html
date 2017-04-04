@@ -17,9 +17,13 @@
                 <div class="panel panel-primary">
             <!-- Default panel contents -->
                     <div class="panel-heading">Register Here!</div>
+                    <br>
                     {% if registered %}
-                    : <strong>thank you for registering!</strong>
-                    <a href="/investor/">Return to the homepage.</a><br />
+                    <div class="alert alert-success">
+                      <strong>Thank You For Registering!!</strong> <a href="/app/">Return to the homepage.</a><br>
+                    </div>
+                    
+                    
                     {% else %}
                      
                     <div class="form-group">
