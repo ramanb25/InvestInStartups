@@ -1,3 +1,5 @@
+import hashlib
+
 from django.contrib.auth.decorators import login_required
 from django.db import transaction
 from django.http import HttpResponse
@@ -6,9 +8,10 @@ from .models import StartupProfile
 from market.models import ownership,onsale
 
 from app.models import accounts,uid
-
+import datetime
+from datetime import datetime as theclass
 #from startup.models import StartupProfile
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.urls import reverse
 from django.db.models import F
 from django.template import RequestContext
@@ -72,14 +75,36 @@ def register(request):
             user.save()
 
 
-            account=accounts_form.save()
-            account.save()
+            accounts=accounts_form.save()
+            accounts.save()
 
             # Now sort out the UserProfile instance.
             # Since we need to set the user attribute ourselves, we set commit=False.
             # This delays saving the model until we're ready to avoid integrity problems.
             profile = profile_form.save(commit=False)
             profile.user = user
+
+            import random
+            salt = hashlib.sha1(str(random.random())).hexdigest()[:5]
+            usernamesalt = user.username
+            if isinstance(usernamesalt, unicode):
+                usernamesalt = usernamesalt.encode('utf8')
+            data = hashlib.sha1(salt + usernamesalt).hexdigest()
+
+
+
+
+            profile.activation_key = data
+            profile.key_expires = theclass.strftime(theclass.now() + datetime.timedelta(days=2),
+                                                             "%Y-%m-%d %H:%M:%S")
+
+            link = "localhost:8000/investor/activate/" + data
+
+            from django.core.mail import EmailMessage
+            email = EmailMessage('Activation Link', link, to=[user.email])
+            email.send()
+
+
 
             profile.accno=accounts
 
@@ -110,6 +135,71 @@ def register(request):
             'register.html',
             {'user_form': user_form, 'profile_form': profile_form,'accounts_form':accounts_form, 'registered': registered},
             context)
+
+
+def getprofile(user):
+    try:
+        StartupProfile.objects.get(user=user)
+        return user
+    except:
+        raise Exception('User Logged in error')
+
+
+def getlink():
+    return 'startup'
+
+def activation(request,key):
+    activation_expired = False
+    already_active = False
+    profile = get_object_or_404(StartupProfile, activation_key=key)
+    from django.utils import timezone
+    if profile.user.is_active == False:
+        if theclass.now() > profile.key_expires.astimezone(timezone.utc).replace(tzinfo=None):
+            activation_expired = True #Display: offer the user to send a new activation link
+            id_user = profile.user.id
+        else: #Activation successful
+            profile.user.is_active = True
+            profile.user.save()
+
+    #If user is already active, simply display error message
+    else:
+        already_active = True #Display : error message
+    return render(request, getlink()+'/index.html', locals())
+
+
+
+@login_required()
+def new_activation_link(request):
+    user = User.objects.get(username=request.user)
+    if user is not None and not user.is_active:
+
+        import random
+        salt = hashlib.sha1(str(random.random())).hexdigest()[:5]
+        usernamesalt = user.username
+        if isinstance(usernamesalt, unicode):
+            usernamesalt = usernamesalt.encode('utf8')
+        data= hashlib.sha1(salt+usernamesalt).hexdigest()
+
+        MyProfile=getprofile(user)
+        MyProfile.activation_key = data
+        MyProfile.key_expires = datetime.datetime.strftime(datetime.datetime.now() + datetime.timedelta(days=2),
+                                                         "%Y-%m-%d %H:%M:%S")
+        MyProfile.save()
+        link = "localhost:8000/"+getlink()+"/activate/" + data
+
+        from django.core.mail import EmailMessage
+        email = EmailMessage('New Activation Link', link, to=[user.email])
+        email.send()
+
+        return render(request, getlink()+'/index.html', None)
+
+
+
+
+
+
+
+
 
 def user_login(request):
     # Like before, obtain the context for the user's request.
