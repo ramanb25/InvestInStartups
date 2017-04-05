@@ -2,155 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9944d20e-c95b-4df7-8338-a1d3d221c18d" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/migrations/0002_auto_20170405_1619.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/investor/migrations/0005_auto_20170405_1624.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/startup/migrations/0005_auto_20170405_1634.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/app/assets/03-1.jpg" afterPath="$PROJECT_DIR$/app/static/app/assets/03-1.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/app/fonts/glyphicons-halflings-regular.eot" afterPath="$PROJECT_DIR$/app/static/app/fonts/glyphicons-halflings-regular.eot" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/app/fonts/glyphicons-halflings-regular.ttf" afterPath="$PROJECT_DIR$/app/static/app/fonts/glyphicons-halflings-regular.ttf" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/app/fonts/glyphicons-halflings-regular.woff" afterPath="$PROJECT_DIR$/app/static/app/fonts/glyphicons-halflings-regular.woff" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/app/fonts/glyphicons-halflings-regular.woff2" afterPath="$PROJECT_DIR$/app/static/app/fonts/glyphicons-halflings-regular.woff2" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/migrations/0002_auto_20170405_1619.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/investor/migrations/0005_auto_20170405_1624.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/startup/migrations/0005_auto_20170405_1634.py" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db.sqlite3" afterPath="$PROJECT_DIR$/db.sqlite3" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/investor/static/app/fonts/glyphicons-halflings-regular.eot" afterPath="$PROJECT_DIR$/investor/static/app/fonts/glyphicons-halflings-regular.eot" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/investor/static/app/fonts/glyphicons-halflings-regular.ttf" afterPath="$PROJECT_DIR$/investor/static/app/fonts/glyphicons-halflings-regular.ttf" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/investor/static/app/fonts/glyphicons-halflings-regular.woff" afterPath="$PROJECT_DIR$/investor/static/app/fonts/glyphicons-halflings-regular.woff" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/investor/static/app/fonts/glyphicons-halflings-regular.woff2" afterPath="$PROJECT_DIR$/investor/static/app/fonts/glyphicons-halflings-regular.woff2" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/market/static/app/fonts/glyphicons-halflings-regular.eot" afterPath="$PROJECT_DIR$/market/static/app/fonts/glyphicons-halflings-regular.eot" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/market/static/app/fonts/glyphicons-halflings-regular.ttf" afterPath="$PROJECT_DIR$/market/static/app/fonts/glyphicons-halflings-regular.ttf" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/market/static/app/fonts/glyphicons-halflings-regular.woff" afterPath="$PROJECT_DIR$/market/static/app/fonts/glyphicons-halflings-regular.woff" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/market/static/app/fonts/glyphicons-halflings-regular.woff2" afterPath="$PROJECT_DIR$/market/static/app/fonts/glyphicons-halflings-regular.woff2" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/startup/static/app/fonts/glyphicons-halflings-regular.eot" afterPath="$PROJECT_DIR$/startup/static/app/fonts/glyphicons-halflings-regular.eot" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/startup/static/app/fonts/glyphicons-halflings-regular.ttf" afterPath="$PROJECT_DIR$/startup/static/app/fonts/glyphicons-halflings-regular.ttf" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/startup/static/app/fonts/glyphicons-halflings-regular.woff" afterPath="$PROJECT_DIR$/startup/static/app/fonts/glyphicons-halflings-regular.woff" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/startup/static/app/fonts/glyphicons-halflings-regular.woff2" afterPath="$PROJECT_DIR$/startup/static/app/fonts/glyphicons-halflings-regular.woff2" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/__init__.py" afterPath="$PROJECT_DIR$/app/__init__.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/admin.py" afterPath="$PROJECT_DIR$/app/admin.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/apps.py" afterPath="$PROJECT_DIR$/app/apps.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/forms.py" afterPath="$PROJECT_DIR$/app/forms.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models.py" afterPath="$PROJECT_DIR$/app/models.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/app/css/bootstrap-theme.css" afterPath="$PROJECT_DIR$/app/static/app/css/bootstrap-theme.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/app/css/bootstrap-theme.css.map" afterPath="$PROJECT_DIR$/app/static/app/css/bootstrap-theme.css.map" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/app/css/bootstrap-theme.min.css" afterPath="$PROJECT_DIR$/app/static/app/css/bootstrap-theme.min.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/app/css/bootstrap-theme.min.css.map" afterPath="$PROJECT_DIR$/app/static/app/css/bootstrap-theme.min.css.map" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/app/css/bootstrap.css" afterPath="$PROJECT_DIR$/app/static/app/css/bootstrap.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/app/css/bootstrap.css.map" afterPath="$PROJECT_DIR$/app/static/app/css/bootstrap.css.map" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/app/css/bootstrap.min.css" afterPath="$PROJECT_DIR$/app/static/app/css/bootstrap.min.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/app/css/bootstrap.min.css.map" afterPath="$PROJECT_DIR$/app/static/app/css/bootstrap.min.css.map" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/app/fonts/glyphicons-halflings-regular.svg" afterPath="$PROJECT_DIR$/app/static/app/fonts/glyphicons-halflings-regular.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/app/js/bootstrap.js" afterPath="$PROJECT_DIR$/app/static/app/js/bootstrap.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/app/js/bootstrap.min.js" afterPath="$PROJECT_DIR$/app/static/app/js/bootstrap.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/app/js/jquery.js" afterPath="$PROJECT_DIR$/app/static/app/js/jquery.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/app/js/npm.js" afterPath="$PROJECT_DIR$/app/static/app/js/npm.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/templates/app/base.html" afterPath="$PROJECT_DIR$/app/templates/app/base.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/templates/app/buy.html" afterPath="$PROJECT_DIR$/app/templates/app/buy.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/templates/app/form.html" afterPath="$PROJECT_DIR$/app/templates/app/form.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/templates/app/index.html" afterPath="$PROJECT_DIR$/app/templates/app/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/templates/app/profile.html" afterPath="$PROJECT_DIR$/app/templates/app/profile.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/templates/app/requestLogin.html" afterPath="$PROJECT_DIR$/app/templates/app/requestLogin.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/templates/app/sell.html" afterPath="$PROJECT_DIR$/app/templates/app/sell.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/urls.py" afterPath="$PROJECT_DIR$/app/urls.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views.py" afterPath="$PROJECT_DIR$/app/views.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/investor/__init__.py" afterPath="$PROJECT_DIR$/investor/__init__.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/investor/admin.py" afterPath="$PROJECT_DIR$/investor/admin.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/investor/apps.py" afterPath="$PROJECT_DIR$/investor/apps.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/investor/forms.py" afterPath="$PROJECT_DIR$/investor/forms.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/investor/migrations/0001_initial.py" afterPath="$PROJECT_DIR$/investor/migrations/0001_initial.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/investor/migrations/__init__.py" afterPath="$PROJECT_DIR$/investor/migrations/__init__.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/investor/models.py" afterPath="$PROJECT_DIR$/investor/models.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/investor/static/app/css/bootstrap-theme.css" afterPath="$PROJECT_DIR$/investor/static/app/css/bootstrap-theme.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/investor/static/app/css/bootstrap-theme.css.map" afterPath="$PROJECT_DIR$/investor/static/app/css/bootstrap-theme.css.map" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/investor/static/app/css/bootstrap-theme.min.css" afterPath="$PROJECT_DIR$/investor/static/app/css/bootstrap-theme.min.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/investor/static/app/css/bootstrap-theme.min.css.map" afterPath="$PROJECT_DIR$/investor/static/app/css/bootstrap-theme.min.css.map" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/investor/static/app/css/bootstrap.css" afterPath="$PROJECT_DIR$/investor/static/app/css/bootstrap.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/investor/static/app/css/bootstrap.css.map" afterPath="$PROJECT_DIR$/investor/static/app/css/bootstrap.css.map" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/investor/static/app/css/bootstrap.min.css" afterPath="$PROJECT_DIR$/investor/static/app/css/bootstrap.min.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/investor/static/app/css/bootstrap.min.css.map" afterPath="$PROJECT_DIR$/investor/static/app/css/bootstrap.min.css.map" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/investor/static/app/fonts/glyphicons-halflings-regular.svg" afterPath="$PROJECT_DIR$/investor/static/app/fonts/glyphicons-halflings-regular.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/investor/static/app/js/bootstrap.js" afterPath="$PROJECT_DIR$/investor/static/app/js/bootstrap.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/investor/static/app/js/bootstrap.min.js" afterPath="$PROJECT_DIR$/investor/static/app/js/bootstrap.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/investor/static/app/js/jquery.js" afterPath="$PROJECT_DIR$/investor/static/app/js/jquery.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/investor/static/app/js/npm.js" afterPath="$PROJECT_DIR$/investor/static/app/js/npm.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/investor/templates/investor/base.html" afterPath="$PROJECT_DIR$/investor/templates/investor/base.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/investor/templates/investor/buy.html" afterPath="$PROJECT_DIR$/investor/templates/investor/buy.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/investor/templates/investor/form.html" afterPath="$PROJECT_DIR$/investor/templates/investor/form.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/investor/templates/investor/index.html" afterPath="$PROJECT_DIR$/investor/templates/investor/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/investor/templates/investor/login.html" afterPath="$PROJECT_DIR$/investor/templates/investor/login.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/investor/templates/investor/profile.html" afterPath="$PROJECT_DIR$/investor/templates/investor/profile.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/investor/templates/investor/register.html" afterPath="$PROJECT_DIR$/investor/templates/investor/register.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/investor/templates/investor/sell.html" afterPath="$PROJECT_DIR$/investor/templates/investor/sell.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/investor/urls.py" afterPath="$PROJECT_DIR$/investor/urls.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/investor/views.py" afterPath="$PROJECT_DIR$/investor/views.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/market/__init__.py" afterPath="$PROJECT_DIR$/market/__init__.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/market/admin.py" afterPath="$PROJECT_DIR$/market/admin.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/market/apps.py" afterPath="$PROJECT_DIR$/market/apps.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/market/forms.py" afterPath="$PROJECT_DIR$/market/forms.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/market/models.py" afterPath="$PROJECT_DIR$/market/models.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/market/static/app/css/bootstrap-theme.css" afterPath="$PROJECT_DIR$/market/static/app/css/bootstrap-theme.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/market/static/app/css/bootstrap-theme.css.map" afterPath="$PROJECT_DIR$/market/static/app/css/bootstrap-theme.css.map" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/market/static/app/css/bootstrap-theme.min.css" afterPath="$PROJECT_DIR$/market/static/app/css/bootstrap-theme.min.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/market/static/app/css/bootstrap-theme.min.css.map" afterPath="$PROJECT_DIR$/market/static/app/css/bootstrap-theme.min.css.map" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/market/static/app/css/bootstrap.css" afterPath="$PROJECT_DIR$/market/static/app/css/bootstrap.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/market/static/app/css/bootstrap.css.map" afterPath="$PROJECT_DIR$/market/static/app/css/bootstrap.css.map" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/market/static/app/css/bootstrap.min.css" afterPath="$PROJECT_DIR$/market/static/app/css/bootstrap.min.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/market/static/app/css/bootstrap.min.css.map" afterPath="$PROJECT_DIR$/market/static/app/css/bootstrap.min.css.map" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/market/static/app/fonts/glyphicons-halflings-regular.svg" afterPath="$PROJECT_DIR$/market/static/app/fonts/glyphicons-halflings-regular.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/market/static/app/js/bootstrap.js" afterPath="$PROJECT_DIR$/market/static/app/js/bootstrap.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/market/static/app/js/bootstrap.min.js" afterPath="$PROJECT_DIR$/market/static/app/js/bootstrap.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/market/static/app/js/jquery.js" afterPath="$PROJECT_DIR$/market/static/app/js/jquery.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/market/static/app/js/npm.js" afterPath="$PROJECT_DIR$/market/static/app/js/npm.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/market/templates/market/base.html" afterPath="$PROJECT_DIR$/market/templates/market/base.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/market/templates/market/buy.html" afterPath="$PROJECT_DIR$/market/templates/market/buy.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/market/templates/market/form.html" afterPath="$PROJECT_DIR$/market/templates/market/form.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/market/templates/market/index.html" afterPath="$PROJECT_DIR$/market/templates/market/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/market/templates/market/investorSell.html" afterPath="$PROJECT_DIR$/market/templates/market/investorSell.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/market/templates/market/profile.html" afterPath="$PROJECT_DIR$/market/templates/market/profile.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/market/templates/market/sell.html" afterPath="$PROJECT_DIR$/market/templates/market/sell.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/market/templates/market/startupSell.html" afterPath="$PROJECT_DIR$/market/templates/market/startupSell.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/market/urls.py" afterPath="$PROJECT_DIR$/market/urls.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/market/views.py" afterPath="$PROJECT_DIR$/market/views.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mysite/__init__.py" afterPath="$PROJECT_DIR$/mysite/__init__.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mysite/settings.py" afterPath="$PROJECT_DIR$/mysite/settings.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mysite/urls.py" afterPath="$PROJECT_DIR$/mysite/urls.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mysite/wsgi.py" afterPath="$PROJECT_DIR$/mysite/wsgi.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/startup/__init__.py" afterPath="$PROJECT_DIR$/startup/__init__.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/startup/admin.py" afterPath="$PROJECT_DIR$/startup/admin.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/startup/apps.py" afterPath="$PROJECT_DIR$/startup/apps.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/startup/forms.py" afterPath="$PROJECT_DIR$/startup/forms.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/startup/models.py" afterPath="$PROJECT_DIR$/startup/models.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/startup/static/app/css/bootstrap-theme.css" afterPath="$PROJECT_DIR$/startup/static/app/css/bootstrap-theme.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/startup/static/app/css/bootstrap-theme.css.map" afterPath="$PROJECT_DIR$/startup/static/app/css/bootstrap-theme.css.map" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/startup/static/app/css/bootstrap-theme.min.css" afterPath="$PROJECT_DIR$/startup/static/app/css/bootstrap-theme.min.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/startup/static/app/css/bootstrap-theme.min.css.map" afterPath="$PROJECT_DIR$/startup/static/app/css/bootstrap-theme.min.css.map" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/startup/static/app/css/bootstrap.css" afterPath="$PROJECT_DIR$/startup/static/app/css/bootstrap.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/startup/static/app/css/bootstrap.css.map" afterPath="$PROJECT_DIR$/startup/static/app/css/bootstrap.css.map" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/startup/static/app/css/bootstrap.min.css" afterPath="$PROJECT_DIR$/startup/static/app/css/bootstrap.min.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/startup/static/app/css/bootstrap.min.css.map" afterPath="$PROJECT_DIR$/startup/static/app/css/bootstrap.min.css.map" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/startup/static/app/fonts/glyphicons-halflings-regular.svg" afterPath="$PROJECT_DIR$/startup/static/app/fonts/glyphicons-halflings-regular.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/startup/static/app/js/bootstrap.js" afterPath="$PROJECT_DIR$/startup/static/app/js/bootstrap.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/startup/static/app/js/bootstrap.min.js" afterPath="$PROJECT_DIR$/startup/static/app/js/bootstrap.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/startup/static/app/js/jquery.js" afterPath="$PROJECT_DIR$/startup/static/app/js/jquery.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/startup/static/app/js/npm.js" afterPath="$PROJECT_DIR$/startup/static/app/js/npm.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/startup/templates/base.html" afterPath="$PROJECT_DIR$/startup/templates/base.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/startup/templates/buy.html" afterPath="$PROJECT_DIR$/startup/templates/buy.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/startup/templates/form.html" afterPath="$PROJECT_DIR$/startup/templates/form.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/startup/templates/index.html" afterPath="$PROJECT_DIR$/startup/templates/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/startup/templates/login.html" afterPath="$PROJECT_DIR$/startup/templates/login.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/startup/templates/profile.html" afterPath="$PROJECT_DIR$/startup/templates/profile.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/startup/templates/register.html" afterPath="$PROJECT_DIR$/startup/templates/register.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/startup/templates/registerold.html" afterPath="$PROJECT_DIR$/startup/templates/registerold.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/startup/templates/sell.html" afterPath="$PROJECT_DIR$/startup/templates/sell.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/startup/templates/startup/base.html" afterPath="$PROJECT_DIR$/startup/templates/startup/base.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/startup/templates/startup/buy.html" afterPath="$PROJECT_DIR$/startup/templates/startup/buy.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/startup/templates/startup/form.html" afterPath="$PROJECT_DIR$/startup/templates/startup/form.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/startup/templates/startup/index.html" afterPath="$PROJECT_DIR$/startup/templates/startup/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/startup/templates/startup/login.html" afterPath="$PROJECT_DIR$/startup/templates/startup/login.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/startup/templates/startup/profile.html" afterPath="$PROJECT_DIR$/startup/templates/startup/profile.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/startup/templates/startup/register.html" afterPath="$PROJECT_DIR$/startup/templates/startup/register.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/startup/templates/startup/sell.html" afterPath="$PROJECT_DIR$/startup/templates/startup/sell.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/startup/urls.py" afterPath="$PROJECT_DIR$/startup/urls.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/startup/views.py" afterPath="$PROJECT_DIR$/startup/views.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -182,7 +41,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="forms.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="forms.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/investor/forms.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="222">
@@ -192,12 +51,24 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="settings.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/mysite/settings.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="2286">
+              <caret line="127" column="32" lean-forward="false" selection-start-line="127" selection-start-column="32" selection-end-line="127" selection-end-column="32" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/investor/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="54">
-              <caret line="9" column="35" lean-forward="false" selection-start-line="9" selection-start-column="35" selection-end-line="9" selection-end-column="35" />
-              <folding />
+            <state relative-caret-position="126">
+              <caret line="136" column="37" lean-forward="false" selection-start-line="136" selection-start-column="37" selection-end-line="136" selection-end-column="37" />
+              <folding>
+                <element signature="e#0#14#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -251,7 +122,6 @@
       <find>Login to</find>
       <find>l</find>
       <find>login</find>
-      <find>login</find>
       <find>login a</find>
       <find>login as</find>
       <find>R</find>
@@ -260,7 +130,6 @@
       <find>Regi</find>
       <find>Regis</find>
       <find>Registe</find>
-      <find>Register</find>
       <find>Register</find>
       <find>Register w</find>
       <find>Register wi</find>
@@ -276,8 +145,8 @@
       <find>register wi</find>
       <find>register w</find>
       <find>register</find>
-      <find>register</find>
       <find>log</find>
+      <find>datetime</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -315,7 +184,6 @@
         <option value="$PROJECT_DIR$/startup/templates/startup/index.html" />
         <option value="$PROJECT_DIR$/investor/templates/index.html" />
         <option value="$PROJECT_DIR$/app/templates/app/index.html" />
-        <option value="$PROJECT_DIR$/mysite/settings.py" />
         <option value="$PROJECT_DIR$/mysite/urls.py" />
         <option value="$PROJECT_DIR$/investor/templates/register.html" />
         <option value="$PROJECT_DIR$/investor/templates/login.html" />
@@ -336,9 +204,10 @@
         <option value="$PROJECT_DIR$/investor/urls.py" />
         <option value="$PROJECT_DIR$/investor/models.py" />
         <option value="$PROJECT_DIR$/investor/forms.py" />
-        <option value="$PROJECT_DIR$/investor/views.py" />
         <option value="$PROJECT_DIR$/startup/views.py" />
         <option value="$PROJECT_DIR$/startup/models.py" />
+        <option value="$PROJECT_DIR$/mysite/settings.py" />
+        <option value="$PROJECT_DIR$/investor/views.py" />
       </list>
     </option>
   </component>
@@ -415,7 +284,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="investor" />
+              <option name="myItemId" value="mysite" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -906,14 +775,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/mysite/settings.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="25" column="12" lean-forward="true" selection-start-line="25" selection-start-column="8" selection-end-line="25" selection-end-column="12" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/mysite/urls.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="288">
@@ -1075,14 +936,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/investor/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="54">
-          <caret line="9" column="35" lean-forward="false" selection-start-line="9" selection-start-column="35" selection-end-line="9" selection-end-column="35" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/startup/views.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-944">
@@ -1106,6 +959,24 @@
         <state relative-caret-position="222">
           <caret line="25" column="54" lean-forward="false" selection-start-line="25" selection-start-column="54" selection-end-line="25" selection-end-column="54" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mysite/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2286">
+          <caret line="127" column="32" lean-forward="false" selection-start-line="127" selection-start-column="32" selection-end-line="127" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/investor/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="136" column="37" lean-forward="false" selection-start-line="136" selection-start-column="37" selection-end-line="136" selection-end-column="37" />
+          <folding>
+            <element signature="e#0#14#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

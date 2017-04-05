@@ -3,6 +3,7 @@
 from __future__ import unicode_literals
 
 from django.conf import settings
+import django.core.validators
 from django.db import migrations, models
 import django.db.models.deletion
 
@@ -18,11 +19,13 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name='InvestorProfile',
+            name='StartupProfile',
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('activation_key', models.CharField(max_length=40)),
-                ('key_expires', models.DateTimeField()),
+                ('startupName', models.CharField(max_length=100)),
+                ('stockName', models.CharField(max_length=100)),
+                ('shareCount', models.IntegerField(validators=[django.core.validators.MinValueValidator(1)])),
+                ('sharePrice', models.DecimalField(decimal_places=2, max_digits=20)),
                 ('aadhar', models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, to='app.uid')),
                 ('accno', models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, to='app.accounts')),
                 ('user', models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),

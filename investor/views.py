@@ -16,7 +16,8 @@ from app.models import accounts,uid
 from django.shortcuts import render, get_object_or_404
 from django.urls import reverse
 from django.db.models import F
-from datetime import datetime
+import datetime
+from datetime import datetime as theclass
 from django.template import RequestContext
 from django.shortcuts import render_to_response
 from django.contrib.auth import authenticate, login
@@ -94,13 +95,13 @@ def register(request):
 
 
             profile.activation_key = data
-            profile.key_expires = datetime.datetime.strftime(datetime.datetime.now() + datetime.timedelta(days=2),
+            profile.key_expires = theclass.strftime(theclass.now() + datetime.timedelta(days=2),
                                                              "%Y-%m-%d %H:%M:%S")
 
-            link = "localhost:8000/activate/" + data
+            link = "localhost:8000/investor/activate/" + data
 
             from django.core.mail import EmailMessage
-            email = EmailMessage('Activation Link', link, to=user.email)
+            email = EmailMessage('Activation Link', link, to=[user.email])
             email.send()
 
             profile.accno=accounts
@@ -129,12 +130,13 @@ def register(request):
             {'user_form': user_form, 'profile_form': profile_form,'accounts_form' : accounts_form, 'registered': registered},context)
 
 
-def activation(request):
+def activation(request,key):
     activation_expired = False
     already_active = False
     profile = get_object_or_404(InvestorProfile, activation_key=key)
+    from django.utils import timezone
     if profile.user.is_active == False:
-        if datetime.now() > profile.key_expires:
+        if theclass.now() > profile.key_expires.astimezone(timezone.utc).replace(tzinfo=None):
             activation_expired = True #Display: offer the user to send a new activation link
             id_user = profile.user.id
         else: #Activation successful
@@ -144,7 +146,7 @@ def activation(request):
     #If user is already active, simply display error message
     else:
         already_active = True #Display : error message
-    return render(request, 'siteApp/activation.html', locals())
+    return render(request, 'investor/index.html', locals())
 
 
 @login_required()
@@ -169,10 +171,10 @@ def new_activation_link(request):
         Investor.key_expires = datetime.datetime.strftime(datetime.datetime.now() + datetime.timedelta(days=2),
                                                          "%Y-%m-%d %H:%M:%S")
         Investor.save()
-        link = "localhost:8000/activate/" + datas['activation_key']
+        link = "localhost:8000/investor/activate/" + datas['activation_key']
 
         from django.core.mail import EmailMessage
-        email = EmailMessage('New Activation Link', link, to=user.email)
+        email = EmailMessage('New Activation Link', link, to=[user.email])
         email.send()
 
         return render(request, 'investor/index.html', None)
