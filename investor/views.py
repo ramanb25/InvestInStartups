@@ -6,7 +6,7 @@ from django.http import Http404
 from market.models import ownership
 from startup.models import StartupProfile
 from .models import InvestorProfile
-#from app.models import accounts,uid
+from app.models import accounts,uid
 #from startup.models import StartupProfile
 from django.shortcuts import render
 from django.urls import reverse
@@ -39,7 +39,7 @@ def index(request):
 
 
 #raman
-from .forms import InvestorProfileForm,InvestorUserForm
+from .forms import InvestorProfileForm,InvestorUserForm,InvestorAccountForm
 
 @transaction.atomic
 def register(request):
@@ -56,9 +56,10 @@ def register(request):
         # Note that we make use of both UserForm and UserProfileForm.
         user_form = InvestorUserForm(data=request.POST)
         profile_form = InvestorProfileForm(data=request.POST)
+        accounts_form = InvestorAccountForm(data=request.POST)
 
         # If the two forms are valid...
-        if user_form.is_valid() and profile_form.is_valid():
+        if user_form.is_valid() and profile_form.is_valid() and accounts_form.is_valid():
             # Save the user's form data to the database.
             user = user_form.save()
 
@@ -67,11 +68,15 @@ def register(request):
             user.set_password(user.password)
             user.save()
 
+            accounts=accounts_form.save()
+            accounts.save()
+
             # Now sort out the UserProfile instance.
             # Since we need to set the user attribute ourselves, we set commit=False.
             # This delays saving the model until we're ready to avoid integrity problems.
             profile = profile_form.save(commit=False)
             profile.user = user
+            profile.accno=accounts
 
             # Now we save the UserProfile model instance.
             profile.save()
@@ -83,17 +88,18 @@ def register(request):
         # Print problems to the terminal.
         # They'll also be shown to the user.
         else:
-            print user_form.errors, profile_form.errors
+            print user_form.errors, profile_form.errors, accounts_form.errors
 
     # Not a HTTP POST, so we render our form using two ModelForm instances.
     # These forms will be blank, ready for user input.
     else:
         user_form = InvestorUserForm()
         profile_form = InvestorProfileForm()
+        accounts_form = InvestorAccountForm()
     # Render the template depending on the context.
     return render_to_response(
             'investor/register.html',
-            {'user_form': user_form, 'profile_form': profile_form, 'registered': registered},
+            {'user_form': user_form, 'profile_form': profile_form,'accounts_form':accounts_form, 'registered': registered},
             context)
 
 def user_login(request):

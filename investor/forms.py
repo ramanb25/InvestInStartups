@@ -1,7 +1,7 @@
-#raman
 from .models import InvestorProfile
 from django.contrib.auth.models import User
 from django import forms
+from app.models import accounts
 
 class InvestorUserForm(forms.ModelForm):
     #username is already defined passsword is viewable
@@ -15,4 +15,12 @@ class InvestorUserForm(forms.ModelForm):
 class InvestorProfileForm(forms.ModelForm):
     class Meta:
         model = InvestorProfile
-        fields = ('aadhar','bank', 'accno','ifsc')
+        fields = ['aadhar']
+
+class InvestorAccountForm(forms.ModelForm):
+    bankName = forms.CharField(widget=forms.TextInput(attrs={'class' : 'form-control'}))
+    ifsc = forms.CharField(widget=forms.TextInput(attrs={'class' : 'form-control'}))
+    #accno = forms.CharField(widget=forms.Select(attrs={'class' : 'form-control'}))
+    class Meta:
+        model = accounts
+        fields = ['bankName','accno','ifsc','balance']
