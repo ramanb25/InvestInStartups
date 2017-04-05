@@ -21,6 +21,29 @@ from django.http import HttpResponseRedirect, HttpResponse
 from django.contrib.auth import logout
 from django.contrib.auth.models import User
 
+def getprofile(user):
+    try:
+        StartupProfile.objects.get(user=user)
+        return user
+    except:
+        raise Exception('User Logged in error')
+
+def getuser(username):
+    try:
+        user=User.objects.get(username=username)
+        return user
+    except:
+        raise Exception('User Logged in error')
+
+@login_required()
+def check(request):
+    user=getuser(request.user)
+    if user.is_active:
+        return 1
+    else:
+        raise Exception('User not active')
+
+
 def index(request):
     context=None
     if request.user.is_authenticated():
@@ -137,12 +160,7 @@ def register(request):
             context)
 
 
-def getprofile(user):
-    try:
-        StartupProfile.objects.get(user=user)
-        return user
-    except:
-        raise Exception('User Logged in error')
+
 
 
 def getlink():

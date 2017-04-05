@@ -16,6 +16,23 @@ from django.contrib.auth import logout
 from django.contrib.auth.models import User
 from django.shortcuts import redirect
 from datetime import datetime
+
+@login_required()
+def getuser(username):
+    try:
+        user=User.objects.get(username=username)
+        return user
+    except:
+        raise Exception('User Logged in error')
+
+@login_required()
+def check(request):
+    user=getuser(request.user)
+    if user.is_active:
+        return 1
+    else:
+        raise Exception('User not active')
+
 def isInvestor(user):
     try:
         profile=InvestorProfile.objects.get(user=user)
@@ -26,6 +43,7 @@ def isInvestor(user):
 
 @login_required
 def index(request):
+    check(request)
     obj1=onsale.objects.all()
     obj2=transactions.objects.filter(buyer__username=request.user)
     obj3=transactions.objects.filter(owner__username=request.user)
