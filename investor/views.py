@@ -1,3 +1,5 @@
+import hashlib
+
 from django.contrib.auth.decorators import login_required
 from django.db import transaction
 from django.http import HttpResponse
@@ -6,11 +8,13 @@ from django.http import Http404
 from market.models import ownership
 from startup.models import StartupProfile
 from .models import InvestorProfile
+from app.models import accounts
 #from app.models import accounts,uid
 #from startup.models import StartupProfile
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.urls import reverse
 from django.db.models import F
+from datetime import datetime
 from django.template import RequestContext
 from django.shortcuts import render_to_response
 from django.contrib.auth import authenticate, login
@@ -39,7 +43,7 @@ def index(request):
 
 
 #raman
-from .forms import InvestorProfileForm,InvestorUserForm
+from .forms import InvestorProfileForm,InvestorUserForm,InvestorAccountForm
 
 @transaction.atomic
 def register(request):
@@ -56,22 +60,48 @@ def register(request):
         # Note that we make use of both UserForm and UserProfileForm.
         user_form = InvestorUserForm(data=request.POST)
         profile_form = InvestorProfileForm(data=request.POST)
+        accounts_form = InvestorAccountForm(data=request.POST)
 
         # If the two forms are valid...
-        if user_form.is_valid() and profile_form.is_valid():
+        if user_form.is_valid() and profile_form.is_valid() and accounts_form.is_valid():
             # Save the user's form data to the database.
             user = user_form.save()
 
             # Now we hash the password with the set_password method.
             # Once hashed, we can update the user object.
             user.set_password(user.password)
+            user.is_active=False
             user.save()
 
+            accounts=accounts_form.save()
+            accounts.save()
             # Now sort out the UserProfile instance.
             # Since we need to set the user attribute ourselves, we set commit=False.
             # This delays saving the model until we're ready to avoid integrity problems.
             profile = profile_form.save(commit=False)
             profile.user = user
+            profile.accountInfo=accounts
+
+            import random
+            salt = hashlib.sha1(str(random.random())).hexdigest()[:5]
+            usernamesalt = user.username
+            if isinstance(usernamesalt, unicode):
+                usernamesalt = usernamesalt.encode('utf8')
+            data = hashlib.sha1(salt + usernamesalt).hexdigest()
+
+
+
+
+            profile.activation_key = data
+            profile.key_expires = datetime.datetime.strftime(datetime.datetime.now() + datetime.timedelta(days=2),
+                                                             "%Y-%m-%d %H:%M:%S")
+
+            link = "localhost:8000/activate/" + data
+
+            from django.core.mail import EmailMessage
+            email = EmailMessage('Activation Link', link, to=user.email)
+            email.send()
+
 
             # Now we save the UserProfile model instance.
             profile.save()
@@ -83,18 +113,69 @@ def register(request):
         # Print problems to the terminal.
         # They'll also be shown to the user.
         else:
-            print user_form.errors, profile_form.errors
+            print user_form.errors, profile_form.errors,accounts_form.errors
 
     # Not a HTTP POST, so we render our form using two ModelForm instances.
     # These forms will be blank, ready for user input.
     else:
         user_form = InvestorUserForm()
         profile_form = InvestorProfileForm()
+        accounts_form = InvestorAccountForm()
     # Render the template depending on the context.
     return render_to_response(
             'investor/register.html',
-            {'user_form': user_form, 'profile_form': profile_form, 'registered': registered},
+            {'user_form': user_form, 'profile_form': profile_form,'accounts_form' : accounts_form, 'registered': registered},
             context)
+
+
+def activation(request):
+    activation_expired = False
+    already_active = False
+    profile = get_object_or_404(InvestorProfile, activation_key=key)
+    if profile.user.is_active == False:
+        if datetime.now() > profile.key_expires:
+            activation_expired = True #Display: offer the user to send a new activation link
+            id_user = profile.user.id
+        else: #Activation successful
+            profile.user.is_active = True
+            profile.user.save()
+
+    #If user is already active, simply display error message
+    else:
+        already_active = True #Display : error message
+    return render(request, 'siteApp/activation.html', locals())
+
+
+@login_required()
+def new_activation_link(request):
+    datas={}
+    user = User.objects.get(username=request.user)
+    if user is not None and not user.is_active:
+        datas['username']=user.username
+        datas['email']=user.email
+        datas['email_path']="/ResendEmail.txt"
+        datas['email_subject']="Resend Activation Mail"
+
+        import random
+        salt = hashlib.sha1(str(random.random())).hexdigest()[:5]
+        usernamesalt = datas['username']
+        if isinstance(usernamesalt, unicode):
+            usernamesalt = usernamesalt.encode('utf8')
+        datas['activation_key']= hashlib.sha1(salt+usernamesalt).hexdigest()
+
+        Investor=InvestorProfile.objects.get(user=user)
+        Investor.activation_key = datas['activation_key']
+        Investor.key_expires = datetime.datetime.strftime(datetime.datetime.now() + datetime.timedelta(days=2),
+                                                         "%Y-%m-%d %H:%M:%S")
+        Investor.save()
+        link = "localhost:8000/activate/" + datas['activation_key']
+
+        from django.core.mail import EmailMessage
+        email = EmailMessage('New Activation Link', link, to=user.email)
+        email.send()
+
+        return render(request, 'investor/index.html', None)
+
 
 def user_login(request):
     # Like before, obtain the context for the user's request.

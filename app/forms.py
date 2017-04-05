@@ -1,7 +1,13 @@
-# #raman
-# from .models import UserProfile
-# from django.contrib.auth.models import User
+# # #raman
+# from .models import accounts
+# # from django.contrib.auth.models import User
 # from django import forms
+
+
+# class AccountForm(forms.ModelForm):
+# 	class Meta:
+# 		model = accounts
+# 		field = '__all__'
 #
 # class UserForm(forms.ModelForm):
 #     #username is already defined passsword is viewable
