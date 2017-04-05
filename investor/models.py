@@ -10,7 +10,9 @@ class InvestorProfile(models.Model):
 
 	# new attributes
 	aadhar = models.OneToOneField('app.uid', on_delete=models.CASCADE)
+	bank=models.CharField(max_length=20)
 	accno = models.OneToOneField('app.accounts', on_delete=models.CASCADE)
+	ifsc=models.CharField(max_length=11)
 
 	# Override the __unicode__() method to return out something meaningful!
 	def __unicode__(self):

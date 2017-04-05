@@ -15,4 +15,4 @@ class InvestorUserForm(forms.ModelForm):
 class InvestorProfileForm(forms.ModelForm):
     class Meta:
         model = InvestorProfile
-        fields = ('aadhar', 'accno')
+        fields = '__all__'#('aadhar', 'accno')
