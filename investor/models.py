@@ -13,6 +13,9 @@ class InvestorProfile(models.Model):
 	bank=models.CharField(max_length=20)
 	accno = models.OneToOneField('app.accounts', on_delete=models.CASCADE)
 	ifsc=models.CharField(max_length=11)
+	
+	class Meta:
+		unique_together = (("accno", "ifsc","bank"),)
 
 	# Override the __unicode__() method to return out something meaningful!
 	def __unicode__(self):

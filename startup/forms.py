@@ -19,4 +19,4 @@ class StartupProfileForm(forms.ModelForm):
     #accno = forms.CharField(widget=forms.Select(attrs={'class' : 'form-control'}))
     class Meta:
         model = StartupProfile
-        fields = '__all__'#('aadhar', 'accno','startupName','shareCount','sharePrice','stockName')
+        fields = ('aadhar','bank' ,'accno','ifsc','startupName','shareCount','sharePrice','stockName')
