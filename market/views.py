@@ -2,7 +2,7 @@ from django.contrib.auth.decorators import login_required
 from django.db import transaction
 from django.http import HttpResponse
 from django.http import Http404
-from .models import onsale,ownership
+from .models import onsale,ownership,transactions
 from startup.models import StartupProfile
 from investor.models import InvestorProfile
 from django.shortcuts import render
@@ -15,7 +15,7 @@ from django.http import HttpResponseRedirect, HttpResponse
 from django.contrib.auth import logout
 from django.contrib.auth.models import User
 from django.shortcuts import redirect
-
+from datetime import datetime
 def isInvestor(user):
     try:
         profile=InvestorProfile.objects.get(user=user)
@@ -27,7 +27,9 @@ def isInvestor(user):
 @login_required
 def index(request):
     obj1=onsale.objects.all()
-    context={'list1':obj1,'user':request.user,'isinvestor':isInvestor(request.user)}
+    obj2=transactions.objects.filter(buyer__username=request.user)
+    obj3=transactions.objects.filter(owner__username=request.user)
+    context={'list1':obj1,'user':request.user,'isinvestor':isInvestor(request.user),'bought':obj2,'sold':obj3}
     return render(request,'market/index.html',context)
 
 
@@ -193,6 +195,8 @@ def execBuy(request, context=None):
         owner_onsale.delete()
     if (owner_ownership.sharepercentage == 0):
         owner_ownership.delete()
+    transaction=transactions(owner=owner_user,buyer=buyer_user,stockpercentage=qtypurchase,stockprice=owner_onsale.stockprice,timestamp=datetime.now(),startup=startup_Profile)
+    transaction.save()
     return redirect('/investor/')#render(request,'market/index.html',context)
 
 

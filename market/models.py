@@ -20,6 +20,14 @@ class ownership(models.Model):
     startup=models.ForeignKey('startup.StartupProfile')
     sharepercentage=models.FloatField()
 
+class transactions(models.Model):
+    owner=models.ForeignKey(User,on_delete=models.CASCADE,related_name='owner')
+    buyer=models.ForeignKey(User,on_delete=models.CASCADE,related_name='buyer')
+    stockpercentage=models.FloatField()
+    stockprice=models.FloatField()
+    startup=models.ForeignKey('startup.StartupProfile')
+    timestamp=models.DateTimeField()
+
 
 
 

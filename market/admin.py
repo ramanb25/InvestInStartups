@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import  ownership,onsale
+from .models import  ownership,onsale,transactions
 
 # from .models import UserProfile
 
@@ -13,6 +13,7 @@ from .models import  ownership,onsale
 #admin.site.register(onSaleStartup)
 admin.site.register(ownership)
 admin.site.register(onsale)
+admin.site.register(transactions)
 # admin.site.register(InvestorProfile)
 # admin.site.register(StartupProfile)
 #admin.site.register(holdings)
