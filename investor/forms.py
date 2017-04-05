@@ -1,4 +1,3 @@
-#raman
 from .models import InvestorProfile
 from django.contrib.auth.models import User
 from django import forms

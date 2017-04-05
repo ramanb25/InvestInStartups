@@ -4,7 +4,9 @@ from django.http import HttpResponse
 from django.http import Http404
 from .models import StartupProfile
 from market.models import ownership,onsale
-from app.models import accounts
+
+from app.models import accounts,uid
+
 #from startup.models import StartupProfile
 from django.shortcuts import render
 from django.urls import reverse
@@ -69,14 +71,18 @@ def register(request):
             user.set_password(user.password)
             user.save()
 
+
             account=accounts_form.save()
             account.save()
+
             # Now sort out the UserProfile instance.
             # Since we need to set the user attribute ourselves, we set commit=False.
             # This delays saving the model until we're ready to avoid integrity problems.
             profile = profile_form.save(commit=False)
             profile.user = user
-            profile.accountInfo = account
+
+            profile.accno=accounts
+
 
             # Now we save the UserProfile model instance.
             profile.save()
@@ -90,18 +96,19 @@ def register(request):
         # Print problems to the terminal.
         # They'll also be shown to the user.
         else:
-            print user_form.errors, profile_form.errors
+            print user_form.errors, profile_form.errors,accounts_form.errors
 
     # Not a HTTP POST, so we render our form using two ModelForm instances.
     # These forms will be blank, ready for user input.
     else:
         user_form = StartupUserForm()
         profile_form = StartupProfileForm()
-        accounts_form = StartupAccountForm()
+
+        accounts_form=StartupAccountForm()
     # Render the template depending on the context.
     return render_to_response(
             'register.html',
-            {'user_form': user_form, 'profile_form': profile_form,'accounts_form': accounts_form, 'registered': registered},
+            {'user_form': user_form, 'profile_form': profile_form,'accounts_form':accounts_form, 'registered': registered},
             context)
 
 def user_login(request):

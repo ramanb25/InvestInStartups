@@ -9,6 +9,8 @@ class accounts(models.Model):
 	ifsc=models.CharField(max_length=20)
 	accno=models.CharField(max_length=20)
 	balance=models.DecimalField(max_digits=20,decimal_places=2)
+	bankName=models.CharField(max_length=20)
+	ifsc=models.CharField(max_length=20)
 
 	def __str__(self):
 		return self.accno

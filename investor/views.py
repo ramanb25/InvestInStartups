@@ -10,6 +10,8 @@ from startup.models import StartupProfile
 from .models import InvestorProfile
 from app.models import accounts
 #from app.models import accounts,uid
+
+from app.models import accounts,uid
 #from startup.models import StartupProfile
 from django.shortcuts import render, get_object_or_404
 from django.urls import reverse
@@ -80,7 +82,6 @@ def register(request):
             # This delays saving the model until we're ready to avoid integrity problems.
             profile = profile_form.save(commit=False)
             profile.user = user
-            profile.accountInfo=accounts
 
             import random
             salt = hashlib.sha1(str(random.random())).hexdigest()[:5]
@@ -102,6 +103,7 @@ def register(request):
             email = EmailMessage('Activation Link', link, to=user.email)
             email.send()
 
+            profile.accno=accounts
 
             # Now we save the UserProfile model instance.
             profile.save()
@@ -124,8 +126,7 @@ def register(request):
     # Render the template depending on the context.
     return render_to_response(
             'investor/register.html',
-            {'user_form': user_form, 'profile_form': profile_form,'accounts_form' : accounts_form, 'registered': registered},
-            context)
+            {'user_form': user_form, 'profile_form': profile_form,'accounts_form' : accounts_form, 'registered': registered},context)
 
 
 def activation(request):
