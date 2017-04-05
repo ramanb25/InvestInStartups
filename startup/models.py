@@ -11,7 +11,7 @@ class StartupProfile(models.Model):
 	# new attributes
 	aadhar = models.OneToOneField('app.uid', on_delete=models.CASCADE)
 
-	accountInfo = models.OneToOneField('app.accounts', on_delete=models.CASCADE)
+	accountInfo2 = models.OneToOneField('app.accounts', on_delete=models.CASCADE)
 	
 	#TODO make it primary key
 	startupName=models.CharField(max_length=100)
