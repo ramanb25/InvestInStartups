@@ -4,7 +4,7 @@ from django.http import HttpResponse
 from django.http import Http404
 from .models import StartupProfile
 from market.models import ownership,onsale
-#from app.models import accounts,uid
+from app.models import accounts
 #from startup.models import StartupProfile
 from django.shortcuts import render
 from django.urls import reverse
@@ -41,7 +41,7 @@ def index(request):
 
 
 #raman
-from .forms import StartupProfileForm,StartupUserForm
+from .forms import StartupProfileForm,StartupUserForm,StartupAccountForm
 @transaction.atomic
 def register(request):
     # Like before, get the request's context.
@@ -57,9 +57,10 @@ def register(request):
         # Note that we make use of both UserForm and UserProfileForm.
         user_form = StartupUserForm(data=request.POST)
         profile_form = StartupProfileForm(data=request.POST)
+        accounts_form = StartupAccountForm(data=request.POST)
 
         # If the two forms are valid...
-        if user_form.is_valid() and profile_form.is_valid():
+        if user_form.is_valid() and profile_form.is_valid() and accounts_form.is_valid():
             # Save the user's form data to the database.
             user = user_form.save()
 
@@ -68,11 +69,14 @@ def register(request):
             user.set_password(user.password)
             user.save()
 
+            account=accounts_form.save()
+            account.save()
             # Now sort out the UserProfile instance.
             # Since we need to set the user attribute ourselves, we set commit=False.
             # This delays saving the model until we're ready to avoid integrity problems.
             profile = profile_form.save(commit=False)
             profile.user = user
+            profile.accountInfo = account
 
             # Now we save the UserProfile model instance.
             profile.save()
@@ -93,10 +97,11 @@ def register(request):
     else:
         user_form = StartupUserForm()
         profile_form = StartupProfileForm()
+        accounts_form = StartupAccountForm()
     # Render the template depending on the context.
     return render_to_response(
             'register.html',
-            {'user_form': user_form, 'profile_form': profile_form, 'registered': registered},
+            {'user_form': user_form, 'profile_form': profile_form,'accounts_form': accounts_form, 'registered': registered},
             context)
 
 def user_login(request):
