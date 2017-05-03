@@ -1,0 +1,62 @@
+<html>
+<head>
+  {% load static %}
+	<!-- Material Design fonts -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css">
+
+  <!-- Bootstrap Material Design -->
+  <link rel="stylesheet" type="text/css" href="{% static "app/material/css/bootstrap.min.css" %}">
+  <link rel="stylesheet" type="text/css" href="{% static "app/material/css/mdb.min.css" %}">
+  <link rel="stylesheet" type="text/css" href="{% static "app/material/css/style.css" %}">
+</head>
+
+<body style="background-color:gainsboro">
+	<div class="jumbotron">
+  <h1>Welcome to Invest In Startup</h1>
+
+  <p>To continue to use portal, Please Login/Register using below Links</p>
+
+  
+  </div>
+
+  
+  <div class="row">
+    <div class="col-md-1">
+    </div>
+    <div class="col-md-5">
+      <div class="card">
+          <h3 class="card-header primary-color-dark white-text">Investor</h3>
+          <div class="card-block">
+              <h4 class="card-title">Investor Portal</h4>
+              <p class="card-text">Login/Register with Investor Credential to access Investor functionalities</p>
+              <a class="btn btn-primary" href='../../investor/login'>Login</a>
+              <a class="btn btn-primary" href='../../investor/register'>Sign Up</a>
+          </div>
+      </div>
+    </div>
+    <div class="col-md-5">
+      <div class="card">
+          <h3 class="card-header primary-color-dark white-text">Startup</h3>
+          <div class="card-block">
+              <h4 class="card-title">Startup Portal</h4>
+              <p class="card-text">Login/Register with Startup Credentials to list/sell stocks.</p><br>
+              <a class="btn btn-primary" href='../../startup/login'>Login</a>
+              <a class="btn btn-primary" href='../../startup/register'>Sign Up</a>
+          </div>
+      </div>
+    </div>
+    <div class="col-md-1">
+    </div>
+  </div>
+
+	<script src="{% static "app/material/js/jquery-2.2.3.min.js" %}"></script>
+
+  <script src="{% static "app/material/js/tether.min.js" %}"></script>
+
+  <script src="{% static "app/material/js/bootstrap.min.js" %}"></script>
+
+  <script src="{% static "app/material/js/mdb.min.js" %}"></script>
+  
+
+</body>
+</html>

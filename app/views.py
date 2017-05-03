@@ -17,7 +17,7 @@ def index(request):
     if request.user.is_authenticated():
         return redirect('/market/')
     else:
-        return render(request,'app/requestLogin.html')
+        return render(request,'app/requestLogin2.html')
 
 def forms(request):
     return render(request,'app/form.html')

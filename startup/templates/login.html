@@ -1,13 +1,17 @@
 <!DOCTYPE html>
 <html>
     <head>
-        {% load static %}
-        <link href="{% static "app/css/bootstrap.min.css" %}" rel="stylesheet">
-        <!-- Is anyone getting tired of repeatedly entering the header over and over?? -->
         <title>Startup Login</title>
+        {% load static %}
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css">
+
+      <!-- Bootstrap Material Design -->
+      <link rel="stylesheet" type="text/css" href="{% static "app/material/css/bootstrap.min.css" %}">
+      <link rel="stylesheet" type="text/css" href="{% static "app/material/css/mdb.min.css" %}">
+      <link rel="stylesheet" type="text/css" href="{% static "app/material/css/style.css" %}">
     </head>
 
-    <body>
+    <body style="background-color:gainsboro">
         <div class="jumbotron" >
             <h4 style="margin-left:20px" align="Center">Login as Startup</h4>  
         </div>
@@ -16,30 +20,50 @@
         <div class="col-md-2">
         </div>
         <div class="col-md-8">
-            <div class="panel panel-primary">
-        <!-- Default panel contents -->
-                <div class="panel-heading">Login</div>
+            <div class="card">
+            <div class="card-block">
 
-                
-                <!-- Rango says: <strong>registerwtf here!</strong><br /> -->
-                <div class="form-group">
-                    <form id="login_form" method="post" action="/startup/login/">
-                        {% csrf_token %}
-                        <b>Username:</b> <input type="text" class="form-control" name="username" value="" size="50" />
-                        <br />
-                        <b>Password:</b>  <input type="password" class="form-control" name="password" value="" size="50" />
-                        <br />
-
-                        <Button type="submit" style="width:50%;margin-left:25%" class="btn btn-primary" name="submit">Log In!</Button>
-                    </form>
+                <!--Header-->
+                <div class="form-header  primary-color-dark">
+                    <h3><i class="fa fa-lock"></i> Login:</h3>
                 </div>
+
+                <!--Body-->
+                <form id="login_form" method="post" action="/startup/login/">
+                    {% csrf_token %}
+                    <div class="md-form">
+                        <i class="fa fa-envelope prefix"></i>
+                        <input type="text" name="username" size="50" value="" class="form-control">
+                        <label for="form2">Username</label>
+                    </div>
+
+                    <div class="md-form">
+                        <i class="fa fa-lock prefix"></i>
+                        <input type="password" name="password" size="50" value="" class="form-control">
+                        <label for="form4">Your password</label>
+                    </div>
+
+                    <div class="text-center">
+                        <button class="btn btn-indigo" type="submit">Login</button>
+                    </div>
+                </form>
+
             </div>
+
+        </div>
         </div>
         <div class="col-md-2">
         </div>
+        </div>
+
         
-        <script src="{% static "app/js/jquery.js" %}"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="{% static "app/js/bootstrap.min.js" %}"></script> 
+        
+        <script src="{% static "app/material/js/jquery-2.2.3.min.js" %}"></script>
+
+      <script src="{% static "app/material/js/tether.min.js" %}"></script>
+
+      <script src="{% static "app/material/js/bootstrap.min.js" %}"></script>
+
+      <script src="{% static "app/material/js/mdb.min.js" %}"></script>
     </body>
 </html>

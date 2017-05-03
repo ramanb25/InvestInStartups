@@ -5,43 +5,51 @@
 	<link href="{% static "app/css/bootstrap.min.css" %}" rel="stylesheet">
 </head>
 <body>
-
-	<form action="../execBuy/" method='post'>
-
-		<div class="panel panel-primary">
-			<div class="panel-heading">Stocks On Sale</div>
-			<table class="table">
-				<tr>
-					<td>Choice</td>
-					<td>Stock Owner</td>
-					<td>Name</td>
-					<td>Shares Available</td>
-					<td>Price</td>
-					<td>Qty to Purchase</td>
-				</tr>
-				{% for o in onsale %}
-					<tr>
-						<td>
-							
-								<input type="radio" name='choice' value="{{o.startup.stockName}}  {{o.owner.username}}">
-                                <input type="hidden" name='username' value="{{o.owner.username}}">
-                            
-							
-						</td>
-						<td>{{o.owner.username}}
-						<td>{{o.startup.stockName}}</td>
-						<td>{{o.stockpercentage}}</td>
-						<td>{{o.stockprice}}</td>
-						<td><input type="text" class="form-control" name="qty{{o.startup.stockName}}  {{o.owner.username}}"></td>
-					</tr>
-				{% endfor %}
-
-
-			</table>
+	<div class="row">
+		<div class="col-md-1">
 		</div>
-		<input class="btn btn-primary btn-sm" type='submit' name='submit' value='Go!'>
-	</form>
+		<div class="col-md-10">
+			<form action="../execBuy/" method='post'>
 
+				<div class="card">
+					<div class="card-header blue darken-3 white-text">Stocks On Sale</div>
+					<table class="table">
+						<tr>
+							<td>Choice</td>
+							<td>Stock Owner</td>
+							<td>Name</td>
+							<td>Shares Available</td>
+							<td>Price</td>
+							<td>Qty to Purchase</td>
+						</tr>
+						{% for o in onsale %}
+							<tr>
+								<td>
+									
+										<input type="radio" name='choice' value="{{o.startup.stockName}}  {{o.owner.username}}">
+		                                <input type="hidden" name='username' value="{{o.owner.username}}">
+		                            
+									
+								</td>
+								<td>{{o.owner.username}}
+								<td>{{o.startup.stockName}}</td>
+								<td>{{o.stockpercentage}}</td>
+								<td>{{o.stockprice}}</td>
+								<td><input type="text" class="form-inline" name="qty{{o.startup.stockName}}  {{o.owner.username}}" ></td>
+							</tr>
+						{% endfor %}
+
+
+					</table>
+				</div>
+				<div class="text-center">
+		            <button class="btn btn-primary" type="submit">Purchase</button>
+		        </div>
+			</form>
+		</div>
+		<div class="col-md-1">
+		</div>
+	</div>
 	    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="{% static "app/js/jquery.js" %}"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->

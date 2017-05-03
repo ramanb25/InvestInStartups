@@ -4,101 +4,110 @@
 	{% load static %}
 	<link href="{% static "app/css/bootstrap.min.css" %}" rel="stylesheet">
 </head>
-<body>
+<body style="background-color:gainsboro">
+
+	<div class="row">
+		<div class="col-md-1">
+		</div>
+		<div class="col-md-10">
+			<div class="card">
+			<!-- Default panel contents -->
+				<div class="card-header blue darken-3 white-text">Stocks on Sale</div>
+
+				<!-- Table -->
+				<table class="table table-hover">
+					<tr>
+						<td>Stock Owner</td>
+						<td>Stock Name</td>
+						<td>Share Count</td>
+						<td>Share Price</td>
+					</tr>
+					{% for o in list1 %}
+						<tr>
+							<td>{{o.owner.username}}
+							<td>{{o.startup.stockName}}</td>
+							<td>{{o.stockpercentage}}</td>
+							<td>{{o.stockprice}}</td>
+						</tr>
+					{% endfor %}
+				</table>
+			</div>
+			<br>
+			<br>
 
 
-	<div class="panel panel-primary">
-	<!-- Default panel contents -->
-		<div class="panel-heading">Stocks on Sale</div>
 
-		<!-- Table -->
-		<table class="table">
-			<tr>
-				<td>Stock Owner</td>
-				<td>Stock Name</td>
-				<td>Share Count</td>
-				<td>Share Price</td>
-			</tr>
-			{% for o in list1 %}
-				<tr>
-					<td>{{o.owner.username}}
-					<td>{{o.startup.stockName}}</td>
-					<td>{{o.stockpercentage}}</td>
-					<td>{{o.stockprice}}</td>
-				</tr>
-			{% endfor %}
-		</table>
+		    <div class="card">
+			<!-- Default panel contents -->
+				<div class="card-header blue darken-3 white-text">All Bought</div>
+
+				<!-- Table -->
+				<table class="table table-hover">
+					<tr>
+		                <td>Time</td>
+						<td>Bought from</td>
+						<td>Stock Name</td>
+						<td>Share Percentage</td>
+						<td>Bought at</td>
+					</tr>
+					{% for o in bought %}
+						<tr>
+		                  <td>{{o.timestamp}}
+							<td>{{o.owner.username}}
+							<td>{{o.startup.stockName}}</td>
+							<td>{{o.stockpercentage}}</td>
+							<td>{{o.stockprice}}</td>
+						</tr>
+					{% endfor %}
+				</table>
+			</div>
+			<br>
+			<br>
+
+
+
+		       <div class="card">
+			<!-- Default panel contents -->
+				<div class="card-header blue darken-3 white-text">All Sold</div>
+
+				<!-- Table -->
+				<table class="table table-hover">
+					<tr>
+		                <td>Time</td>
+						<td>Sold To</td>
+						<td>Stock Name</td>
+						<td>Share Percentage</td>
+						<td>Sold At</td>
+					</tr>
+					{% for o in sold %}
+						<tr>
+		                    <td>{{o.timestamp}}
+							<td>{{o.buyer.username}}
+							<td>{{o.startup.stockName}}</td>
+							<td>{{o.stockpercentage}}</td>
+							<td>{{o.stockprice}}</td>
+						</tr>
+					{% endfor %}
+				</table>
+			</div>
+			<br>
+			<br>
+		</div>
+		<div class="col-md-1">
+		</div>
 	</div>
-	<br>
-	<br>
-
-
-
-    <div class="panel panel-primary">
-	<!-- Default panel contents -->
-		<div class="panel-heading">All Bought</div>
-
-		<!-- Table -->
-		<table class="table">
-			<tr>
-                <td>Time</td>
-				<td>Bought from</td>
-				<td>Stock Name</td>
-				<td>Share Percentage</td>
-				<td>Bought at</td>
-			</tr>
-			{% for o in bought %}
-				<tr>
-                  <td>{{o.timestamp}}
-					<td>{{o.owner.username}}
-					<td>{{o.startup.stockName}}</td>
-					<td>{{o.stockpercentage}}</td>
-					<td>{{o.stockprice}}</td>
-				</tr>
-			{% endfor %}
-		</table>
-	</div>
-	<br>
-	<br>
-
-
-
-       <div class="panel panel-primary">
-	<!-- Default panel contents -->
-		<div class="panel-heading">All Sold</div>
-
-		<!-- Table -->
-		<table class="table">
-			<tr>
-                <td>Time</td>
-				<td>Sold To</td>
-				<td>Stock Name</td>
-				<td>Share Percentage</td>
-				<td>Sold At</td>
-			</tr>
-			{% for o in sold %}
-				<tr>
-                    <td>{{o.timestamp}}
-					<td>{{o.buyer.username}}
-					<td>{{o.startup.stockName}}</td>
-					<td>{{o.stockpercentage}}</td>
-					<td>{{o.stockprice}}</td>
-				</tr>
-			{% endfor %}
-		</table>
-	</div>
-	<br>
-	<br>
 
 
 
 
 
 
+	 <script src="{% static "app/material/js/jquery-2.2.3.min.js" %}"></script>
 
-	    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="{% static "app/js/jquery.js" %}"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="{% static "app/js/bootstrap.min.js" %}"></script>
+  <script src="{% static "app/material/js/tether.min.js" %}"></script>
+
+  <script src="{% static "app/material/js/bootstrap.min.js" %}"></script>
+
+  <script src="{% static "app/material/js/mdb.min.js" %}"></script>
 </body>
 </html>

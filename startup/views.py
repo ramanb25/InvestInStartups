@@ -121,7 +121,7 @@ def register(request):
             profile.key_expires = theclass.strftime(theclass.now() + datetime.timedelta(days=2),
                                                              "%Y-%m-%d %H:%M:%S")
 
-            link = "localhost:8000/investor/activate/" + data
+            link = "localhost:8000/startup/activate/" + data
 
             from django.core.mail import EmailMessage
             email = EmailMessage('Activation Link', link, to=[user.email])
@@ -182,7 +182,7 @@ def activation(request,key):
     #If user is already active, simply display error message
     else:
         already_active = True #Display : error message
-    return render(request, getlink()+'/index.html', locals())
+    return render(request, 'startup/index.html', locals())
 
 
 

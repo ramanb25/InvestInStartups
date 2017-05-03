@@ -43,12 +43,17 @@ def isInvestor(user):
 
 @login_required
 def index(request):
-    check(request)
-    obj1=onsale.objects.all()
-    obj2=transactions.objects.filter(buyer__username=request.user)
-    obj3=transactions.objects.filter(owner__username=request.user)
-    context={'list1':obj1,'user':request.user,'isinvestor':isInvestor(request.user),'bought':obj2,'sold':obj3}
-    return render(request,'market/index.html',context)
+    #check(request)
+    u = User.objects.get(username=request.user)
+    if u.is_active:
+        obj1=onsale.objects.all()
+        obj2=transactions.objects.filter(buyer__username=request.user)
+        obj3=transactions.objects.filter(owner__username=request.user)
+        context={'list1':obj1,'user':request.user,'isinvestor':isInvestor(request.user),'bought':obj2,'sold':obj3}
+        return render(request,'market/index.html',context)
+    else:
+        raise Exception('User not active')
+
 
 
 #raman TODO Put loginreq everywhere
