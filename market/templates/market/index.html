@@ -4,7 +4,7 @@
 	{% load static %}
 	<link href="{% static "app/css/bootstrap.min.css" %}" rel="stylesheet">
 </head>
-<body style="background-color:gainsboro">
+<body style="background-image:url({% static "app/assets/bg.jpeg" %}); background-size:100% 100%;background-repeat:no-repeat"> <!-- style="background-color:gainsboro"> -->
 
 	<div class="row">
 		<div class="col-md-1">
@@ -12,7 +12,7 @@
 		<div class="col-md-10">
 			<div class="card">
 			<!-- Default panel contents -->
-				<div class="card-header blue darken-3 white-text">Stocks on Sale</div>
+				<div class="card-header light-blue darken-4 white-text">Stocks on Sale</div>
 
 				<!-- Table -->
 				<table class="table table-hover">
@@ -39,7 +39,7 @@
 
 		    <div class="card">
 			<!-- Default panel contents -->
-				<div class="card-header blue darken-3 white-text">All Bought</div>
+				<div class="card-header light-blue darken-4 white-text">All Bought</div>
 
 				<!-- Table -->
 				<table class="table table-hover">
@@ -68,7 +68,7 @@
 
 		       <div class="card">
 			<!-- Default panel contents -->
-				<div class="card-header blue darken-3 white-text">All Sold</div>
+				<div class="card-header light-blue darken-4 white-text">All Sold</div>
 
 				<!-- Table -->
 				<table class="table table-hover">
