@@ -35,10 +35,11 @@
         </a>
         <div class="collapse navbar-collapse" id="navbarNav1">
             <ul class="navbar-nav mr-auto">
-                
+                {% if isinvestor %}
                 <li class="nav-item">
                     <a class="nav-link" href="/market/buy">Buy</a>
                 </li>
+                {% endif %}
                 <li class="nav-item">
                     <a class="nav-link" href="/market/sell">Sell</a>
                 </li>
@@ -60,6 +61,6 @@
         </div>
     </div>
 </nav>
-
+<br>
 </body>
 </html>

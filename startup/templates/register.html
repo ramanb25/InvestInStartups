@@ -2,10 +2,14 @@
     <head>
         <title>Startup Register</title>
         {% load static %}
+       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="{% static "app/material/css/bootstrap.min.css" %}">
+  <link rel="stylesheet" type="text/css" href="{% static "app/material/css/mdb.min.css" %}">
+  <link rel="stylesheet" type="text/css" href="{% static "app/material/css/style.css" %}">
         <link href="{% static "app/css/bootstrap.min.css" %}" rel="stylesheet">
     </head>
 
-    <body>
+    <body style="background-image:url({% static "app/assets/bg.jpeg" %}); background-size:100% 100%;background-repeat:no-repeat">
         <div class="jumbotron" >
             <h4 style="margin-left:20px" align="Center">Register as Startup</h4>  
         </div>
@@ -13,9 +17,12 @@
         <div class="col-md-2">
         </div>
         <div class="col-md-8">
-            <div class="panel panel-primary">
+            <div class="card">
         <!-- Default panel contents -->
-                <div class="panel-heading">Register Here!</div>
+                <div class="form-header  primary-color-dark">
+                    <h3><i class="fa fa-lock"></i> Register:</h3>
+                </div>
+
                 <br>
                 {% if registered %}
                     <div class="alert alert-success">
@@ -45,8 +52,14 @@
         <div class="col-md-2">
         </div>
         {% endif %}
-            <script src="{% static "app/js/jquery.js" %}"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="{% static "app/js/bootstrap.min.js" %}"></script> 
+        <br>
+        <br>
+        <script src="{% static "app/material/js/jquery-2.2.3.min.js" %}"></script>
+
+  <script src="{% static "app/material/js/tether.min.js" %}"></script>
+
+  <script src="{% static "app/material/js/bootstrap.min.js" %}"></script>
+
+  <script src="{% static "app/material/js/mdb.min.js" %}"></script>
     </body>
 </html>

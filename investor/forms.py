@@ -6,8 +6,8 @@ from app.models import accounts
 class InvestorUserForm(forms.ModelForm):
     #username is already defined passsword is viewable
     password = forms.CharField(widget=forms.PasswordInput())
-    username = forms.CharField(widget=forms.TextInput(attrs={'class' : 'form-control'}))
-    email = forms.CharField(widget=forms.TextInput(attrs={'class' : 'form-control'}))
+    username = forms.CharField(widget=forms.TextInput(attrs={'class' : 'form-inline'}))
+    email = forms.CharField(widget=forms.TextInput(attrs={'class' : 'form-inline'}))
     class Meta:
         model = User
         fields = ('username', 'email', 'password')
@@ -18,8 +18,8 @@ class InvestorProfileForm(forms.ModelForm):
         fields = ['aadhar']
 
 class InvestorAccountForm(forms.ModelForm):
-    bankName = forms.CharField(widget=forms.TextInput(attrs={'class' : 'form-control'}))
-    ifsc = forms.CharField(widget=forms.TextInput(attrs={'class' : 'form-control'}))
+    bankName = forms.CharField(widget=forms.TextInput(attrs={'class' : 'form-inline'}))
+    ifsc = forms.CharField(widget=forms.TextInput(attrs={'class' : 'form-inline'}))
     #accno = forms.CharField(widget=forms.Select(attrs={'class' : 'form-control'}))
     class Meta:
         model = accounts
