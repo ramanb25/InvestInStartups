@@ -4,41 +4,52 @@
 	{% load static %}
 	<link href="{% static "app/css/bootstrap.min.css" %}" rel="stylesheet">
 </head>
-<body>
+<body style="background-image:url({% static "app/assets/bg.jpeg" %}); background-size:100% 100%;background-repeat:no-repeat">
 
-
-	<div class="panel panel-primary">
-	<!-- Default panel contents -->
-		<div class="panel-heading">Choose Stock to Sell</div>
-		<form action="../execStartupSell/" method='post'>
-		<!-- Table -->
-			<table class="table">
-				<tr>
+	<div class="row">
+		<div class="col-md-1">
+		</div>
+		<div class="col-md-10">
+			<form action="../execStartupSell/" method='post'>
+				<div class="card">
+			<!-- Default panel contents -->
+					<div class="card-header primary-color-dark white-text">Specify Listing Details</div>
 					
-					<td>Stock</td>
-					<td>Available Shares</td>
-					<td>Qty to Sell</td>
-					<td>Quote Price</td>
-				</tr>
-				{% for o in list %}
-					<tr>
-						
-						<td>{{o.startup.stockName}}</td>
-						<td>{{o.sharepercentage}}</td>
-						<td><input type="text" class="form-control" name="qty{{o.startup.stockName}}"></td>
-						<td><input type="text" class="form-control" name="price{{o.startup.stockName}}"></td>
-					</tr>
-				{% endfor %}
-			</table>
-			<input class="btn btn-primary btn-sm" type='submit' name='submit' value='Sell!'>
-		</form>
+					<!-- Table -->
+					<table class="table">
+						<tr>
+							
+							<td>Stock</td>
+							<td>Available Shares</td>
+							<td>Qty to Sell</td>
+							<td>Quote Price</td>
+						</tr>
+						{% for o in list %}
+							<tr>
+								
+								<td>{{o.startup.stockName}}</td>
+								<td>{{o.sharepercentage}}</td>
+								<td><input type="text" class="form-inline" name="qty{{o.startup.stockName}}"></td>
+								<td><input type="text" class="form-inline" name="price{{o.startup.stockName}}"></td>
+							</tr>
+						{% endfor %}
+					</table>
+
+				</div>
+				<div class="text-center">
+		            <button class="btn btn-primary" type="submit">Sell</button>
+				</div>
+			</form>
+			<br>
+			<div class="alert alert-warning">
+			  <strong>Warning!</strong> Any Previous Listings of same stock would be overwritten.
+			</div>
+			<br>
+			<br>
+		</div>
+		<div class="col-md-1">
+		</div>
 	</div>
-	<br>
-	<div class="alert alert-warning">
-	  <strong>Warning!</strong> Any Previous Listings of same stock would be overwritten.
-	</div>
-	<br>
-	<br>
 	
 	    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="{% static "app/js/jquery.js" %}"></script>

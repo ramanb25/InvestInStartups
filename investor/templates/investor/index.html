@@ -2,82 +2,136 @@
 <html>
 <head>
 	{% load static %}
+	
 	<link href="{% static "app/css/bootstrap.min.css" %}" rel="stylesheet">
 </head>
-<body>
+<body style="background-image:url({% static "app/assets/bg.jpeg" %}); background-size:100% 100%;background-repeat:no-repeat">
 
+	<div class="row">
+		<div class="col-md-2"></div>
+		<div class="col-md-2">
+			<div class="card">
 
+			<!--Card image-->
+				<img class="img-fluid" src="{% static "app/assets/propic.png" %}" alt="Card image cap">
+				<!--/.Card image-->
 
-<div class="panel panel-primary">
-	<!-- Default panel contents -->
-		<div class="panel-heading">My Owning</div>
+				<!--Card content-->
+				<div class="card-block">
+				<!--Title-->
+				<center>
+				<h3 class="card-title primary-color-dark white-text">Investor</h3>
+				<!--Text-->
+				<p class="card-text">{{ user.username }}</p>
+				</center>
+				</div>
+			<!--/.Card content-->
 
-		<!-- Table -->
-		<table class="table">
-			<tr>
-				<td>Stock Name</td>
-				<td>Percentage</td>
-				<td>Current Price</td>
-			</tr>
-			{% for o in my_ownership %}
-				<tr>
-{#					<td>{{o.stockName}}</td>#}
-					<td>{{o.startup.stockName}}</td>
-					<td>{{o.sharepercentage}}</td>
-                    <td>{{o.startup.sharePrice}}</td>
-				</tr>
-			{% endfor %}
-		</table>
+			</div>
+		</div>
+		<div class="col-md-6">
+			<div class="card">
+
+			<!--Card image-->
+				
+				<div class="card-block">
+				<!--Title-->
+				<center>
+					<h3 class="card-title primary-color-dark white-text">Investor Details</h3>
+				</center><br>
+				<table class="table table-striped">
+					<tr>
+						<td> E-Mail </td>
+						<td>{{ user.email }}</td>
+					</tr>
+					<tr>
+						<td> Bank Name </td>
+						{% for o in userprofile %}
+						<td>{{ o.accno.bankName }}</td>
+						{% endfor %}
+					</tr>
+					<tr>
+						<td> Account No. </td>
+						{% for o in userprofile %}
+						<td>{{ o.accno.accno }}</td>
+						{% endfor %}
+					</tr>
+					<tr>
+						<td> Balance </td>
+						{% for o in userprofile %}
+						<td>{{ o.accno.balance }}</td>
+						{% endfor %}
+					</tr>
+
+				</table>
+				</div>
+			<!--/.Card content-->
+
+			</div>
+		</div>
+		<div class="col-md-2"></div>
 	</div>
-	<br>
+	<br><br>
 
 
+	<div class="row">
+		<div class="col-md-2"></div>
+		<div class="col-md-8">
+			<div class="card">
+			<!-- Default panel contents -->
+				<div class="card-header primary-color-dark white-text">My Owning</div>
 
-{##}
-{#	<div class="panel panel-primary">#}
-{#	<!-- Default panel contents -->#}
-{#		<div class="panel-heading">Registered Investors</div>#}
-{##}
-{#		<!-- Table -->#}
-{#		<table class="table">#}
-{#			<tr>#}
-{#				<td>Name</td>#}
-{#				<td>Balance</td>#}
-{#				<td>UID</td>#}
-{#			</tr>#}
-{#			{% for o in list %}#}
-{#				<tr>#}
-{#					<td>{{o.name}}</td>#}
-{#					<td>{{o.accno.balance}}</td>#}
-{#					<td>{{o.aadhar.aadhar}}</td>#}
-{#				</tr>#}
-{#			{% endfor %}#}
-{#		</table>#}
-{#	</div>#}
+				<!-- Table -->
+				<table class="table">
+					<tr>
+						<td>Stock Name</td>
+						<td>Percentage</td>
+						<td>Current Price</td>
+					</tr>
+					{% for o in my_ownership %}
+						<tr>
+		{#					<td>{{o.stockName}}</td>#}
+							<td>{{o.startup.stockName}}</td>
+							<td>{{o.sharepercentage}}</td>
+		                    <td>{{o.startup.sharePrice}}</td>
+						</tr>
+					{% endfor %}
+				</table>
+			</div>
+			<br>
 
-	<br>
-	<div class="panel panel-primary">
-	<div class="panel-heading">Registered Startups</div>
 
-		<!-- Table -->
-		<table class="table">
-			<tr>
-				<td>Startup Name</td>
-				<td>Stock Name</td>
-				<td>Price</td>
-			</tr>
-			{% for o in startups %}
-				<tr>
-					<td>{{o.startupName}}</td>
-					<td>{{o.stockName}}</td>
-					<td>{{o.sharePrice}}</td>
-				</tr>
-			{% endfor %}
-		</table>
+			<br>
+
+			<!-- <div class="card">
+			<div class="card-header primary-color-dark white-text">Registered Startups</div>
+
+				
+				<table class="table">
+					<tr>
+						<td>Startup Name</td>
+						<td>Stock Name</td>
+						<td>Price</td>
+					</tr>
+					{% for o in startups %}
+						<tr>
+							<td>{{o.startupName}}</td>
+							<td>{{o.stockName}}</td>
+							<td>{{o.sharePrice}}</td>
+						</tr>
+					{% endfor %}
+				</table>
+			</div> -->
+
+		</div>
+		<div class="col-md-2"></div>
 	</div>
-	    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="{% static "app/js/jquery.js" %}"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="{% static "app/js/bootstrap.min.js" %}"></script>
+	<script src="{% static "app/material/js/jquery-2.2.3.min.js" %}"></script>
+
+  <script src="{% static "app/material/js/tether.min.js" %}"></script>
+
+  <script src="{% static "app/material/js/bootstrap.min.js" %}"></script>
+
+  <script src="{% static "app/material/js/mdb.min.js" %}"></script>
 </body>
 </html>

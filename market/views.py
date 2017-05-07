@@ -71,13 +71,14 @@ def investorSell(request):
 	u = User.objects.get(username=request.user)
 	stockList=ownership.objects.filter(owner=u)
 	context={'list':stockList,'isinvestor':isInvestor(request.user)}
+
 	return render(request,'market/investorSell.html',context)
 
 def startupSell(request):
     u = User.objects.get(username=request.user)
     stocklist = ownership.objects.filter(owner=u)
-    
     context={'list':stocklist,'isinvestor':isInvestor(request.user)}
+
     return render(request,'market/startupSell.html',context)
 
 
@@ -85,6 +86,7 @@ def buy(request):
     u = User.objects.get(username=request.user)
     onsaleobj=onsale.objects.all().exclude(owner=u)
     context={'onsale':onsaleobj,'isinvestor':isInvestor(request.user)}
+
     return render(request,'market/buy.html',context)
 
 @transaction.atomic

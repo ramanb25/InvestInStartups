@@ -32,7 +32,7 @@ def index(request):
     if request.user.is_authenticated():
         u = User.objects.get(username=request.user)
         try:
-            up = InvestorProfile.objects.get(user=u)
+            up = InvestorProfile.objects.filter(user=u)
             my_ownership=None
             my_ownership=ownership.objects.filter(owner=u)
             startups=StartupProfile.objects.all()
