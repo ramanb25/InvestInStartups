@@ -2,18 +2,18 @@
 <html>
 <head>
 	{% load static %}
-	<link href="{% static "app/css/bootstrap.min.css" %}" rel="stylesheet">
+	<!-- <link href="{% static "app/css/bootstrap.min.css" %}" rel="stylesheet"> -->
 </head>
-<body style="background-image:url({% static "app/assets/bg.jpeg" %}); background-size:100% 100%;background-repeat:no-repeat">
+<body style="background-image:url({% static "app/assets/bg1.jpeg" %}); background-size:100% 100%;background-repeat:no-repeat">
 
 	<div class="row">
 		<div class="col-md-1">
 		</div>
 		<div class="col-md-10">
 			<form action="../execStartupSell/" method='post'>
-				<div class="card">
+				<div class="card z-depth-3">
 			<!-- Default panel contents -->
-					<div class="card-header primary-color-dark white-text">Specify Listing Details</div>
+					<div class="card-header unique-color white-text">Specify Listing Details</div>
 					
 					<!-- Table -->
 					<table class="table">
@@ -36,8 +36,9 @@
 					</table>
 
 				</div>
+				<br>
 				<div class="text-center">
-		            <button class="btn btn-primary" type="submit">Sell</button>
+		            <button class="btn btn-primary hoverable" type="submit">Sell</button>
 				</div>
 			</form>
 			<br>

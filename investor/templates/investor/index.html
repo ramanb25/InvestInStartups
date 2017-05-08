@@ -3,13 +3,13 @@
 <head>
 	{% load static %}
 	
-	<link href="{% static "app/css/bootstrap.min.css" %}" rel="stylesheet">
+	<!-- <link href="{% static "app/css/bootstrap.min.css" %}" rel="stylesheet"> -->
 </head>
-<body style="background-image:url({% static "app/assets/bg.jpeg" %}); background-size:100% 100%;background-repeat:no-repeat">
+<body style="background-image:url({% static "app/assets/bg1.jpeg" %}); background-size:100% 100%;background-repeat:no-repeat">
 	<div class="row">
 		<div class="col-md-2"></div>
 		<div class="col-md-2">
-			<div class="card">
+			<div class="card z-depth-5">
 
 			<!--Card image-->
 				<img class="img-fluid" src="{% static "app/assets/propic.png" %}" alt="Card image cap">
@@ -19,7 +19,7 @@
 				<div class="card-block">
 				<!--Title-->
 				<center>
-				<h3 class="card-title primary-color-dark white-text">Investor</h3>
+				<h3 class="card-title unique-color white-text">Investor</h3>
 				<!--Text-->
 				<p class="card-text">{{ user.username }}</p>
 				</center>
@@ -29,14 +29,14 @@
 			</div>
 		</div>
 		<div class="col-md-6">
-			<div class="card">
+			<div class="card z-depth-5">
 
 			<!--Card image-->
 				
 				<div class="card-block">
 				<!--Title-->
 				<center>
-					<h3 class="card-title primary-color-dark white-text">Investor Details</h3>
+					<h3 class="card-title unique-color white-text">Investor Details</h3>
 				</center><br>
 				<table class="table table-striped">
 					<tr>
@@ -76,9 +76,9 @@
 	<div class="row">
 		<div class="col-md-2"></div>
 		<div class="col-md-8">
-			<div class="card">
+			<div class="card z-depth-5">
 			<!-- Default panel contents -->
-				<div class="card-header primary-color-dark white-text">My Owning</div>
+				<div class="card-header unique-color white-text">My Owning</div>
 
 				<!-- Table -->
 				<table class="table">
@@ -102,8 +102,8 @@
 
 			<br>
 
-			<!-- <div class="card">
-			<div class="card-header primary-color-dark white-text">Registered Startups</div>
+			<!-- <div class="card z-depth-5">
+			<div class="card-header unique-color white-text">Registered Startups</div>
 
 				
 				<table class="table">
