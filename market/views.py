@@ -70,14 +70,16 @@ def redirectSell(request):
 def investorSell(request):
 	u = User.objects.get(username=request.user)
 	stockList=ownership.objects.filter(owner=u)
-	context={'list':stockList,'isinvestor':isInvestor(request.user)}
+	curonsale = onsale.objects.filter(owner=u)
+	context={'list':stockList,'isinvestor':isInvestor(request.user),'onsale':curonsale}
 
 	return render(request,'market/investorSell.html',context)
 
 def startupSell(request):
     u = User.objects.get(username=request.user)
     stocklist = ownership.objects.filter(owner=u)
-    context={'list':stocklist,'isinvestor':isInvestor(request.user)}
+    curonsale = onsale.objects.filter(owner=u)
+    context={'list':stocklist,'isinvestor':isInvestor(request.user),'onsale':curonsale}
 
     return render(request,'market/startupSell.html',context)
 

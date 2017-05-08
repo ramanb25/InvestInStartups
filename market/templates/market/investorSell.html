@@ -50,6 +50,41 @@
 			  <strong>Warning!</strong> Any Previous Listings of same stock would be overwritten.
 			</div>
 			<br>
+
+
+
+
+
+			<div class="card z-depth-3">
+			<!-- Default panel contents -->
+					<div class="card-header unique-color white-text">My Current On Sale</div>
+					
+					<!-- Table -->
+					<table class="table">
+						<tr>
+							
+							<td>Stock Name</td>
+							<td>Percentage</td>
+							<td>Price</td>
+						</tr>
+						{% for o in onsale %}
+							<tr>
+								
+								<td>{{o.startup.stockName}}</td>
+								<td>{{o.stockpercentage}}</td>
+								<td>{{o.stockprice}}</td>
+							</tr>
+						{% endfor %}
+					</table>
+
+				</div>
+
+
+
+
+
+
+
 		</div>
 		<div class="col-md-1">
 		</div>
