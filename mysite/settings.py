@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     #'material',
-    'django_google_charts',
+  
     'app',
     'startup',
     'investor',

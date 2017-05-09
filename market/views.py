@@ -334,8 +334,6 @@ def user_logout(request):
     # Take the user back to the homepage.
     return redirect('/app/')
 
-from .charts import StepChart
-import json
 @login_required
 def chart(request):
     user=User.objects.get(username=request.user)
