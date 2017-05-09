@@ -3,6 +3,18 @@
 <head>
 	{% load static %}
 	<!-- <link href="{% static "app/css/bootstrap.min.css" %}" rel="stylesheet"> -->
+	<style>
+		.scroll-box {
+	position: relative;
+	}
+	.scrollspy-example {
+	position: relative;
+	overflow-y: scroll;
+	height: 250px; 
+	}
+	
+
+	</style>
 </head>
 <body style="background-image:url({% static "app/assets/bg1.jpeg" %}); background-size:100% 100%;background-repeat:no-repeat">
 
@@ -15,6 +27,9 @@
 
 				<div class="card z-depth-3">
 					<div class="card-header unique-color white-text">Stocks On Sale</div>
+					<div class="scroll-box">
+					<!-- Table -->
+					<div class="scrollspy-example">
 					<table class="table">
 						<tr>
 							<td>Choice</td>
@@ -43,6 +58,8 @@
 
 
 					</table>
+					</div>
+					</div>
 				</div>
 				<br>
 				<div class="text-center">

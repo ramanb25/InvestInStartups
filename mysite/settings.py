@@ -25,7 +25,7 @@ SECRET_KEY = '4b+l1d%^tfuq*--av90a%8)fp1l12ln*u9!)a&q#l274qr&@ny'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 LOGIN_URL = '/app/login/'
-ALLOWED_HOSTS = ['192.168.0.104','localhost']
+ALLOWED_HOSTS = ['192.168.0.101','localhost']
 
 
 # Application definition

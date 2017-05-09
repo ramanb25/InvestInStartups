@@ -3,9 +3,61 @@
 <head>
 	{% load static %}
 	<!-- <link href="{% static "app/css/bootstrap.min.css" %}" rel="stylesheet"> -->
+	<style>
+		.scroll-box {
+	position: relative;
+	}
+	.scrollspy-example {
+	position: relative;
+	overflow-y: scroll;
+	height: 200px; 
+	}
+	
+
+	</style>
 </head>
 <body style="background-image:url({% static "app/assets/bg1.jpeg" %}); background-size:100% 100%;background-repeat:no-repeat"> <!-- style="background-color:gainsboro"> -->
 
+	<div class="row">
+		<div class="col-md-1"></div>
+		<div class="col-md-10">
+	<center>
+	<div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+			  <div class="carousel-inner" role="listbox">
+			    <div class="carousel-item active">
+			    	<div class="card z-depth-3" style="width:100%;height:34%">
+			    		<div class="jumbotron" style="height:100%;margin-top:25px">
+				            <h4 style="margin-top:30px" valign="Center">Stocks on Sale</h4>  
+				        </div>
+			    	</div>
+			    </div>
+			    {% for o in list1 %}
+				    <div class="carousel-item">
+				      <div class="card z-depth-3" style="width:100%">
+				      	<div class="card-header unique-color white-text"><center><h3>{{o.startup.stockName}}</h3></center></div>
+				      	<table class="table table-striped">
+				      		<tr>
+				      			<td>Stock Owner</td>
+				      			<td>{{o.owner.username}}</td>
+				      		</tr>
+				      		<tr>
+				      			<td>Share Count</td>
+				      			<td>{{o.stockpercentage}}</td>
+				      		</tr><tr>
+				      			<td>Share Price</td>
+				      			<td>{{o.stockprice}}</td>
+				      		</tr>
+				      	</table>
+				      </div>
+				    </div>
+			    {% endfor %}
+			  </div>
+			</div>
+		</center>
+	</div>
+	<div class="col-md-1"></div>
+	</div>
+	<br><br>
 	<div class="row">
 		<div class="col-md-1">
 		</div>
@@ -13,24 +65,27 @@
 			<div class="card z-depth-3">
 			<!-- Default panel contents -->
 				<div class="card-header unique-color white-text">Stocks on Sale</div>
-
+				<div class="scroll-box">
 				<!-- Table -->
+				<div class="scrollspy-example">
 				<table class="table table-hover">
 					<tr>
-						<td>Stock Owner</td>
-						<td>Stock Name</td>
-						<td>Share Count</td>
-						<td>Share Price</td>
+						<td align="center">Stock Owner</td>
+						<td align="center">Stock Name</td>
+						<td align="center">Share Count</td>
+						<td align="center">Share Price</td>
 					</tr>
 					{% for o in list1 %}
 						<tr>
-							<td>{{o.owner.username}}
-							<td>{{o.startup.stockName}}</td>
-							<td>{{o.stockpercentage}}</td>
-							<td>{{o.stockprice}}</td>
+							<td align="center">{{o.owner.username}}
+							<td align="center">{{o.startup.stockName}}</td>
+							<td align="center">{{o.stockpercentage}}</td>
+							<td align="center">{{o.stockprice}}</td>
 						</tr>
 					{% endfor %}
 				</table>
+				</div>
+			</div>
 			</div>
 			<br>
 			<br>
@@ -41,25 +96,29 @@
 			<!-- Default panel contents -->
 				<div class="card-header unique-color white-text">All Bought</div>
 
+				<div class="scroll-box">
 				<!-- Table -->
+				<div class="scrollspy-example">
 				<table class="table table-hover">
 					<tr>
-		                <td>Time</td>
-						<td>Bought from</td>
-						<td>Stock Name</td>
-						<td>Share Percentage</td>
-						<td>Bought at</td>
+		                <td align="center">Time</td>
+						<td align="center">Bought from</td>
+						<td align="center">Stock Name</td>
+						<td align="center">Share Percentage</td>
+						<td align="center">Bought at</td>
 					</tr>
 					{% for o in bought %}
 						<tr>
-		                  <td>{{o.timestamp}}
-							<td>{{o.owner.username}}
-							<td>{{o.startup.stockName}}</td>
-							<td>{{o.stockpercentage}}</td>
-							<td>{{o.stockprice}}</td>
+		                  <td align="center">{{o.timestamp}}
+							<td align="center">{{o.owner.username}}
+							<td align="center">{{o.startup.stockName}}</td>
+							<td align="center">{{o.stockpercentage}}</td>
+							<td align="center">{{o.stockprice}}</td>
 						</tr>
 					{% endfor %}
 				</table>
+				</div>
+				</div>
 			</div>
 			<br>
 			<br>
@@ -71,7 +130,9 @@
 			<!-- Default panel contents -->
 				<div class="card-header unique-color white-text">All Sold</div>
 
+				<div class="scroll-box">
 				<!-- Table -->
+				<div class="scrollspy-example">
 				<table class="table table-hover">
 					<tr>
 		                <td>Time</td>
@@ -90,6 +151,8 @@
 						</tr>
 					{% endfor %}
 				</table>
+				</div>
+				</div>
 			</div>
 			<br>
 			<br>
