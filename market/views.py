@@ -334,6 +334,16 @@ def user_logout(request):
     # Take the user back to the homepage.
     return redirect('/app/')
 
+from .charts import StepChart
+import json
+@login_required
+def chart(request):
+    user=User.objects.get(username=request.user)
+    pa=transactions.objects.filter(owner=user)
+    print pa
+    return render(request, 'market/pricechart.html', {
+        'chart': pa ,
+    })
 
 # @login_required
 # def restricted(request):

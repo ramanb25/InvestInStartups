@@ -40,6 +40,13 @@
                     <a class="nav-link" href="/market/buy">Buy</a>
                 </li>
                 {% endif %}
+
+                                {% if not isinvestor %}
+                <li class="nav-item">
+                    <a class="nav-link" href="/market/chart">History</a>
+                </li>
+                {% endif %}
+
                 <li class="nav-item">
                     <a class="nav-link" href="/market/sell">Sell</a>
                 </li>

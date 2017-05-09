@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!--Load the AJAX API-->
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script> 
+    <script type="text/javascript">
+
+      // Load the Visualization API and the piechart package.
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+
+   
+
+function drawChart() {
+
+        // Create the data table.
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Time');
+        data.addColumn('number', 'Price');
+
+      {% for o in chart %}
+        data.addRows([
+          ["{{o.timestamp}}",{{o.stockprice}}]
+        ]);
+        //alert("LunchTea_Endtime[i]");
+    {% endfor %}
+
+        // Set chart options
+        var options = {'title':'Past Transactioon price',
+                       };
+
+        // Instantiate and draw our chart, passing in some options.
+        var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
+        chart.draw(data, options);
+      }
+    </script>
+  </head>
+
+  <body>
+    <!--Div that will hold the pie chart-->
+    <div id="chart_div" style="margin:0px;padding:0px;height:50%;width:100%"></div>
+  </body>
+</html>

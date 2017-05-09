@@ -1,0 +1,10 @@
+doc-warnings: yes
+test-warnings: yes
+strictness: veryhigh
+max-line-length: 80
+uses:
+  - django
+pylint:
+  disable:
+    - no-init
+    - too-few-public-methods
