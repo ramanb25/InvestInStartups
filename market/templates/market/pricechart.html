@@ -1,6 +1,7 @@
-<!DOCTYPE html>
+{% include "market/base.html" %}
 <html>
   <head>
+    {% load static %}
     <!--Load the AJAX API-->
   <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script> 
     <script type="text/javascript">
@@ -36,8 +37,16 @@ function drawChart() {
     </script>
   </head>
 
-  <body>
+  <body style="background-image:url({% static "app/assets/bg1.jpeg" %}); background-size:100% 100%;background-repeat:no-repeat">
     <!--Div that will hold the pie chart-->
-    <div id="chart_div" style="margin:0px;padding:0px;height:50%;width:100%"></div>
+    <div class="row">
+      <div class="col-md-2"></div>
+      <div class="col-md-8">
+        <div class="card z-depth-3">
+          <div id="chart_div" style="margin:0px;padding:0px;height:50%;width:100%"></div>
+        </div>
+      </div>
+      <div class="col-md-2"></div>
+    </div>
   </body>
 </html>
