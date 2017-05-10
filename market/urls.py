@@ -27,6 +27,7 @@ urlpatterns = [
     # url(r'debit/$',views.debit,name='debit'),
     url(r'buy/$',views.buy,name='buy'),
     url(r'chart/$',views.chart,name='chart'),
+    url(r'viewChart',views.viewChart,name='viewChart'),
     url(r'execBuy/$',views.execBuy,name='execBuy'),
     url(r'execStartupSell/$',views.execStartupSell,name='execStartupSell'),
     url(r'execInvestorSell/$',views.execInvestorSell,name='execInvestorSell'),

@@ -343,6 +343,16 @@ def chart(request):
         'chart': pa ,
     })
 
+def viewChart(request):
+    uname=request.GET['stock']
+    print uname
+    user=User.objects.get(username=uname)
+    pa=transactions.objects.filter(owner=user)
+    print pa
+    return render(request, 'market/pricechart.html', {
+        'chart': pa ,'isinvestor':isInvestor(request.user)
+    })
+
 # @login_required
 # def restricted(request):
 #     return HttpResponse("Since you're logged in, you can see this text!")
